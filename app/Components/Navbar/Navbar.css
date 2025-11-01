@@ -1,0 +1,18 @@
+.nav{ pointer-events: none; } /* el contenedor no bloquea clicks fuera */
+.nav-inner{
+  pointer-events: auto;
+  display: flex; gap: clamp(14px, 3vw, 36px);
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.28);
+  backdrop-filter: blur(6px);
+}
+
+.nav-inner a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.nav-inner a:hover{ text-decoration: underline; }
+nav.nav-inner { display: inline-flex !important; }
