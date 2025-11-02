@@ -441,6 +441,15 @@
 }
 
 @media (max-width: 720px) {
+  .navbar-mount {
+    left: clamp(16px, 5vw, 28px);
+    transform: none;
+    right: auto;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
   .hero-center {
     transform: translate(-50%, -48%);
   }
