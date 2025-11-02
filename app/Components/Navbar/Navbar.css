@@ -1,9 +1,10 @@
 .nav {
-  pointer-events: none;
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 16px;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 .nav-inner {

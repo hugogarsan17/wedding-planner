@@ -40,7 +40,8 @@
   position: fixed;
   top: calc(20px + env(safe-area-inset-top));
   left: 50%;
-  transform: translateX(-50%);
+  --fade-offset-x: -50%;
+  transform: translateX(var(--fade-offset-x));
   z-index: 10;
 }
 
@@ -70,10 +71,12 @@
 
 .hero-center h1 {
   font-family: "Herr Von Muellerhoff", cursive;
-  font-size: clamp(5rem, 7vw, 11rem);
+  font-size: clamp(3.6rem, 12vw, 10rem);
   margin: clamp(1rem, 2vw, 1.6rem) 0 0.6rem;
   letter-spacing: -0.01em;
   text-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  line-height: 1.02;
 }
 
 .hero-center p {
@@ -86,9 +89,14 @@
 
 .hero-actions {
   display: inline-flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
+  gap: clamp(0.6rem, 2vw, 1rem);
+  flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
+}
+
+.hero-actions .btn {
+  white-space: nowrap;
 }
 
 .btn {
@@ -105,6 +113,7 @@
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
     color 0.2s ease;
+  white-space: nowrap;
 }
 
 .btn.primary {
@@ -403,6 +412,12 @@
   animation: fadeInCentered 1.4s ease-out forwards;
 }
 
+.fade-in-top {
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: fadeInTop 1s ease-out forwards;
+}
+
 .is-hidden {
   opacity: 0;
   pointer-events: none;
@@ -416,6 +431,17 @@
   to {
     opacity: 1;
     transform: translate(-50%, -50%) translateY(0);
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateX(var(--fade-offset-x)) translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(var(--fade-offset-x)) translateY(0);
   }
 }
 
@@ -443,7 +469,8 @@
 @media (max-width: 720px) {
   .navbar-mount {
     left: clamp(16px, 5vw, 28px);
-    transform: none;
+    --fade-offset-x: 0;
+    transform: translateX(var(--fade-offset-x));
     right: auto;
     display: flex;
     justify-content: flex-start;
@@ -456,13 +483,15 @@
 
   .hero-actions {
     width: 100%;
-    flex-direction: column;
-    gap: 0.6rem;
+    max-width: 340px;
+    margin-inline: auto;
+    gap: 0.55rem;
   }
 
-  .btn {
-    width: 100%;
-    padding: 0.75rem 1.4rem;
+  .hero-actions .btn {
+    padding: 0.7rem 1.4rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
   }
 
   .gallery-grid {

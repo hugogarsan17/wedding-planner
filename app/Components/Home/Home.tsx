@@ -110,7 +110,7 @@ export default function Home() {
           playsInline
         />
 
-        <div className={`navbar-mount ${showUI ? "fade-in" : "is-hidden"}`}>
+        <div className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}>
           <Navbar />
         </div>
 
