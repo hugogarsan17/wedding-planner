@@ -20,18 +20,23 @@ export default function Navbar() {
 
   return (
     <header className={`nav ${isOpen ? "is-open" : ""}`}>
-      <button
-        type="button"
-        className={`nav-toggle ${isOpen ? "is-active" : ""}`}
-        aria-expanded={isOpen}
-        aria-controls="primary-navigation"
-        onClick={toggleMenu}
-      >
-        <span className="sr-only">Abrir menú</span>
-        <span aria-hidden className="nav-toggle-line" />
-        <span aria-hidden className="nav-toggle-line" />
-        <span aria-hidden className="nav-toggle-line" />
-      </button>
+<button
+  type="button"
+  className={`nav-toggle ${isOpen ? "is-active" : ""}`}
+  aria-expanded={isOpen}
+  aria-controls="primary-navigation"
+  onClick={toggleMenu}
+>
+  <span className="sr-only">Abrir menú</span>
+
+  {/* Icono hamburguesa con 3 líneas */}
+  <span aria-hidden="true" className="hamburger">
+    <span className="line top"></span>
+    <span className="line middle"></span>
+    <span className="line bottom"></span>
+  </span>
+</button>
+
       <nav
         id="primary-navigation"
         className={`nav-inner ${isOpen ? "is-open" : ""}`}
