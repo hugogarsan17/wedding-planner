@@ -28,44 +28,62 @@ const services = [
 
 const galleryImages = [
   {
-    src: "https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=1400&q=80",
+    src: "/p8.jpeg",
     alt: "Pareja abrazada frente al mar al atardecer",
     span: "tall",
     label: "Menorca, golden hour",
   },
   {
-    src: "https://images.unsplash.com/photo-1528731708534-816fe59f90a9?auto=format&fit=crop&w=1200&q=80",
+    src: "/p7.jpeg",
     alt: "Boda íntima con mesa decorada en exterior",
     span: "wide",
   },
   {
-    src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=900&q=80",
+    src: "/p6.jpeg",
     alt: "Detalle floral con velas sobre mesa",
     span: "standard",
   },
   {
-    src: "https://images.unsplash.com/photo-1520854221054-1201717d8a57?auto=format&fit=crop&w=1200&q=80",
+    src: "/p5.jpeg",
     alt: "Brindis de recién casados",
     span: "tall",
     label: "Celebración en La Rioja",
   },
   {
-    src: "https://images.unsplash.com/photo-1511288590-0a2f54d7a969?auto=format&fit=crop&w=1200&q=80",
+    src: "/p4.jpeg",
     alt: "Novia con ramo en escalera histórica",
     span: "big",
   },
   {
-    src: "https://images.unsplash.com/photo-1465495981161-7bdf0547945f?auto=format&fit=crop&w=1100&q=80",
+    src: "/p3.jpeg",
     alt: "Mesa de banquete minimalista",
     span: "standard",
   },
   {
-    src: "https://images.unsplash.com/photo-1474403078171-7f199e9d1338?auto=format&fit=crop&w=900&q=80",
+    src: "/p2.jpeg",
     alt: "Invitados bailando bajo luces cálidas",
     span: "wide",
   },
   {
-    src: "https://images.unsplash.com/photo-1519223400710-06d119a60e5a?auto=format&fit=crop&w=1100&q=80",
+    src: "/p1.jpeg",
+    alt: "Pareja caminando entre montañas",
+    span: "standard",
+    label: "Elopement en Pirineos",
+  },
+    {
+    src: "/p9.jpeg",
+    alt: "Pareja caminando entre montañas",
+    span: "standard",
+    label: "Elopement en Pirineos",
+  },
+    {
+    src: "/p10.jpeg",
+    alt: "Pareja caminando entre montañas",
+    span: "standard",
+    label: "Elopement en Pirineos",
+  },
+    {
+    src: "/p11.jpeg",
     alt: "Pareja caminando entre montañas",
     span: "standard",
     label: "Elopement en Pirineos",
@@ -97,12 +115,7 @@ export default function Home() {
         </div>
 
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
-          <span className="hero-badge">Luna &amp; Co. Wedding Studio</span>
           <h1>the perfect match</h1>
-          <p>
-            Celebraciones editoriales y atemporales para parejas que buscan una
-            mirada honesta y minimalista.
-          </p>
           <div className="hero-actions">
             <a className="btn primary" href="#contacto">
               Agenda una llamada
@@ -111,7 +124,6 @@ export default function Home() {
               Ver portfolio
             </a>
           </div>
-          <div className="hero-footnote">España · Portugal · Francia · Italia</div>
         </div>
         <span className="scroll-indicator">Desliza para descubrir</span>
       </main>

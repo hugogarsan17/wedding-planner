@@ -1,6 +1,7 @@
 .nav { pointer-events: none; }
 
 .nav-inner {
+    margin-top: 20px;
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
