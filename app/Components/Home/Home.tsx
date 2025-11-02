@@ -214,7 +214,7 @@ export default function Home() {
               inicial con direcciones y sensaciones a medida.
             </p>
             <div className="contact-actions">
-              <a className="btn primary" href="mailto:hola@lunaandco.com">
+              <a className="btn primary" href="mailto:hola@theperfectmatch.com">
                 hola@lunaandco.com
               </a>
               <a className="btn ghost" href="https://wa.me/34123456789">
@@ -225,9 +225,9 @@ export default function Home() {
         </section>
 
         <footer className="footer">
-          <p>© {new Date().getFullYear()} Luna &amp; Co. Wedding Planners</p>
+          <p>© {new Date().getFullYear()} Wedding Planners</p>
           <p>
-            Produciendo bodas elegantes en España, Portugal, Francia e Italia.
+            Produciendo bodas elegantes en España.
           </p>
         </footer>
       </div>
