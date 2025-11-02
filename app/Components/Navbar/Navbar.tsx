@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 const links = [
@@ -15,34 +14,47 @@ const links = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen((open) => !open);
+  const toggleMenu = () => setIsOpen(v => !v);
   const closeMenu = () => setIsOpen(false);
+
+  // Cerrar con ESC
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeMenu();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <header className={`nav ${isOpen ? "is-open" : ""}`}>
-<button
-  type="button"
-  className={`nav-toggle ${isOpen ? "is-active" : ""}`}
-  aria-expanded={isOpen}
-  aria-controls="primary-navigation"
-  onClick={toggleMenu}
->
-  <span className="sr-only">Abrir menú</span>
+      {/* Botón hamburguesa (3 líneas) */}
+      <button
+        type="button"
+        className={`nav-toggle ${isOpen ? "is-active" : ""}`}
+        aria-expanded={isOpen}
+        aria-controls="primary-navigation"
+        aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+        onClick={toggleMenu}
+      >
+        <span className="sr-only">{isOpen ? "Cerrar menú" : "Abrir menú"}</span>
+        <span className="nav-toggle-line" aria-hidden="true"></span>
+        <span className="nav-toggle-line" aria-hidden="true"></span>
+        <span className="nav-toggle-line" aria-hidden="true"></span>
+      </button>
 
-  {/* Icono hamburguesa con 3 líneas */}
-  <span aria-hidden="true" className="hamburger">
-    <span className="line top"></span>
-    <span className="line middle"></span>
-    <span className="line bottom"></span>
-  </span>
-</button>
-
+      {/* Menú */}
       <nav
         id="primary-navigation"
         className={`nav-inner ${isOpen ? "is-open" : ""}`}
+        aria-label="Navegación principal"
+        onClick={(e) => {
+          const el = e.target as HTMLElement;
+          if (el.tagName === "A") closeMenu();
+        }}
       >
-        {links.map((link) => (
-          <a key={link.href} href={link.href} onClick={closeMenu}>
+        {links.map(link => (
+          <a key={link.href} href={link.href}>
             {link.label}
           </a>
         ))}

@@ -7,6 +7,7 @@
   z-index: 1;
 }
 
+/* Píldora desktop */
 .nav-inner {
   margin-top: 20px;
   pointer-events: auto;
@@ -15,9 +16,9 @@
   gap: clamp(16px, 2.5vw, 40px);
   padding: 12px 22px;
   border-radius: 999px;
-  background: linear-gradient(135deg, rgba(24, 21, 27, 0.8), rgba(17, 17, 17, 0.55));
+  background: linear-gradient(135deg, rgba(24,21,27,.8), rgba(17,17,17,.55));
   backdrop-filter: blur(12px);
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
   font-family: "Poppins", var(--font-geist-sans), system-ui;
   width: auto;
   max-width: calc(100vw - 2rem);
@@ -27,18 +28,14 @@
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: clamp(0.72rem, 0.68rem + 0.4vw, 0.95rem);
+  letter-spacing: .08em;
+  font-size: clamp(.72rem, .68rem + .4vw, .95rem);
   text-transform: uppercase;
-  transition: color 0.2s ease, transform 0.2s ease;
-  padding: 0.4rem 0.8rem;
+  transition: color .2s ease, transform .2s ease;
+  padding: .4rem .8rem;
   border-radius: 999px;
 }
-
-.nav-inner a:hover {
-  color: #f8d2d8;
-  transform: translateY(-2px);
-}
+.nav-inner a:hover { color: #f8d2d8; transform: translateY(-2px); }
 
 .nav-inner .brand {
   font-family: "Herr Von Muellerhoff", cursive;
@@ -49,134 +46,69 @@
   margin-right: clamp(4px, 1.2vw, 20px);
 }
 
+/* Botón hamburguesa */
 .nav-toggle {
-  position: relative;
-  width: 42px;
-  height: 42px;
-  display: flex;
-  align-items: center;
+  display: inline-flex;           /* visible en móvil o donde lo uses */
+  flex-direction: column;         /* 👈 apila las líneas en vertical */
   justify-content: center;
-  background: rgba(0, 0, 0, 0.25);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.3s ease;
+  align-items: center;
+  gap: 6px;                       /* separación entre líneas */
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(24,21,27,.7);
+  backdrop-filter: blur(12px);
+  transition: background .2s ease, border-color .2s ease;
 }
+.nav-toggle:hover { background: rgba(24,21,27,.85); border-color: rgba(255,255,255,.4); }
+.nav-toggle:focus-visible { outline: 3px solid rgba(255,255,255,.65); outline-offset: 2px; }
 
-.nav-toggle:hover {
-  background: rgba(0, 0, 0, 0.4);
-}
-
-/* Contenedor de las líneas */
-.hamburger {
-  position: relative;
-  width: 22px;
-  height: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.line {
-  width: 100%;
-  height: 2px;
-  background-color: #fff;
-  border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* Animación al abrir */
-.nav-toggle.is-active .top {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.nav-toggle.is-active .middle {
-  opacity: 0;
-}
-
-.nav-toggle.is-active .bottom {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* Accesibilidad */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-
-.nav-toggle:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.65);
-  outline-offset: 2px;
-}
-
+/* 3 líneas */
 .nav-toggle-line {
-  display: block;
-  width: 20px;
+  width: 22px;
   height: 2px;
   border-radius: 999px;
   background: #fff;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform .25s ease, opacity .2s ease;
+  will-change: transform, opacity;
 }
-
-.nav-toggle.is-active .nav-toggle-line:nth-of-type(2) {
-  opacity: 0;
-}
-
+.nav-toggle.is-active { gap: 0; } /* juntamos líneas para el morph */
+.nav-toggle.is-active .nav-toggle-line:nth-of-type(2) { opacity: 0; }
 .nav-toggle.is-active .nav-toggle-line:nth-of-type(1) {
-  transform: translateY(5px) rotate(45deg);
+  transform: translateY(6px) rotate(45deg);
 }
-
 .nav-toggle.is-active .nav-toggle-line:nth-of-type(3) {
-  transform: translateY(-5px) rotate(-45deg);
+  transform: translateY(-6px) rotate(-45deg);
 }
-
+/* Accesibilidad texto oculto */
 .nav .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
 }
 
+/* MÓVIL */
 @media (max-width: 720px) {
-  .nav {
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-  }
+  .nav { align-items: flex-start; gap: 12px; }
+  .nav-toggle { display: inline-flex; }
 
   .nav-inner {
     margin-top: 0;
     position: absolute;
-    top: 56px;
-    left: 0;
+    top: 56px; left: 0;
     width: min(280px, calc(100vw - 2.5rem));
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
     padding: 16px;
     border-radius: 20px;
-    background: linear-gradient(135deg, rgba(24, 21, 27, 0.92), rgba(17, 17, 17, 0.75));
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    background: linear-gradient(135deg, rgba(24,21,27,.92), rgba(17,17,17,.75));
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
     visibility: hidden;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity .2s ease, transform .2s ease;
   }
 
   .nav-inner.is-open {
@@ -188,14 +120,11 @@
 
   .nav-inner a {
     width: 100%;
-    padding: 0.75rem 0.6rem;
+    padding: .75rem .6rem;
     text-align: left;
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255,255,255,.06);
     border-radius: 12px;
-  }
-
-  .nav-inner a:hover {
     transform: none;
-    background: rgba(255, 255, 255, 0.12);
   }
+  .nav-inner a:hover { background: rgba(255,255,255,.12); }
 }
