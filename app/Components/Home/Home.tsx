@@ -1,91 +1,78 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./Home.css";
 
 const services = [
   {
-    title: "Diseño integral",
+    title: "Dirección creativa",
     description:
-      "Creamos un universo propio para cada boda: atmósfera, ambientación y narrativa coherente de principio a fin.",
-    highlights: [
-      "Moodboards sensoriales y paletas personalizadas",
-      "Selección curada de proveedores premium",
-      "Coordinación total del gran día",
-    ],
+      "Concepto global, mood y diseño floral para un storytelling coherente.",
     icon: "✨",
   },
   {
-    title: "Wedding weekend",
+    title: "Producción completa",
     description:
-      "Planificamos experiencias inmersivas de varios días para sorprender a tus invitados y prolongar la magia.",
-    highlights: [
-      "Eventos previos y posteriores a medida",
-      "Hospitality y logística impecables",
-      "Regalos y detalles inolvidables",
-    ],
+      "Gestión integral de agenda, proveedores y montaje con un equipo senior.",
     icon: "🌙",
   },
   {
-    title: "Elopements boutique",
+    title: "Experiencias destino",
     description:
-      "Para parejas que desean una celebración íntima y llena de simbolismo en destinos espectaculares.",
-    highlights: [
-      "Localizaciones secretas y escenografía a medida",
-      "Producción fotográfica y audiovisual editorial",
-      "Ceremonias diseñadas junto a celebrantes expertos",
-    ],
+      "Elopements y fines de semana inmersivos en localizaciones singulares.",
     icon: "💞",
   },
 ];
 
-const experiences = [
+const galleryImages = [
   {
-    quote:
-      "Nuestra boda fue una película mágica. Cada invitado sintió que vivía algo único y profundamente nuestro.",
-    couple: "Carla & Bruno",
-    detail: "Boda destino en Menorca",
+    src: "https://images.unsplash.com/photo-1520854221050-0f4caff449fb?auto=format&fit=crop&w=1400&q=80",
+    alt: "Pareja abrazada frente al mar al atardecer",
+    span: "tall",
+    label: "Menorca, golden hour",
   },
   {
-    quote:
-      "Convirtieron nuestras ideas en momentos tangibles. Su calma y creatividad hicieron que disfrutáramos cada paso.",
-    couple: "Lucía & Andrés",
-    detail: "Weekend celebration en La Rioja",
+    src: "https://images.unsplash.com/photo-1528731708534-816fe59f90a9?auto=format&fit=crop&w=1200&q=80",
+    alt: "Boda íntima con mesa decorada en exterior",
+    span: "wide",
   },
   {
-    quote:
-      "Nunca imaginamos que nuestra historia pudiera contarse con tanta elegancia. Superaron todas las expectativas.",
-    couple: "Paula & Nico",
-    detail: "Elopement íntimo en los Pirineos",
-  },
-];
-
-const journey = [
-  {
-    title: "Visión compartida",
-    description:
-      "Descubrimos vuestra esencia, exploramos referentes y diseñamos el concepto creativo que guiará cada decisión.",
+    src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=900&q=80",
+    alt: "Detalle floral con velas sobre mesa",
+    span: "standard",
   },
   {
-    title: "Curaduría artesanal",
-    description:
-      "Seleccionamos proveedores excepcionales, negociamos por vosotros y elaboramos un plan maestro detallado.",
+    src: "https://images.unsplash.com/photo-1520854221054-1201717d8a57?auto=format&fit=crop&w=1200&q=80",
+    alt: "Brindis de recién casados",
+    span: "tall",
+    label: "Celebración en La Rioja",
   },
   {
-    title: "Producción exquisita",
-    description:
-      "Coordinamos y supervisamos cada montaje para que todo fluya con naturalidad, mientras vosotros vivís el momento.",
+    src: "https://images.unsplash.com/photo-1511288590-0a2f54d7a969?auto=format&fit=crop&w=1200&q=80",
+    alt: "Novia con ramo en escalera histórica",
+    span: "big",
   },
   {
-    title: "Recuerdos eternos",
-    description:
-      "Entregamos un dossier editorial con los highlights del evento y gestionamos la post-producción audiovisual.",
+    src: "https://images.unsplash.com/photo-1465495981161-7bdf0547945f?auto=format&fit=crop&w=1100&q=80",
+    alt: "Mesa de banquete minimalista",
+    span: "standard",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1474403078171-7f199e9d1338?auto=format&fit=crop&w=900&q=80",
+    alt: "Invitados bailando bajo luces cálidas",
+    span: "wide",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1519223400710-06d119a60e5a?auto=format&fit=crop&w=1100&q=80",
+    alt: "Pareja caminando entre montañas",
+    span: "standard",
+    label: "Elopement en Pirineos",
   },
 ];
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const [showUI, setShowUI] = useState(false);
 
   useEffect(() => {
@@ -97,7 +84,6 @@ export default function Home() {
     <>
       <main id="home" className="main-hero">
         <video
-          ref={videoRef}
           className="background-video"
           src="/main-hero.mp4"
           autoPlay
@@ -111,48 +97,57 @@ export default function Home() {
         </div>
 
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
-          <span className="hero-badge">Wedding planners & storytellers</span>
+          <span className="hero-badge">Luna &amp; Co. Wedding Studio</span>
           <h1>the perfect match</h1>
           <p>
-            Diseñamos bodas sofisticadas y llenas de alma para parejas que
-            desean una celebración inolvidable, cuidada hasta el último detalle.
+            Celebraciones editoriales y atemporales para parejas que buscan una
+            mirada honesta y minimalista.
           </p>
           <div className="hero-actions">
             <a className="btn primary" href="#contacto">
-              Reservar consultoría
+              Agenda una llamada
             </a>
             <a className="btn ghost" href="#portfolio">
-              Ver historias reales
+              Ver portfolio
             </a>
           </div>
-          <div className="hero-stats">
-            <div>
-              <strong>120+</strong>
-              <span>Bodas producidas en Europa</span>
-            </div>
-            <div>
-              <strong>12 años</strong>
-              <span>Creando experiencias memorables</span>
-            </div>
-            <div>
-              <strong>98%</strong>
-              <span>Parejas que nos recomiendan</span>
-            </div>
-          </div>
+          <div className="hero-footnote">España · Portugal · Francia · Italia</div>
         </div>
         <span className="scroll-indicator">Desliza para descubrir</span>
       </main>
 
       <div className="page-wrapper">
-        <section id="servicios" className="section services">
-          <div className="section-heading">
-            <span className="eyebrow">Servicios boutique</span>
-            <h2>Planificación integral para una boda con carácter</h2>
-            <p>
-              Transformamos ideas en momentos inolvidables combinando diseño,
-              producción y logística impecable. Cada celebración es única porque
-              refleja la esencia de vuestra historia.
-            </p>
+        <section id="servicios" className="section intro">
+          <div className="intro-grid">
+            <div>
+              <span className="eyebrow">Visión</span>
+              <h2>Bodas minimalistas con sensibilidad editorial</h2>
+              <p>
+                Seleccionamos localizaciones, diseñamos atmósferas y coordinamos
+                cada gesto para que la belleza fluya sin esfuerzo.
+              </p>
+            </div>
+            <div className="intro-points">
+              <div>
+                <span>01</span>
+                <p>Producciones limitadas a 12 bodas al año.</p>
+              </div>
+              <div>
+                <span>02</span>
+                <p>Equipo creativo multidisciplinar y presencial.</p>
+              </div>
+              <div>
+                <span>03</span>
+                <p>Transparencia absoluta en presupuestos y tiempos.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section services">
+          <div className="section-heading align-left">
+            <span className="eyebrow">Servicios</span>
+            <h2>Dirección integral con alma boutique</h2>
           </div>
           <div className="service-grid">
             {services.map((service) => (
@@ -162,112 +157,50 @@ export default function Home() {
                 </span>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
-                <ul>
-                  {service.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
-                  ))}
-                </ul>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="experiencias" className="section experiences">
-          <div className="section-heading">
-            <span className="eyebrow">Experiencias reales</span>
-            <h2>Historias que laten con vuestra esencia</h2>
+        <section id="portfolio" className="section gallery">
+          <div className="section-heading align-left">
+            <span className="eyebrow">Portfolio</span>
+            <h2>Un mosaico de historias reales</h2>
           </div>
-          <div className="experience-grid">
-            {experiences.map((experience) => (
-              <figure key={experience.couple}>
-                <blockquote>“{experience.quote}”</blockquote>
-                <figcaption>
-                  <strong>{experience.couple}</strong>
-                  <span>{experience.detail}</span>
-                </figcaption>
+          <div className="gallery-grid">
+            {galleryImages.map((image) => (
+              <figure
+                key={image.src}
+                className={`gallery-item ${image.span}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(max-width: 720px) 70vw, (max-width: 1200px) 35vw, 360px"
+                  className="gallery-photo"
+                />
+                {image.label && <figcaption>{image.label}</figcaption>}
               </figure>
             ))}
           </div>
         </section>
 
-        <section id="metodo" className="section journey">
-          <div className="section-heading">
-            <span className="eyebrow">Nuestro método</span>
-            <h2>Una hoja de ruta serena y transparente</h2>
-            <p>
-              Os acompañamos personalmente desde el primer café hasta el último
-              baile, cuidando cada hito con planificación estratégica.
-            </p>
-          </div>
-          <ol className="journey-steps">
-            {journey.map((step) => (
-              <li key={step.title}>
-                <div className="step-card">
-                  <h3>{step.title}</h3>
-                  <p>{step.description}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        <section id="portfolio" className="section portfolio">
-          <div className="section-heading">
-            <span className="eyebrow">Portfolio curado</span>
-            <h2>Bodas que se sienten como un sueño</h2>
-            <p>
-              Descubre algunos de nuestros proyectos recientes y cómo contamos
-              la historia de cada pareja a través de espacios, texturas y
-              momentos.
-            </p>
-          </div>
-          <div className="portfolio-grid">
-            <article className="portfolio-card">
-              <div className="tag">Mallorca</div>
-              <h3>Romance mediterráneo</h3>
-              <p>
-                Ceremonia al atardecer frente al mar con una recepción repleta
-                de flores locales y gastronomía de autor.
-              </p>
-            </article>
-            <article className="portfolio-card">
-              <div className="tag">Madrid</div>
-              <h3>Elegancia urbana</h3>
-              <p>
-                Transformamos un palacio histórico en un escenario contemporáneo
-                combinando iluminación teatral y arte floral minimalista.
-              </p>
-            </article>
-            <article className="portfolio-card">
-              <div className="tag">San Sebastián</div>
-              <h3>Sabores del norte</h3>
-              <p>
-                Weekend wedding con rutas gastronómicas, catas privadas y una
-                gran fiesta frente a la bahía.
-              </p>
-            </article>
-            <article className="portfolio-card">
-              <div className="tag">Lisboa</div>
-              <h3>Luz dorada</h3>
-              <p>
-                Elopement íntimo en miradores secretos con sesión editorial y un
-                banquete entre azulejos portugueses.
-              </p>
-            </article>
-          </div>
+        <section className="section manifesto">
+          <blockquote>
+            “Menos guion, más emoción verdadera. Dejamos que la luz y el gesto
+            cuenten la historia.”
+          </blockquote>
         </section>
 
         <section id="contacto" className="section contact">
           <div className="contact-inner">
-            <div>
-              <span className="eyebrow">Empecemos a soñar</span>
-              <h2>Agenda una videollamada privada</h2>
-              <p>
-                Cuéntanos cómo imagináis vuestro gran día y crearemos un
-                dossier inicial con propuestas pensadas exclusivamente para
-                vosotros.
-              </p>
-            </div>
+            <span className="eyebrow">Hablemos</span>
+            <h2>Agenda una videollamada privada</h2>
+            <p>
+              Cuéntanos cómo imagináis vuestro gran día y prepararemos una guía
+              inicial con direcciones y sensaciones a medida.
+            </p>
             <div className="contact-actions">
               <a className="btn primary" href="mailto:hola@lunaandco.com">
                 hola@lunaandco.com
@@ -275,9 +208,6 @@ export default function Home() {
               <a className="btn ghost" href="https://wa.me/34123456789">
                 +34 123 456 789
               </a>
-              <p className="availability">
-                Consultorías disponibles de lunes a jueves, 10:00 a 19:00 CET.
-              </p>
             </div>
           </div>
         </section>
