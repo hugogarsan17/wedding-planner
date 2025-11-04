@@ -1,61 +1,38 @@
-/* CONTENEDOR DEL NAVBAR */
+/* Contenedor del navbar: capa superior, sin que bloquee clics fuera */
 .nav {
-  position: fixed;             /* fija arriba */
-  top: 0;
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 0px); /* notch iOS */
   left: 0;
   width: 100%;
   display: flex;
-  justify-content: center;     /* centra la píldora horizontalmente */
-  padding: 0.75rem 1rem;
-  z-index: 1000;
-  background: transparent;     /* sin fondo sólido */
-  transition: transform 0.3s ease, background 0.3s ease;
+  justify-content: center;
+  padding: 8px 12px;
+  z-index: 9999;
+  pointer-events: none;               /* 👈 no bloquea el hero */
 }
 
-/* Ocultar al hacer scroll hacia abajo (opcional si quieres que desaparezca) */
-.nav.is-hidden {
-  transform: translateY(-100%);
-}
+.nav-inner,
+.nav-toggle { pointer-events: auto; } /* pero estos sí reciben clic */
 
-/* PÍLDORA */
+/* Píldora */
 .nav-inner {
   display: inline-flex;
   align-items: center;
   gap: clamp(12px, 2.5vw, 36px);
-  padding: 10px 20px;
+  padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(24, 21, 27, 0.8);
+  background: rgba(24,21,27,.82);
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  font-family: "Poppins", var(--font-geist-sans), system-ui;
-  width: auto;
-  max-width: 90vw;
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  max-width: 92vw;
 }
 
-/* ENLACES */
-.nav-inner a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  font-size: clamp(0.72rem, 0.68rem + 0.4vw, 0.95rem);
-  text-transform: uppercase;
-  transition: color 0.2s ease, transform 0.2s ease;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-}
-
-.nav-inner a:hover {
-  color: #f8d2d8;
-  transform: translateY(-2px);
-}
-
-/* BOTÓN HAMBURGUESA */
+/* Botón hamburguesa: pegado a la esquina, dentro de la safe-area */
 .nav-toggle {
   position: absolute;
-  right: 1rem;                /* lo ubica al borde derecho */
-  top: 0.75rem;
-  display: none;              /* oculto en desktop */
+  right: calc(env(safe-area-inset-right) + 12px);
+  top: calc(env(safe-area-inset-top) + 8px);
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -63,39 +40,45 @@
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.25);
-  background: rgba(24,21,27,0.7);
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(24,21,27,.75);
   backdrop-filter: blur(12px);
-  transition: background 0.2s ease, border-color 0.2s ease;
-  z-index: 1001;
+  z-index: 10000;
 }
 
-/* MODO MÓVIL */
-@media (max-width: 720px) {
-  .nav {
-    justify-content: flex-start;
-  }
+/* Líneas del icono */
+.nav-toggle-line {
+  width: 22px; height: 2px; border-radius: 999px; background:#fff;
+  transition: transform .25s ease, opacity .2s ease;
+}
+.nav-toggle.is-active { gap: 0; }
+.nav-toggle.is-active .nav-toggle-line:nth-of-type(2) { opacity: 0; }
+.nav-toggle.is-active .nav-toggle-line:nth-of-type(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.is-active .nav-toggle-line:nth-of-type(3) { transform: translateY(-6px) rotate(-45deg); }
 
-  .nav-toggle {
-    display: flex;
-  }
+/* Móvil */
+@media (max-width: 720px) {
+  .nav { justify-content: flex-start; }
+
+  .nav-toggle { display: flex; }
 
   .nav-inner {
     position: absolute;
-    top: 60px;
-    left: 1rem;
+    top: calc(env(safe-area-inset-top) + 60px);
+    left: 12px;
+    width: min(300px, calc(100vw - 24px));
     flex-direction: column;
     align-items: stretch;
-    width: min(280px, calc(100vw - 2rem));
+    gap: 10px;
     padding: 16px;
     border-radius: 20px;
-    background: rgba(24,21,27,0.92);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    background: rgba(24,21,27,.94);
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
     visibility: hidden;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition: opacity .25s ease, transform .25s ease, visibility .25s;
   }
 
   .nav-inner.is-open {
@@ -108,12 +91,13 @@
   .nav-inner a {
     width: 100%;
     text-align: left;
-    background: rgba(255,255,255,0.06);
+    background: rgba(255,255,255,.06);
     border-radius: 12px;
-    padding: 0.75rem;
+    padding: .75rem;
   }
+}
 
-  .nav-inner a:hover {
-    background: rgba(255,255,255,0.12);
-  }
+/* Texto oculto accesible */
+.nav .sr-only {
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;
 }
