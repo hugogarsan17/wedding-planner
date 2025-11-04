@@ -1,6 +1,7 @@
+// Navbar.tsx
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./Navbar.css";
 
 const links = [
@@ -13,22 +14,42 @@ const links = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [atTop, setAtTop] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
 
+  useEffect(() => setMounted(true), []);
   const toggleMenu = () => setIsOpen(v => !v);
   const closeMenu = () => setIsOpen(false);
 
-  // Cerrar con ESC
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") closeMenu();
-    };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeMenu();
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  return (
-    <header className={`nav ${isOpen ? "is-open" : ""}`}>
-      {/* Botón hamburguesa (3 líneas) */}
+  useEffect(() => {
+    const onScroll = () => {
+      const isAtTop = window.scrollY <= 2;
+      setAtTop(isAtTop);
+      if (!isAtTop && isOpen) closeMenu();
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => { document.body.style.overflow = prev; };
+  }, [isOpen]);
+
+  if (!mounted || !atTop) return null;
+
+  const header = (
+    <header ref={navRef} className={`nav ${isOpen ? "is-open" : ""}`}>
       <button
         type="button"
         className={`nav-toggle ${isOpen ? "is-active" : ""}`}
@@ -43,7 +64,6 @@ export default function Navbar() {
         <span className="nav-toggle-line" aria-hidden="true"></span>
       </button>
 
-      {/* Menú */}
       <nav
         id="primary-navigation"
         className={`nav-inner ${isOpen ? "is-open" : ""}`}
@@ -54,11 +74,12 @@ export default function Navbar() {
         }}
       >
         {links.map(link => (
-          <a key={link.href} href={link.href}>
-            {link.label}
-          </a>
+          <a key={link.href} href={link.href}>{link.label}</a>
         ))}
       </nav>
     </header>
   );
+
+  // 👉 Render fuera de cualquier wrapper que recorte
+  return createPortal(header, document.body);
 }
