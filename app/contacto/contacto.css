@@ -3,9 +3,9 @@
 :root {
   --contact-background: #f8f5f2;
   --contact-text: #1f1617;
-  --contact-muted: rgba(31, 22, 23, 0.65);
-  --contact-card: #fff8f6;
-  --contact-border: rgba(31, 22, 23, 0.08);
+  --contact-muted: rgba(31, 22, 23, 0.68);
+  --contact-surface: rgba(255, 255, 255, 0.92);
+  --contact-border: rgba(31, 22, 23, 0.1);
 }
 
 .contact-page {
@@ -23,56 +23,71 @@
   display: flex;
   justify-content: center;
   padding: clamp(1.2rem, 3vw, 2rem) clamp(1.2rem, 5vw, 3rem) 0;
-  backdrop-filter: blur(8px);
-  z-index: 20;
+  background: linear-gradient(180deg, rgba(248, 245, 242, 0.92) 0%, rgba(248, 245, 242, 0) 100%);
+  z-index: 90;
 }
 
 .contact-main {
   flex: 1;
-  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 7vw, 5rem) clamp(4rem, 8vw, 6rem);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(3rem, 5vw, 4.5rem);
-}
-
-.contact-hero {
   display: flex;
   justify-content: center;
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 7vw, 5rem) clamp(4rem, 8vw, 6rem);
 }
 
-.contact-hero-inner {
+.contact-section {
   width: min(960px, 100%);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 215, 220, 0.35));
-  border-radius: clamp(1.8rem, 5vw, 2.6rem);
-  padding: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 221, 227, 0.35));
+  border-radius: clamp(1.8rem, 4vw, 2.4rem);
+  padding: clamp(2.2rem, 5vw, 3.6rem);
   box-shadow: 0 45px 80px rgba(31, 22, 23, 0.12);
-  text-align: left;
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
 }
 
-.contact-hero-inner h1 {
-  font-family: "Herr Von Muellerhoff", cursive;
-  font-size: clamp(3rem, 5vw, 4.8rem);
-  margin-bottom: clamp(1rem, 3vw, 1.6rem);
-  line-height: 1.05;
-}
-
-.contact-hero-inner p {
-  color: var(--contact-muted);
-  font-size: clamp(1rem, 1rem + 0.3vw, 1.2rem);
-  line-height: 1.7;
-  margin-bottom: clamp(1.4rem, 3vw, 2rem);
-}
-
-.contact-hero-actions {
+.contact-intro {
   display: flex;
-  flex-wrap: wrap;
-  gap: clamp(0.8rem, 2vw, 1.2rem);
-  margin-bottom: clamp(1rem, 2vw, 1.6rem);
+  flex-direction: column;
 }
 
-.contact-response {
-  font-size: 0.9rem;
-  letter-spacing: 0.2em;
+.contact-intro h1 {
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-size: clamp(3rem, 5vw, 4.6rem);
+  line-height: 1.06;
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.contact-intro p {
+  color: var(--contact-muted);
+  line-height: 1.7;
+  font-size: clamp(1rem, 1rem + 0.25vw, 1.2rem);
+  margin-bottom: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--contact-text);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  padding: 0.75rem 1.6rem;
+  border: 1px solid var(--contact-border);
+  box-shadow: 0 18px 40px rgba(31, 22, 23, 0.1);
+}
+
+.contact-email:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.contact-note {
+  margin-top: clamp(1rem, 2.5vw, 1.6rem);
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(31, 22, 23, 0.5);
 }
@@ -87,150 +102,98 @@
   margin-bottom: 1.2rem;
 }
 
-.contact-details {
-  width: min(1080px, 100%);
-  margin: 0 auto;
-  display: grid;
-  gap: clamp(2rem, 5vw, 3rem);
-}
-
-.contact-details-header {
-  max-width: 640px;
-}
-
-.contact-details-header h2 {
-  font-size: clamp(2rem, 3vw, 2.8rem);
-  margin-bottom: 1rem;
-}
-
-.contact-details-header p {
-  color: var(--contact-muted);
-  line-height: 1.6;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: clamp(1.6rem, 4vw, 2.4rem);
-}
-
-.contact-card {
-  background: var(--contact-card);
-  border-radius: 24px;
-  padding: clamp(1.6rem, 4vw, 2rem);
+.contact-form {
+  background: var(--contact-surface);
+  border-radius: clamp(1.4rem, 3vw, 1.8rem);
+  padding: clamp(1.8rem, 4vw, 2.6rem);
   border: 1px solid var(--contact-border);
+  box-shadow: 0 30px 60px rgba(31, 22, 23, 0.1);
   display: grid;
-  gap: 1rem;
-  box-shadow: 0 24px 50px rgba(31, 22, 23, 0.08);
+  gap: clamp(1.4rem, 3vw, 2rem);
 }
 
-.contact-card h3 {
-  font-size: 1.3rem;
-  margin: 0;
-}
-
-.contact-card p {
-  margin: 0;
-  color: var(--contact-muted);
-  line-height: 1.6;
-}
-
-.contact-card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: #1f1617;
-  text-decoration: none;
-}
-
-.contact-card-link::after {
-  content: "↗";
-  font-size: 0.9rem;
-  transition: transform 0.2s ease;
-}
-
-.contact-card-link:hover::after {
-  transform: translate(3px, -3px);
-}
-
-.contact-faq {
-  width: min(960px, 100%);
-  margin: 0 auto;
-}
-
-.contact-faq-inner {
-  background: #fff;
-  border-radius: clamp(1.6rem, 4vw, 2.2rem);
-  padding: clamp(2rem, 5vw, 3.4rem);
-  box-shadow: 0 40px 80px rgba(31, 22, 23, 0.1);
-  border: 1px solid var(--contact-border);
-}
-
-.contact-faq-inner h2 {
-  font-size: clamp(2rem, 3vw, 2.6rem);
-  margin-bottom: clamp(1.4rem, 3vw, 2rem);
-}
-
-.contact-faq-inner ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.form-grid {
   display: grid;
-  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
-.contact-faq-inner li h3 {
-  font-size: 1.1rem;
-  margin-bottom: 0.4rem;
-}
-
-.contact-faq-inner li p {
-  margin: 0;
-  color: var(--contact-muted);
-  line-height: 1.6;
-}
-
-.contact-extra {
-  margin-top: clamp(2rem, 4vw, 2.8rem);
+.form-grid label {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.95rem;
   font-weight: 500;
+  color: var(--contact-text);
 }
 
-.contact-extra a {
-  color: #1f1617;
-  text-decoration: none;
-  font-weight: 600;
+.form-grid .full {
+  grid-column: 1 / -1;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid rgba(31, 22, 23, 0.18);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  color: var(--contact-text);
+  background: rgba(255, 255, 255, 0.96);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 160px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(216, 163, 173, 0.9);
+  box-shadow: 0 0 0 4px rgba(216, 163, 173, 0.18);
+}
+
+.contact-form .btn {
+  justify-self: flex-start;
+}
+
+@media (min-width: 880px) {
+  .contact-section {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .contact-intro {
+    padding-right: clamp(1rem, 3vw, 2.6rem);
+  }
 }
 
 @media (max-width: 720px) {
   .contact-nav {
     padding-bottom: 0;
-    position: static;
   }
 
-  .contact-hero-inner h1 {
-    font-size: clamp(2.4rem, 12vw, 3.2rem);
+  .contact-section {
+    padding: clamp(1.8rem, 6vw, 2.6rem);
   }
 
-  .contact-hero-inner {
+  .contact-intro {
     text-align: center;
   }
 
-  .contact-hero-actions {
+  .contact-email {
     justify-content: center;
+    width: 100%;
   }
 
-  .contact-card {
+  .contact-note {
     text-align: center;
   }
 
-  .contact-extra {
-    justify-content: center;
+  .contact-form .btn {
+    justify-self: center;
+    width: 100%;
   }
 }

@@ -1,10 +1,12 @@
 .nav {
-  position: relative;
-  display: inline-flex;
+  position: sticky;
+  top: clamp(12px, 2vw, 24px);
+  display: flex;
+  justify-content: center;
   align-items: center;
   gap: 16px;
   pointer-events: auto;
-  z-index: 1;
+  z-index: 100;
 }
 
 /* Píldora desktop */
@@ -48,7 +50,7 @@
 
 /* Botón hamburguesa */
 .nav-toggle {
-  display: inline-flex;           /* visible en móvil o donde lo uses */
+  display: none;                  /* oculto en escritorio */
   flex-direction: column;         /* 👈 apila las líneas en vertical */
   justify-content: center;
   align-items: center;
@@ -89,7 +91,10 @@
 
 /* MÓVIL */
 @media (max-width: 720px) {
-  .nav { align-items: flex-start; gap: 12px; }
+  .nav {
+    align-items: flex-start;
+    gap: 12px;
+  }
   .nav-toggle { display: inline-flex; }
 
   .nav-inner {
