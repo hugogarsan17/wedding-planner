@@ -1,18 +1,30 @@
-/* Contenedor del navbar: capa superior, sin que bloquee clics fuera */
+/* Contenedor del navbar: capa superior, sin bloquear clics fuera */
 .nav {
   position: fixed;
-  top: calc(env(safe-area-inset-top) + 0px); /* notch iOS */
+  top: calc(env(safe-area-inset-top) + 0px);
   left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 8px 12px;
   z-index: 9999;
-  pointer-events: none;               /* 👈 no bloquea el hero */
+  pointer-events: none; /* no bloquea el hero */
+
+  /* Estado inicial para animación de entrada */
+  opacity: 0;
+  transform: translateY(-12px);
+  will-change: opacity, transform;
+}
+
+/* Cuando el componente entra (se añade con requestAnimationFrame) */
+.nav.is-enter {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 320ms ease, transform 320ms ease;
 }
 
 .nav-inner,
-.nav-toggle { pointer-events: auto; } /* pero estos sí reciben clic */
+.nav-toggle { pointer-events: auto; } /* estos sí reciben clic */
 
 /* Píldora */
 .nav-inner {
@@ -23,11 +35,15 @@
   border-radius: 999px;
   background: rgba(24,21,27,.82);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 10px 30px rgba(0,0,0,.25);
   max-width: 92vw;
+
+  /* Transición del dropdown móvil (combinada con las clases .is-open) */
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
 }
 
-/* Botón hamburguesa: pegado a la esquina, dentro de la safe-area */
+/* Botón hamburguesa */
 .nav-toggle {
   position: absolute;
   right: calc(env(safe-area-inset-right) + 12px);
@@ -43,6 +59,7 @@
   border: 1px solid rgba(255,255,255,.25);
   background: rgba(24,21,27,.75);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 10000;
 }
 
@@ -78,7 +95,6 @@
     transform: translateY(-10px);
     pointer-events: none;
     visibility: hidden;
-    transition: opacity .25s ease, transform .25s ease, visibility .25s;
   }
 
   .nav-inner.is-open {
@@ -100,4 +116,16 @@
 /* Texto oculto accesible */
 .nav .sr-only {
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;
+}
+
+/* Respeto a usuarios con reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav.is-enter,
+  .nav-inner,
+  .nav-inner.is-open,
+  .nav-toggle-line {
+    transition: none !important;
+    transform: none !important;
+  }
 }

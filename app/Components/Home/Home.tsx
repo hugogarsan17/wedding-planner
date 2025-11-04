@@ -7,24 +7,31 @@ import "./Home.css";
 
 const services = [
   {
-    title: "Dirección creativa",
+    title: "Planning",
     description:
-      "Concepto global, mood y diseño floral para un storytelling coherente.",
-    icon: "✨",
+      "Comprehensive event planning from concept to execution, ensuring every detail flows perfectly.",
+    icon: "🗓️",
   },
   {
-    title: "Producción completa",
+    title: "Art Direction",
     description:
-      "Gestión integral de agenda, proveedores y montaje con un equipo senior.",
-    icon: "🌙",
+      "Creative direction and design to define a cohesive visual storytelling and atmosphere.",
+    icon: "🎨",
   },
   {
-    title: "Experiencias destino",
+    title: "Production",
     description:
-      "Elopements y fines de semana inmersivos en localizaciones singulares.",
-    icon: "💞",
+      "Full-scale production and vendor management with our experienced team on-site.",
+    icon: "⚙️",
+  },
+  {
+    title: "Coordination",
+    description:
+      "Day-of coordination and seamless logistics so you can enjoy every moment stress-free.",
+    icon: "🤍",
   },
 ];
+
 
 const galleryImages = [
   {
@@ -157,9 +164,9 @@ export default function Home() {
         </section>
 
         <section className="section services">
-          <div className="section-heading align-left">
+          <div id="#servicios" className="section-heading align-left">
             <span className="eyebrow">Servicios</span>
-            <h2>Dirección integral con alma boutique</h2>
+            <h2>Servicios</h2>
           </div>
           <div className="service-grid">
             {services.map((service) => (
@@ -215,7 +222,7 @@ export default function Home() {
             </p>
             <div className="contact-actions">
               <a className="btn primary" href="mailto:hola@theperfectmatch.com">
-                hola@lunaandco.com
+                hola@theperfectmatch.com
               </a>
               <a className="btn ghost" href="https://wa.me/34123456789">
                 +34 123 456 789

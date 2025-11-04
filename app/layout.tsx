@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Luna & Co. Wedding Planners",
+  title: "the perfect match | Wedding Planners",
   description:
     "Estudio boutique de wedding planners que diseña bodas elegantes y personalizadas en Europa.",
 };
