@@ -221,8 +221,8 @@ export default function Home() {
               inicial con direcciones y sensaciones a medida.
             </p>
             <div className="contact-actions">
-              <a className="btn primary" href="mailto:hola@theperfectmatch.com">
-                hola@theperfectmatch.com
+              <a className="btn primary" href="mailto:hello@theperfectmatch.es">
+                hello@theperfectmatch.es
               </a>
               <a className="btn ghost" href="https://wa.me/34123456789">
                 +34 123 456 789

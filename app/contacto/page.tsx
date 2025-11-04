@@ -19,15 +19,15 @@ export default function ContactoPage() {
               vuestro estilo, destino y presupuesto. Si preferís escribirnos
               directamente, siempre podéis hacerlo al correo del estudio.
             </p>
-            <a className="contact-email" href="mailto:hola@theperfectmatch.com">
-              hola@theperfectmatch.com
+            <a className="contact-email" href="mailto:hello@theperfectmatch.es">
+              hello@theperfectmatch.es
             </a>
             <p className="contact-note">Respondemos en menos de 48 horas laborables.</p>
           </div>
 
           <form
             className="contact-form"
-            action="mailto:hola@theperfectmatch.com"
+            action="mailto:hello@theperfectmatch.es"
             method="post"
             encType="text/plain"
           >
