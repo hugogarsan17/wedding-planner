@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import "./Navbar.css";
 
 const links = [
-  { href: "#servicios", label: "Servicios" },
-  { href: "#experiencias", label: "Experiencias" },
-  { href: "#metodo", label: "Nuestro Método" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#servicios", label: "Servicios" },
+  { href: "/#experiencias", label: "Experiencias" },
+  { href: "/#metodo", label: "Nuestro Método" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Navbar() {
@@ -49,14 +50,14 @@ export default function Navbar() {
         className={`nav-inner ${isOpen ? "is-open" : ""}`}
         aria-label="Navegación principal"
         onClick={(e) => {
-          const el = e.target as HTMLElement;
-          if (el.tagName === "A") closeMenu();
+          const el = (e.target as HTMLElement).closest("a");
+          if (el) closeMenu();
         }}
       >
         {links.map(link => (
-          <a key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href}>
             {link.label}
-          </a>
+          </Link>
         ))}
       </nav>
     </header>

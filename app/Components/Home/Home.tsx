@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
+import "../styles/buttons.css";
 import "./Home.css";
 
 const services = [
@@ -117,12 +119,12 @@ export default function Home() {
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
           <h1>the perfect match</h1>
           <div className="hero-actions">
-            <a className="btn primary" href="#contacto">
+            <Link className="btn primary" href="/contacto">
               Agenda una llamada
-            </a>
-            <a className="btn ghost" href="#portfolio">
+            </Link>
+            <Link className="btn ghost" href="#portfolio">
               Ver portfolio
-            </a>
+            </Link>
           </div>
         </div>
         <span className="scroll-indicator">Desliza para descubrir</span>
@@ -214,11 +216,11 @@ export default function Home() {
               inicial con direcciones y sensaciones a medida.
             </p>
             <div className="contact-actions">
-              <a className="btn primary" href="mailto:hola@theperfectmatch.com">
+              <Link className="btn primary" href="/contacto">
+                Visita la página de contacto
+              </Link>
+              <a className="btn ghost" href="mailto:hola@lunaandco.com">
                 hola@lunaandco.com
-              </a>
-              <a className="btn ghost" href="https://wa.me/34123456789">
-                +34 123 456 789
               </a>
             </div>
           </div>
