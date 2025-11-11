@@ -593,15 +593,17 @@
 }
 
 .about-text {
-  font-size: 1.15rem;
-  line-height: 1.8;
+  margin-left: 50px;
+  flex: 1 1 480px;
+  max-width: 700px;
+  line-height: 1.7;
+  font-size: 1.1rem;
   color: #4a4a4a; /* gris suave, elegante */
 }
 .about-text strong {
   color: #dcae96; /* tono cálido tipo rosa empolvado o dorado suave */
   font-weight: 600;
 }
-
 .about-text em {
   color: #b38b7d;
   font-style: italic;

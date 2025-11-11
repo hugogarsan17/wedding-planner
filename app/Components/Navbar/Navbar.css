@@ -22,6 +22,16 @@
   transform: translateY(0);
   transition: opacity 320ms ease, transform 320ms ease;
 }
+/* Aplica a todos los destinos con id, o a tus secciones */
+[id] { scroll-margin-top: 84px; }  /* ajusta 84px a la altura visual de tu píldora */
+
+
+.nav-toggle:focus-visible,
+.nav-inner a:focus-visible {
+  outline: 2px solid rgba(255,255,255,.9);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.15);
+}
 
 .nav-inner,
 .nav-toggle { pointer-events: auto; } /* estos sí reciben clic */
@@ -41,6 +51,11 @@
 
   /* Transición del dropdown móvil (combinada con las clases .is-open) */
   transition: opacity .25s ease, transform .25s ease, visibility .25s;
+}
+
+.logo-nav{
+  width: 50px;
+  border-radius: 100%;
 }
 
 /* Botón hamburguesa */
@@ -78,6 +93,8 @@
   .nav { justify-content: flex-start; }
 
   .nav-toggle { display: flex; }
+
+  .logo-nav{ display: none;}
 
   .nav-inner {
     position: absolute;

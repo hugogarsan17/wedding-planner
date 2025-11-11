@@ -1,5 +1,7 @@
 "use client";
 
+
+
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
@@ -122,7 +124,15 @@ export default function Home() {
         </div>
 
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
-          <h1>the perfect match</h1>
+<div className="brand">
+  <h1 className="brand-title">
+    <span className="line">the</span>
+    <span className="line">perfect</span>
+    <span className="line">match</span>
+  </h1>
+  <p className="brand-subtitle">WEDDING PLANNER & DESIGNER</p>
+</div>
+
           <div className="hero-actions">
             <a className="btn primary" href="#contacto">
               Agenda una llamada
@@ -169,8 +179,7 @@ export default function Home() {
 
   <div className="about-content">
     <div className="about-text">
-      <p>
-        <p>
+<p>
   Llevo tiempo creando, soñando y organizando <strong>bodas mágicas</strong>, pero siempre detrás de
   escena… hasta ahora. Si has estado por aquí un tiempo, es posible que me hayas visto en algunas
   fotos, sobre todo en las de mi propia boda (¡porque sí, también viví mi cuento de hadas!).
@@ -189,10 +198,9 @@ export default function Home() {
   detalles cuentan historias y cada momento se convierte en un recuerdo imborrable. Si estás aquí,
   probablemente también crees en la magia de las pequeñas cosas.  
   <br /><br />
-  <strong>Y tú, ¿te animas a crear juntos tu historia perfecta?</strong>
+  <strong>Y tú, ¿te animas a crear juntos tu historia perfecta?</strong> ✨
 </p>
 
-      </p>
     </div>
 
     <div className="about-image">

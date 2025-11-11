@@ -63,25 +63,39 @@ export default function Navbar() {
     ? baseLinks.map(l => l.href.startsWith("/#") ? { ...l, href: l.href.slice(1) } : l)
     : baseLinks;
 
-  const onNavClick = (e: React.MouseEvent<HTMLElement>) => {
-    const el = e.target as HTMLElement;
-    if (el.tagName !== "A") return;
+const onNavClick = (e: React.MouseEvent<HTMLElement>) => {
+  const target = e.target as HTMLElement;
+  const a = target.closest("a");
+  if (!a) return;
 
-    const a = el as HTMLAnchorElement;
-    const href = a.getAttribute("href") || "";
+  const href = a.getAttribute("href") || "";
 
-    if (href.startsWith("#")) {
-      // Scroll suave dentro de la misma página
-      e.preventDefault();
-      const id = href.slice(1);
-      const target = document.getElementById(id);
-      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-      closeMenu();
-    } else {
-      // Navegación normal a "/", "/#id" (si no estás en home) o "/contacto"
-      closeMenu();
+  // Detectar enlaces ancla (/#id o #id)
+  const hash = href.startsWith("/#") ? href.slice(1) : href.startsWith("#") ? href : "";
+  const isHome = window.location.pathname === "/";
+
+  if (hash) {
+    e.preventDefault();
+
+    if (!isHome) {
+      // 🚀 Navega al home con el hash → /#servicios o /#portfolio
+      window.location.href = href;
+      return;
     }
-  };
+
+    // Si ya estás en home, scroll suave
+    const id = hash.replace(/^#/, "");
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    closeMenu();
+    return;
+  }
+
+  // Navegación normal (Inicio o /contacto)
+  closeMenu();
+};
+
+
 
   const header = (
     <header
@@ -102,12 +116,14 @@ export default function Navbar() {
         <span className="nav-toggle-line" aria-hidden="true"></span>
       </button>
 
-      <nav
-        id="primary-navigation"
-        className={`nav-inner ${isOpen ? "is-open" : ""}`}
-        aria-label="Navegación principal"
-        onClick={onNavClick}
-      >
+<nav
+  id="primary-navigation"
+  className={`nav-inner ${isOpen ? "is-open" : ""}`}
+  aria-label="Navegación principal"
+  role="navigation"
+  onClick={onNavClick}
+>
+        <img src="logo.jpeg" className="logo-nav" alt="" />
         {links.map(link => (
           <a key={link.label} href={link.href}>{link.label}</a>
         ))}
