@@ -162,10 +162,52 @@ export default function Home() {
             </div>
           </div>
         </section>
+<section id="nosotros" className="section contact">
+  <div className="section-heading align-left">
+    <h2>Nosotros</h2>
+  </div>
+
+  <div className="about-content">
+    <div className="about-text">
+      <p>
+        <p>
+  Llevo tiempo creando, soñando y organizando <strong>bodas mágicas</strong>, pero siempre detrás de
+  escena… hasta ahora. Si has estado por aquí un tiempo, es posible que me hayas visto en algunas
+  fotos, sobre todo en las de mi propia boda (¡porque sí, también viví mi cuento de hadas!).
+  <br /><br />
+  Soy <strong>Anna</strong>, creativa por naturaleza, amante de los detalles y la persona al timón de
+  <strong> The Perfect Match</strong>. Mi historia con las bodas comenzó hace ya varios años, mucho
+  antes de dedicarme profesionalmente a organizarlas. Desde entonces, he tenido el privilegio de
+  acompañar a parejas maravillosas en uno de los días más especiales de sus vidas, viviendo de
+  cerca la emoción, los nervios y la magia que envuelven cada <em>“sí, quiero”</em>.
+  <br /><br />
+  Todo este camino me ha enseñado que una boda es mucho más que un evento: es la expresión más
+  auténtica de una historia de amor. Por eso, cada proyecto que tomo lo vivo como si fuera único,
+  plasmando en él sensibilidad, creatividad y ese toque personal que lo hace inolvidable.
+  <br /><br />
+  Así nació <strong>The Perfect Match</strong>: un espacio donde los sueños toman forma, los
+  detalles cuentan historias y cada momento se convierte en un recuerdo imborrable. Si estás aquí,
+  probablemente también crees en la magia de las pequeñas cosas.  
+  <br /><br />
+  <strong>Y tú, ¿te animas a crear juntos tu historia perfecta?</strong>
+</p>
+
+      </p>
+    </div>
+
+    <div className="about-image">
+      <img
+        src="/me.png"
+        alt="Fotografía del equipo de la empresa sonriendo en la oficina"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
 
         <section className="section services">
           <div id="#servicios" className="section-heading align-left">
-            <span className="eyebrow">Servicios</span>
             <h2>Servicios</h2>
           </div>
           <div className="service-grid">
