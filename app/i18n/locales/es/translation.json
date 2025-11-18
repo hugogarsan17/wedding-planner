@@ -9,6 +9,13 @@
     "scroll": "Desliza para descubrir"
   },
 
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "portfolio": "Portfolio",
+    "contact": "Contacto"
+  },
+
   "vision": {
     "eyebrow": "Visión",
     "title": "Bodas minimalistas con sensibilidad editorial",

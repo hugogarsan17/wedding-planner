@@ -9,6 +9,13 @@
     "scroll": "Scroll to explore"
   },
 
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+
   "vision": {
     "eyebrow": "Vision",
     "title": "Minimalist weddings with an editorial soul",
