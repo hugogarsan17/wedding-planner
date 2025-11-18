@@ -1,7 +1,7 @@
 "use client";
 
 
-
+import "./../fonts.css";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
@@ -126,8 +126,8 @@ export default function Home() {
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
 <div className="brand">
   <h1 className="brand-title">
-    <span className="line">the</span>
-    <span className="line">perfect</span>
+    <span className="line">the </span>
+    <span className="line">perfect </span>
     <span className="line">match</span>
   </h1>
   <p className="brand-subtitle">WEDDING PLANNER & DESIGNER</p>
