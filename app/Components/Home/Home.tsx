@@ -4,9 +4,9 @@
 import "./../fonts.css";
 import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import Navbar from "../Navbar/Navbar";
 import "./Home.css";
-import { useTranslation } from "react-i18next";
 
 
 const serviceItems = [
@@ -85,8 +85,8 @@ export default function Home() {
 
 
   useEffect(() => {
-    const t = setTimeout(() => setShowUI(true), 1800);
-    return () => clearTimeout(t);
+    const timer = setTimeout(() => setShowUI(true), 1800);
+    return () => clearTimeout(timer);
   }, []);
 
   const changeLanguage = (lng: "es" | "en") => {
@@ -128,33 +128,30 @@ export default function Home() {
 
         <div className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}>
           <Navbar />
-
-          {/* 🔹 Selector de idioma simple */}
-<div className="lang-switcher">
-  <button
-    onClick={() => changeLanguage("es")}
-    className={activeLang === "es" ? "active" : ""}
-  >
-    ES
-  </button>
-  <button
-    onClick={() => changeLanguage("en")}
-    className={activeLang === "en" ? "active" : ""}
-  >
-    EN
-  </button>
-</div>
-
+          <div className="lang-switcher">
+            <button
+              onClick={() => changeLanguage("es")}
+              className={activeLang === "es" ? "active" : ""}
+            >
+              ES
+            </button>
+            <button
+              onClick={() => changeLanguage("en")}
+              className={activeLang === "en" ? "active" : ""}
+            >
+              EN
+            </button>
+          </div>
         </div>
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
-<div className="brand">
-  <h1 className="brand-title">
-    <span className="line">{t("hero.brandTitle1")} </span>
-    <span className="line">{t("hero.brandTitle2")} </span>
-    <span className="line">{t("hero.brandTitle3")}</span>
-  </h1>
-  <p className="brand-subtitle">{t("hero.subtitle")}</p>
-</div>
+          <div className="brand">
+            <h1 className="brand-title">
+              <span className="line">{t("hero.brandTitle1")} </span>
+              <span className="line">{t("hero.brandTitle2")} </span>
+              <span className="line">{t("hero.brandTitle3")}</span>
+            </h1>
+            <p className="brand-subtitle">{t("hero.subtitle")}</p>
+          </div>
 
           <div className="hero-actions">
             <a className="btn primary" href="#contacto">
@@ -192,34 +189,37 @@ export default function Home() {
             </div>
           </div>
         </section>
-<section id="nosotros" className="section contact">
-  <div className="section-heading align-left">
-    <h2>{t("about.title")}</h2>
-  </div>
 
-  <div className="about-content">
-    <div className="about-text">
-      <p
-        dangerouslySetInnerHTML={{
-          __html: t("about.body").replace(/\n/g, "<br />"),
-        }}
-      />
+        <section id="nosotros" className="section contact">
+          <div className="section-heading align-left">
+            <h2>{t("about.title")}</h2>
+          </div>
 
-    </div>
+          <div className="about-content">
+            <div className="about-text">
+              <p
+                dangerouslySetInnerHTML={{
+                  __html: t("about.body").replace(/\n/g, "<br />"),
+                }}
+              />
+            </div>
 
-    <div className="about-image">
-      <img
-        src="/me.png"
-        alt={t("about.imageAlt")}
-        loading="lazy"
-      />
-    </div>
-  </div>
-</section>
+            <div className="about-image">
+              <Image
+                src="/me.png"
+                alt={t("about.imageAlt")}
+                width={720}
+                height={900}
+                className="about-photo"
+                priority={false}
+              />
+            </div>
+          </div>
+        </section>
 
 
         <section className="section services">
-          <div id="#servicios" className="section-heading align-left">
+          <div id="servicios" className="section-heading align-left">
             <h2>{t("services.title")}</h2>
           </div>
           <div className="service-grid">
