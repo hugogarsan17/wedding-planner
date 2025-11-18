@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./Components/fonts.css";
+import { Providers } from "./Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,14 +28,20 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
-<link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
-
+        <link
+          href="https://fonts.googleapis.com/css2?family=Allison&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        {/* 👇 SOLO UNA VEZ, Y DENTRO DEL PROVIDER */}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

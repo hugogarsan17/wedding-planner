@@ -6,6 +6,8 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import "./Home.css";
+import { useTranslation } from "react-i18next";
+
 
 const services = [
   {
@@ -101,11 +103,25 @@ const galleryImages = [
 
 export default function Home() {
   const [showUI, setShowUI] = useState(false);
+const { t, i18n } = useTranslation();
+  const [activeLang, setActiveLang] = useState<"es" | "en">("es");
+
+
 
   useEffect(() => {
     const t = setTimeout(() => setShowUI(true), 1800);
     return () => clearTimeout(t);
   }, []);
+
+  useEffect(() => {
+    const current = i18n.language?.startsWith("en") ? "en" : "es";
+    setActiveLang(current);
+  }, [i18n.language]);
+
+  const changeLanguage = (lng: "es" | "en") => {
+    i18n.changeLanguage(lng);
+    setActiveLang(lng); // mantenemos el estado de los botones alineado
+  };
 
   return (
     <>
@@ -121,8 +137,24 @@ export default function Home() {
 
         <div className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}>
           <Navbar />
-        </div>
 
+          {/* 🔹 Selector de idioma simple */}
+<div className="lang-switcher">
+  <button
+    onClick={() => changeLanguage("es")}
+    className={activeLang === "es" ? "active" : ""}
+  >
+    ES
+  </button>
+  <button
+    onClick={() => changeLanguage("en")}
+    className={activeLang === "en" ? "active" : ""}
+  >
+    EN
+  </button>
+</div>
+
+        </div>
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
 <div className="brand">
   <h1 className="brand-title">

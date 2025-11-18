@@ -1,0 +1,118 @@
+{
+  "hero": {
+    "brandTitle1": "the",
+    "brandTitle2": "perfect",
+    "brandTitle3": "match",
+    "subtitle": "WEDDING PLANNER & DESIGNER",
+    "ctaPrimary": "Agenda una llamada",
+    "ctaSecondary": "Ver portfolio",
+    "scroll": "Desliza para descubrir"
+  },
+
+  "vision": {
+    "eyebrow": "Visión",
+    "title": "Bodas minimalistas con sensibilidad editorial",
+    "description": "Seleccionamos localizaciones, diseñamos atmósferas y coordinamos cada gesto para que la belleza fluya sin esfuerzo.",
+    "points": {
+      "one": "Producciones limitadas a 12 bodas al año.",
+      "two": "Equipo creativo multidisciplinar y presencial.",
+      "three": "Transparencia absoluta en presupuestos y tiempos."
+    }
+  },
+
+  "about": {
+    "title": "Nosotros",
+    "body": "Llevo tiempo creando, soñando y organizando <strong>bodas mágicas</strong>, pero siempre detrás de escena… hasta ahora. Si has estado por aquí un tiempo, es posible que me hayas visto en algunas fotos, sobre todo en las de mi propia boda (¡porque sí, también viví mi cuento de hadas!).\n\nSoy <strong>Anna</strong>, creativa por naturaleza, amante de los detalles y la persona al timón de<strong> The Perfect Match</strong>. Mi historia con las bodas comenzó hace ya varios años, mucho antes de dedicarme profesionalmente a organizarlas. Desde entonces, he tenido el privilegio de acompañar a parejas maravillosas en uno de los días más especiales de sus vidas, viviendo de cerca la emoción, los nervios y la magia que envuelven cada <em>“sí, quiero”</em>.\n\nTodo este camino me ha enseñado que una boda es mucho más que un evento: es la expresión más auténtica de una historia de amor. Por eso, cada proyecto que tomo lo vivo como si fuera único, plasmando en él sensibilidad, creatividad y ese toque personal que lo hace inolvidable.\n\nAsí nació <strong>The Perfect Match</strong>: un espacio donde los sueños toman forma, los detalles cuentan historias y cada momento se convierte en un recuerdo imborrable. Si estás aquí, probablemente también crees en la magia de las pequeñas cosas.\n\n<strong>Y tú, ¿te animas a crear juntos tu historia perfecta?</strong> ✨",
+    "imageAlt": "Fotografía del equipo de la empresa sonriendo en la oficina"
+  },
+
+  "services": {
+    "title": "Servicios",
+    "items": {
+      "planning": {
+        "title": "Planificación",
+        "description": "Planificación integral del evento, desde el concepto hasta la ejecución, cuidando que cada detalle fluya a la perfección."
+      },
+      "artDirection": {
+        "title": "Dirección de arte",
+        "description": "Dirección creativa y diseño para definir una atmósfera coherente y una narrativa visual con sentido."
+      },
+      "production": {
+        "title": "Producción",
+        "description": "Producción completa y gestión de proveedores con nuestro equipo especializado sobre el terreno."
+      },
+      "coordination": {
+        "title": "Coordinación",
+        "description": "Coordinación del día de la boda y logística sin fricciones para que solo os preocupéis de disfrutar."
+      }
+    }
+  },
+
+  "portfolio": {
+    "eyebrow": "Portfolio",
+    "title": "Un mosaico de historias reales",
+    "images": {
+      "p1": {
+        "alt": "Pareja caminando entre montañas",
+        "label": "Elopement en Pirineos"
+      },
+      "p2": {
+        "alt": "Invitados bailando bajo luces cálidas",
+        "label": ""
+      },
+      "p3": {
+        "alt": "Mesa de banquete minimalista",
+        "label": ""
+      },
+      "p4": {
+        "alt": "Novia con ramo en escalera histórica",
+        "label": ""
+      },
+      "p5": {
+        "alt": "Brindis de recién casados",
+        "label": "Celebración en La Rioja"
+      },
+      "p6": {
+        "alt": "Detalle floral con velas sobre mesa",
+        "label": ""
+      },
+      "p7": {
+        "alt": "Boda íntima con mesa decorada en exterior",
+        "label": ""
+      },
+      "p8": {
+        "alt": "Pareja abrazada frente al mar al atardecer",
+        "label": "Menorca, golden hour"
+      },
+      "p9": {
+        "alt": "Pareja caminando entre montañas",
+        "label": "Elopement en Pirineos"
+      },
+      "p10": {
+        "alt": "Pareja caminando entre montañas",
+        "label": "Elopement en Pirineos"
+      },
+      "p11": {
+        "alt": "Pareja caminando entre montañas",
+        "label": "Elopement en Pirineos"
+      }
+    }
+  },
+
+  "manifesto": {
+    "quote": "“Menos guion, más emoción verdadera. Dejamos que la luz y el gesto cuenten la historia.”"
+  },
+
+  "contact": {
+    "eyebrow": "Hablemos",
+    "title": "Agenda una videollamada privada",
+    "description": "Cuéntanos cómo imagináis vuestro gran día y prepararemos una guía inicial con direcciones y sensaciones a medida.",
+    "emailCta": "hello@theperfectmatch.es",
+    "phoneCta": "+34 123 456 789"
+  },
+
+  "footer": {
+    "line1": "© {{year}} Wedding Planners",
+    "line2": "Produciendo bodas elegantes en España."
+  }
+}
