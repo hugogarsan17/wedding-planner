@@ -4,7 +4,6 @@
 import Image from "next/image";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { createPortal } from "react-dom";
 import "./Navbar.css";
 
 type LinkItem = { href: string; label: string };
@@ -148,5 +147,5 @@ export default function Navbar() {
   );
 
   // Render fuera de wrappers que recorten
-  return createPortal(header, document.body);
+return header;
 }
