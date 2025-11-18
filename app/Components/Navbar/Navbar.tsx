@@ -1,6 +1,6 @@
 // Navbar.tsx
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import "./Navbar.css";
 
@@ -16,14 +16,13 @@ const baseLinks: LinkItem[] = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const [entered, setEntered] = useState(false); // 👈 para animación de entrada
   const navRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    setMounted(true);
     // Deja que el primer frame pinte y luego dispara la transición
-    requestAnimationFrame(() => setEntered(true));
+    const frame = requestAnimationFrame(() => setEntered(true));
+    return () => cancelAnimationFrame(frame);
   }, []);
 
   const toggleMenu = () => setIsOpen(v => !v);
@@ -53,8 +52,8 @@ export default function Navbar() {
     return () => { document.body.style.overflow = prev; };
   }, [isOpen]);
 
-  // Oculta el navbar cuando no está montado o cuando no estás en el top (tu comportamiento original)
-  if (!mounted || !atTop) return null;
+  // Oculta el navbar cuando no estás en el top (tu comportamiento original)
+  if (!atTop) return null;
 
   const isHome = typeof window !== "undefined" && window.location.pathname === "/";
 
