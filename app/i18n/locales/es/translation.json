@@ -35,22 +35,30 @@
 
   "services": {
     "title": "Servicios",
-    "items": {
+        "items": {
       "planning": {
-        "title": "Planificación",
-        "description": "Planificación integral del evento, desde el concepto hasta la ejecución, cuidando que cada detalle fluya a la perfección."
+        "title": "Wedding Planning",
+        "description": "Un acompañamiento completo que transforma el proceso en algo fluido y emocionante. Calendarios claros, proveedores que encajan de verdad, decisiones con cabeza y una organización invisible que permite que lleguéis al altar sin ojeras… y con ganas de celebrar por todo lo alto."
       },
       "artDirection": {
-        "title": "Dirección de arte",
-        "description": "Dirección creativa y diseño para definir una atmósfera coherente y una narrativa visual con sentido."
+        "title": "Wedding Concept &amp; Art Direction",
+        "description": "Un servicio pensado para quienes buscan un concepto sólido y un hilo conductor que marque la diferencia. Narrativa, moodboards, paleta cromática, estilo, referencias artísticas y dirección creativa. El corazón visual y emocional de vuestro gran día empieza aquí, conmigo. El resultado? una experiencia estética que habla de vosotros sin necesidad de palabras."
       },
       "production": {
         "title": "Producción",
-        "description": "Producción completa y gestión de proveedores con nuestro equipo especializado sobre el terreno."
+        "description": "Cada detalle en su sitio, cada momento impecable. Montaje, logística y coordinación de proveedores para que todo encaje, brille y sólo quede disfrutar de la magia."
       },
       "coordination": {
         "title": "Coordinación",
-        "description": "Coordinación del día de la boda y logística sin fricciones para que solo os preocupéis de disfrutar."
+        "description": "El gran día, la magia está en los detalles invisibles: proveedores sincronizados, tiempos controlados, imprevistos resueltos antes de que existan y una energía que lo sostiene todo."
+      },
+      "Destination Weddings": {
+        "title": "Destination Weddings",
+        "description": "Organización, logística y diseño para bodas en lugares especiales, pensadas para que cada pareja se sienta en casa, aunque esté lejos. Coordinación con proveedores locales, planificación a medida y una mirada creativa que convierte cada rincón en parte de vuestra historia. Una boda que no solo se celebra, sino que se vive y se recuerda como un viaje único."
+      },
+      "Wedding Honeymoon": {
+        "title": "Wedding Honeymoon",
+        "description": "Este servicio os acompaña más allá del día de la boda, diseñando y coordinando la luna de miel para que sea tan única y memorable como la celebración. El objectivo? Convertirla en una extensión del día de la boda, un viaje lleno de emociones, magia y recuerdos imborrables."
       }
     }
   },

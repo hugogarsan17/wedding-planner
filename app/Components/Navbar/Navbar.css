@@ -22,10 +22,11 @@
   transform: translateY(0);
   transition: opacity 320ms ease, transform 320ms ease;
 }
+
 /* Aplica a todos los destinos con id, o a tus secciones */
 [id] { scroll-margin-top: 84px; }  /* ajusta 84px a la altura visual de tu píldora */
 
-
+/* focus visible */
 .nav-toggle:focus-visible,
 .nav-inner a:focus-visible {
   outline: 2px solid rgba(255,255,255,.9);
@@ -33,15 +34,16 @@
   box-shadow: 0 0 0 4px rgba(255,255,255,.15);
 }
 
+/* Hacemos que nav-inner y nav-toggle reciban eventos aunque el wrapper .nav no */
 .nav-inner,
-.nav-toggle { pointer-events: auto; } /* estos sí reciben clic */
+.nav-toggle { pointer-events: auto; }
 
-/* Píldora */
+/* Píldora principal */
 .nav-inner {
   display: inline-flex;
   align-items: center;
   gap: clamp(12px, 2.5vw, 36px);
-  padding: 10px 16px;
+  padding: 10px;
   border-radius: 999px;
   background: rgba(24,21,27,.82);
   backdrop-filter: blur(10px);
@@ -49,13 +51,45 @@
   box-shadow: 0 10px 30px rgba(0,0,0,.25);
   max-width: 92vw;
 
-  /* Transición del dropdown móvil (combinada con las clases .is-open) */
   transition: opacity .25s ease, transform .25s ease, visibility .25s;
+  position: relative; /* para el dropdown absoluto */
 }
 
+/* Logo */
 .logo-nav{
   width: 50px;
   border-radius: 100%;
+  flex-shrink: 0;
+}
+
+/* Contenedor de contenido interno para controlar layout */
+.nav-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* LINKS - estilo base (desktop) */
+.nav-links {
+  display: flex;
+  gap: clamp(12px, 2.5vw, 20px);
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Enlace individual */
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background .12s ease, transform .08s ease;
+}
+.nav-links a:hover,
+.nav-links a:focus {
+  background: rgba(255,255,255,0.06);
 }
 
 /* Botón hamburguesa */
@@ -88,51 +122,81 @@
 .nav-toggle.is-active .nav-toggle-line:nth-of-type(1) { transform: translateY(6px) rotate(45deg); }
 .nav-toggle.is-active .nav-toggle-line:nth-of-type(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* Móvil */
-@media (max-width: 720px) {
-  .nav { justify-content: flex-start; }
-
-  .nav-toggle { display: flex; }
-
-  .logo-nav{ display: none;}
-
-  .nav-inner {
-    position: absolute;
-    top: calc(env(safe-area-inset-top) + 60px);
-    right: 12px;
-    width: min(300px, calc(100vw - 24px));
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding: 16px;
-    border-radius: 20px;
-    background: rgba(24,21,27,.94);
-    box-shadow: 0 20px 50px rgba(0,0,0,.35);
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    visibility: hidden;
-  }
-
-  .nav-inner.is-open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-    visibility: visible;
-  }
-
-  .nav-inner a {
-    width: 100%;
-    text-align: left;
-    background: rgba(255,255,255,.06);
-    border-radius: 12px;
-    padding: .75rem;
-  }
-}
-
 /* Texto oculto accesible */
 .nav .sr-only {
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;
+}
+
+/* ===== RESPONSIVE: móvil ===== */
+@media (max-width: 720px) {
+  .nav { justify-content: flex-start; }
+
+  .nav-toggle { display: flex; margin-right: 20px; }
+
+  /* Ocultar logo en móvil si lo prefieres */
+  .logo-nav { display: none; }
+
+  /* La píldora principal ocupa full-width visualmente */
+  .nav-inner {
+    padding-left: calc(env(safe-area-inset-left) + 12px);
+    padding-right: calc(env(safe-area-inset-right) + 12px);
+    width: 100%;
+    max-width: none;
+    border-radius: 12px; /* menos redondeo en móvil */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    visibility: hidden;
+  }
+
+  /* Estilo del dropdown (por defecto cerrado) */
+  .nav-links {
+    position: absolute;
+
+    right: 12px;
+    top: calc(100% + 8px); /* aparece justo debajo de la píldora */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 12px;
+    background: rgba(24,21,27,.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    transform-origin: top center;
+
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px) scale(.995);
+    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    z-index: 10001; /* encima del hero */
+    pointer-events: none; /* bloquea clics cuando está cerrado */
+  }
+
+  /* Cuando el nav-inner tiene la clase is-open mostramos el dropdown */
+  .nav-inner.is-open .nav-links,
+  .nav-links.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    width: 200px;
+  }
+
+  /* Enlaces del dropdown más grandes y en columna */
+  .nav-inner .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 12px 14px;
+    text-align: left;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    background: transparent;
+  }
+
+  /* Como la píldora tiene padding-right grande en escritorio, en móvil reducimos */
+  .nav-inner { padding-right: 56px; }
 }
 
 /* Respeto a usuarios con reducción de movimiento */

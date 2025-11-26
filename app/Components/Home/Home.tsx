@@ -14,6 +14,8 @@ const serviceItems = [
   { key: "artDirection", icon: "🎨" },
   { key: "production", icon: "⚙️" },
   { key: "coordination", icon: "🤍" },
+  { key: "Destination Weddings", icon: "🤍" },
+  { key: "Wedding Honeymoon", icon: "🤍" },
 ];
 
 
@@ -117,18 +119,8 @@ export default function Home() {
   return (
     <>
       <main id="home" className="main-hero">
-        <video
-          className="background-video"
-          src="/main-hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-
-        <div className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}>
-          <Navbar />
-          <div className="lang-switcher">
+        
+        <div className="lang-switcher">
             <button
               onClick={() => changeLanguage("es")}
               className={activeLang === "es" ? "active" : ""}
@@ -142,6 +134,18 @@ export default function Home() {
               EN
             </button>
           </div>
+        <video
+          className="background-video"
+          src="/main-hero.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+
+        <div className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}>
+          <Navbar />
+          
         </div>
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
           <div className="brand">

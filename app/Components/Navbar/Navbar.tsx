@@ -1,4 +1,3 @@
-// Navbar.tsx
 "use client";
 
 import Image from "next/image";
@@ -10,20 +9,19 @@ type LinkItem = { href: string; label: string };
 
 const baseLinks = [
   { href: "/", key: "nav.home" },
-  { href: "/#servicios", key: "nav.services" },
-  { href: "/#portfolio", key: "nav.portfolio" },
-  { href: "/contacto", key: "nav.contact" }, // página aparte
+  { href: "#servicios", key: "nav.services" },
+  { href: "#portfolio", key: "nav.portfolio" },
+  { href: "/contacto", key: "nav.contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [atTop, setAtTop] = useState(true);
-  const [entered, setEntered] = useState(false); // 👈 para animación de entrada
+  const [entered, setEntered] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
   const { t } = useTranslation();
 
   useEffect(() => {
-    // Deja que el primer frame pinte y luego dispara la transición
     const frame = requestAnimationFrame(() => setEntered(true));
     return () => cancelAnimationFrame(frame);
   }, []);
@@ -57,7 +55,9 @@ export default function Navbar() {
     };
   }, [isOpen]);
 
-  const isHome = typeof window !== "undefined" && window.location.pathname === "/";
+  // proteger acceso a window para SSR
+  const isHome =
+    typeof window !== "undefined" ? window.location.pathname === "/" : false;
 
   const translatedLinks: LinkItem[] = useMemo(
     () => baseLinks.map(({ href, key }) => ({ href, label: t(key) })),
@@ -78,24 +78,24 @@ export default function Navbar() {
 
     const href = a.getAttribute("href") || "";
 
-    // Detectar enlaces ancla (/#id o #id)
     const hash = href.startsWith("/#")
       ? href.slice(1)
       : href.startsWith("#")
-        ? href
-        : "";
-    const isHomePath = window.location.pathname === "/";
+      ? href
+      : "";
+    const isHomePath =
+      typeof window !== "undefined" && window.location.pathname === "/";
 
     if (hash) {
       e.preventDefault();
 
       if (!isHomePath) {
-        // 🚀 Navega al home con el hash → /#servicios o /#portfolio
+        // Si no estás en home, navega al home con el hash (causa recarga, pero llega al ancla)
         window.location.href = href;
         return;
       }
 
-      // Si ya estás en home, scroll suave
+      // scroll suave si ya estás en home
       const id = hash.replace(/^#/, "");
       const el = document.getElementById(id);
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -103,17 +103,16 @@ export default function Navbar() {
       return;
     }
 
-    // Navegación normal (Inicio o /contacto)
+    // navegación normal
     closeMenu();
   };
 
-  // Oculta el navbar cuando no estás en el top (tu comportamiento original)
-  if (!atTop) return null;
-
-  const header = (
+  return (
     <header
       ref={navRef}
-      className={`nav ${isOpen ? "is-open" : ""} ${entered ? "is-enter" : ""}`}
+      className={`nav ${isOpen ? "is-open" : ""} ${entered ? "is-enter" : ""} ${
+        atTop ? "is-top" : "is-scrolled"
+      }`}
     >
       <button
         type="button"
@@ -135,17 +134,29 @@ export default function Navbar() {
         aria-label="Navegación principal"
         role="navigation"
         onClick={onNavClick}
+        // accessibilidad: aria-hidden en desktop no tiene sentido; en móvil el menú cerrado estará hidden por CSS
+        aria-hidden={false}
       >
-        <Image src="/logo.jpeg" className="logo-nav" alt="" width={72} height={72} />
-        {links.map((link) => (
-          <a key={link.label} href={link.href}>
-            {link.label}
-          </a>
-        ))}
+        <Image src="/logo.jpeg" className="logo-nav" alt="Logo" width={72} height={72} />
+        <div className="nav-content">
+          {/* Links para escritorio: inline; para móvil se convierten en dropdown */}
+          <div className={`nav-links ${isOpen ? "is-open" : ""}`} role="menu">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                role="menuitem"
+                tabIndex={0}
+                onClick={() => {
+                  /* el onClick real lo maneja onNavClick en el nav padre */
+                }}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </nav>
     </header>
   );
-
-  // Render fuera de wrappers que recorten
-return header;
 }

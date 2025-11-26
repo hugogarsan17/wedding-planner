@@ -34,25 +34,32 @@
   },
 
   "services": {
-    "title": "Services",
-    "items": {
-      "planning": {
-        "title": "Planning",
-        "description": "Comprehensive event planning from concept to execution, making sure every detail flows seamlessly."
-      },
-      "artDirection": {
-        "title": "Art Direction",
-        "description": "Creative direction and design to shape a cohesive visual storytelling and atmosphere."
-      },
-      "production": {
-        "title": "Production",
-        "description": "Full-scale production and vendor management with our experienced team on-site."
-      },
-      "coordination": {
-        "title": "Coordination",
-        "description": "Day-of coordination and smooth logistics so you can enjoy every moment, stress-free."
-      }
+ "items": {
+    "planning": {
+      "title": "Wedding Planning",
+      "description": "A complete, seamless and exciting journey. Clear timelines, vendors that truly fit your vision, thoughtful decision-making, and an invisible organization that allows you to reach the aisle without dark circles… and with the energy to celebrate in style."
+    },
+    "artDirection": {
+      "title": "Wedding Concept & Art Direction",
+      "description": "A service designed for couples seeking a strong concept and a cohesive narrative that truly stands out. Storytelling, moodboards, color palette, style, artistic references and creative direction. The visual and emotional heart of your big day begins here, with me. The result? An aesthetic experience that speaks about you without needing words."
+    },
+    "production": {
+      "title": "Production",
+      "description": "Every detail in its place, every moment flawless. Setup, logistics and vendor coordination so everything aligns, shines, and leaves you only with the joy of experiencing the magic."
+    },
+    "coordination": {
+      "title": "Coordination",
+      "description": "On the big day, the magic lies in the invisible details: synchronized vendors, well-timed moments, unforeseen issues resolved before they even arise, and an energy that holds everything together."
+    },
+    "Destination Weddings": {
+      "title": "Destination Weddings",
+      "description": "Planning, logistics and design for weddings in special locations—crafted so every couple feels at home, even far away. Coordination with local vendors, tailored planning and a creative perspective that turns every corner into part of your story. A wedding that is not only celebrated, but lived and remembered as a unique journey."
+    },
+    "Wedding Honeymoon": {
+      "title": "Wedding Honeymoon",
+      "description": "A service that accompanies you beyond the wedding day, designing and coordinating your honeymoon so it is just as unique and memorable as the celebration itself. The goal? To turn it into an extension of your wedding day—an emotional, magical journey filled with unforgettable memories."
     }
+  }
   },
 
   "portfolio": {

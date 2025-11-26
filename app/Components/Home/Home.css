@@ -338,6 +338,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #1f1617;
+  margin-left: 10px;
 }
 
 .gallery-item:hover .gallery-photo {
@@ -630,23 +631,30 @@
   }
 }
 
-
 .lang-switcher {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
   display: flex;
-  gap: 0.5rem;
-  align-content: end;
+  gap: 8px;
 }
 
 .lang-switcher button {
+  background: rgba(255, 255, 255, 0);
   border: none;
-  background: transparent;
-  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 4px;
   cursor: pointer;
-  opacity: 0.6;
+  font-weight: 600;
+  transition: 0.2s;
 }
 
 .lang-switcher button.active {
-  font-weight: 600;
-  opacity: 1;
-  text-decoration: underline;
+  background: #000;
+  color: white;
+}
+
+.lang-switcher button:hover {
+  background: rgba(0, 0, 0, 0.1);
 }
