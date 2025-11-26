@@ -260,8 +260,15 @@
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: clamp(1.2rem, 3vw, 2.2rem);
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+  grid-template-columns: repeat(3, minmax(260px, 1fr)); /* máximo 3 columnas */
+  align-items: start;
+  justify-items: stretch;
+  width: 100%;
+  max-width: 1400px;    /* evita que se estire demasiado en pantallas enormes */
+  margin-inline: auto;  /* centra el grid */
+  box-sizing: border-box;
+  grid-auto-flow: row;
 }
 
 .service-card {
@@ -517,9 +524,20 @@
     justify-content: center;
   }
 
-  .service-grid {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.service-grid {
+  display: grid;
+  gap: clamp(1rem, 2.5vw, 2.2rem);
+  /* 3 columnas como máximo, cada columna mínimo 260px antes de reducirse */
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  align-items: start;
+  justify-items: stretch;
+  width: 100%;
+  /* opcional: limitar ancho máximo para que no se estire en pantallas muy anchas */
+  max-width: 1400px;
+  margin-inline: auto; /* centra el grid dentro de su contenedor */
+  box-sizing: border-box;
+  grid-auto-flow: row; /* asegura que nuevas items vayan a la siguiente fila */
+}
 
   .contact-inner {
     text-align: center;
@@ -629,6 +647,11 @@
   .about-image img {
     max-width: 100%;
   }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .lang-switcher {
@@ -658,3 +681,4 @@
 .lang-switcher button:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+
