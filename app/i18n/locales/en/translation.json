@@ -8,14 +8,12 @@
     "ctaSecondary": "View portfolio",
     "scroll": "Scroll to explore"
   },
-
   "nav": {
     "home": "Home",
     "services": "Services",
     "portfolio": "Portfolio",
     "contact": "Contact"
   },
-
   "vision": {
     "eyebrow": "Vision",
     "title": "Minimalist weddings with an editorial soul",
@@ -26,105 +24,69 @@
       "three": "Complete transparency in budget and timelines."
     }
   },
-
   "about": {
     "title": "About",
     "body": "I’ve been creating, dreaming up and organising <strong>magical weddings</strong> for a long time, always behind the scenes… until now. If you’ve been around here for a while, you may have seen me in a few photos, especially from my own wedding (because yes, I also lived my own fairy tale!).\n\nI’m <strong>Anna</strong>, a naturally creative soul, in love with details and the one steering the ship at<strong> The Perfect Match</strong>. My story with weddings started many years ago, long before I did this professionally. Since then, I’ve had the privilege of accompanying wonderful couples on one of the most special days of their lives, feeling up close the excitement, nerves and magic surrounding every <em>“I do”</em>.\n\nThis whole journey has taught me that a wedding is so much more than an event: it is the most authentic expression of a love story. That’s why I approach every project as something unique, infusing it with sensitivity, creativity and that personal touch that makes it unforgettable.\n\nThat’s how <strong>The Perfect Match</strong> was born: a space where dreams take shape, details tell stories and every moment becomes an everlasting memory. If you’re here, you probably also believe in the magic of small things.\n\n<strong>So, shall we create your perfect story together?</strong> ✨",
     "imageAlt": "Photo of the team smiling together in the studio"
   },
-
   "services": {
- "items": {
-    "planning": {
-      "title": "Wedding Planning",
-      "description": "A complete, seamless and exciting journey. Clear timelines, vendors that truly fit your vision, thoughtful decision-making, and an invisible organization that allows you to reach the aisle without dark circles… and with the energy to celebrate in style."
-    },
-    "artDirection": {
-      "title": "Wedding Concept & Art Direction",
-      "description": "A service designed for couples seeking a strong concept and a cohesive narrative that truly stands out. Storytelling, moodboards, color palette, style, artistic references and creative direction. The visual and emotional heart of your big day begins here, with me. The result? An aesthetic experience that speaks about you without needing words."
-    },
-    "production": {
-      "title": "Production",
-      "description": "Every detail in its place, every moment flawless. Setup, logistics and vendor coordination so everything aligns, shines, and leaves you only with the joy of experiencing the magic."
-    },
-    "coordination": {
-      "title": "Coordination",
-      "description": "On the big day, the magic lies in the invisible details: synchronized vendors, well-timed moments, unforeseen issues resolved before they even arise, and an energy that holds everything together."
-    },
-    "Destination Weddings": {
-      "title": "Destination Weddings",
-      "description": "Planning, logistics and design for weddings in special locations—crafted so every couple feels at home, even far away. Coordination with local vendors, tailored planning and a creative perspective that turns every corner into part of your story. A wedding that is not only celebrated, but lived and remembered as a unique journey."
-    },
-    "Wedding Honeymoon": {
-      "title": "Wedding Honeymoon",
-      "description": "A service that accompanies you beyond the wedding day, designing and coordinating your honeymoon so it is just as unique and memorable as the celebration itself. The goal? To turn it into an extension of your wedding day—an emotional, magical journey filled with unforgettable memories."
+    "title": "Services",
+    "subtitle": "",
+    "ctaContact": "Contact us",
+    "items": {
+      "planning": {
+        "title": "Wedding Planning",
+        "description": "Designing timelines, budgets and coordinating vendors so everything happens smoothly."
+      },
+      "artDirection": {
+        "title": "Art Direction",
+        "description": "Visual concept, palette, florals and styling to create a coherent, memorable look."
+      },
+      "production": {
+        "title": "Production & Logistics",
+        "description": "Technical setup, on-site supervision and vendor coordination for a flawless day."
+      },
+      "coordination": {
+        "title": "Day Coordination",
+        "description": "Timing, team management and on-the-day problem solving so you only enjoy the moment."
+      },
+      "destination": {
+        "title": "Destination Weddings",
+        "description": "Full organisation for weddings abroad: travel, accommodation and local logistics."
+      },
+      "honeymoon": {
+        "title": "Honeymoon",
+        "description": "Tailored experiences and bookings to turn your trip into an unforgettable extension of the celebration."
+      }
     }
-  }
   },
-
   "portfolio": {
     "eyebrow": "Portfolio",
     "title": "A mosaic of real stories",
     "images": {
-      "p1": {
-        "alt": "Couple walking among mountains",
-        "label": "Elopement in the Pyrenees"
-      },
-      "p2": {
-        "alt": "Guests dancing under warm lights",
-        "label": ""
-      },
-      "p3": {
-        "alt": "Minimalist banquet table",
-        "label": ""
-      },
-      "p4": {
-        "alt": "Bride with bouquet on a historic staircase",
-        "label": ""
-      },
-      "p5": {
-        "alt": "Newlyweds toasting",
-        "label": "Celebration in La Rioja"
-      },
-      "p6": {
-        "alt": "Floral detail with candles on a table",
-        "label": ""
-      },
-      "p7": {
-        "alt": "Intimate wedding with decorated outdoor table",
-        "label": ""
-      },
-      "p8": {
-        "alt": "Couple hugging by the sea at sunset",
-        "label": "Menorca, golden hour"
-      },
-      "p9": {
-        "alt": "Couple walking among mountains",
-        "label": "Elopement in the Pyrenees"
-      },
-      "p10": {
-        "alt": "Couple walking among mountains",
-        "label": "Elopement in the Pyrenees"
-      },
-      "p11": {
-        "alt": "Couple walking among mountains",
-        "label": "Elopement in the Pyrenees"
-      }
+      "p1": { "alt": "Couple walking among mountains", "label": "Elopement in the Pyrenees" },
+      "p2": { "alt": "Guests dancing under warm lights", "label": "" },
+      "p3": { "alt": "Minimalist banquet table", "label": "" },
+      "p4": { "alt": "Bride with bouquet on a historic staircase", "label": "" },
+      "p5": { "alt": "Newlyweds toasting", "label": "Celebration in La Rioja" },
+      "p6": { "alt": "Floral detail with candles on a table", "label": "" },
+      "p7": { "alt": "Intimate wedding with decorated outdoor table", "label": "" },
+      "p8": { "alt": "Couple hugging by the sea at sunset", "label": "Menorca, golden hour" },
+      "p9": { "alt": "Couple walking among mountains", "label": "Elopement in the Pyrenees" },
+      "p10": { "alt": "Couple walking among mountains", "label": "Elopement in the Pyrenees" },
+      "p11": { "alt": "Couple walking among mountains", "label": "Elopement in the Pyrenees" }
     }
   },
-
   "manifesto": {
     "quote": "“Less script, more real emotion. We let the light and gestures tell the story.”"
   },
-
   "contact": {
     "eyebrow": "Let’s talk",
     "title": "Book a private video call",
     "description": "Tell us how you imagine your day and we’ll prepare an initial guide with personalised ideas and directions.",
     "emailCta": "hello@theperfectmatch.es",
-    "phoneCta": "+34 123 456 789"
+    "phoneCta": "+34 677 04 96 05"
   },
-
   "footer": {
     "line1": "© {{year}} Wedding Planners",
     "line2": "Producing elegant weddings in Spain."

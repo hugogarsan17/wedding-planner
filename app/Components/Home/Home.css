@@ -6,6 +6,8 @@
   --muted: rgba(31, 22, 23, 0.65);
   --accent: #f3d7d8;
   --accent-strong: #e9bfc3;
+    --fade-offset-x: -50%; /* valor por defecto para transform translateX */
+  --max-hero-width: 90vw;
 }
 
 .main-hero {
@@ -36,14 +38,43 @@
   z-index: -1;
 }
 
+/* transición suave y estado oculto */
 .navbar-mount {
   position: fixed;
   top: calc(20px + env(safe-area-inset-top));
   left: 50%;
-  --fade-offset-x: -50%;
   transform: translateX(var(--fade-offset-x));
-  z-index: 10;
+  z-index: 10000;
+  transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s;
+  will-change: transform, opacity;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  max-width: calc(100% - 32px);
 }
+
+/* Mobile override */
+@media (max-width: 720px) {
+  .navbar-mount {
+    left: clamp(10px, 4vw, 24px);
+    right: clamp(10px, 4vw, 24px);
+    transform: translateX(0); /* ya lo pusimos a 0 en móviles */
+    --fade-offset-x: 0;
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+  }
+}
+
+
+.navbar-mount.hidden {
+  opacity: 0;
+  transform: translateX(var(--fade-offset-x)) translateY(-14px);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
 
 .hero-center {
   position: absolute;
@@ -89,15 +120,20 @@
 
 .hero-actions {
   display: inline-flex;
-  gap: clamp(0.6rem, 2vw, 1rem);
-  flex-wrap: nowrap;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  flex-wrap: wrap; /* permitir que los botones salten a la siguiente línea si hace falta */
   justify-content: center;
   align-items: center;
 }
 
 .hero-actions .btn {
-  white-space: nowrap;
+  white-space: normal; /* permitir salto en textos muy largos */
+  padding: 0.65rem 1rem;
+  font-size: 0.85rem;
+  min-width: 140px;    /* mantiene botones consistentes */
+  text-align: center;
 }
+
 
 .btn {
   display: inline-flex;
@@ -398,11 +434,20 @@
 
 .contact-actions {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.9rem;
+  align-items: center;
 }
 
+/* Aseguramos estilo de los botones */
 .contact-actions .btn {
-  justify-self: flex-start;
+  display: inline-flex;      /* mantiene iconos/centrado */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  text-align: center;
+  box-sizing: border-box;
 }
 
 .footer {
@@ -523,32 +568,34 @@
   .intro-points div {
     justify-content: center;
   }
-
+/* Dentro de @media (max-width: 720px) */
 .service-grid {
   display: grid;
-  gap: clamp(1rem, 2.5vw, 2.2rem);
-  /* 3 columnas como máximo, cada columna mínimo 260px antes de reducirse */
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: clamp(0.8rem, 2.5vw, 1.6rem);
+  grid-template-columns: 1fr; /* 1 columna en móvil */
   align-items: start;
   justify-items: stretch;
   width: 100%;
-  /* opcional: limitar ancho máximo para que no se estire en pantallas muy anchas */
-  max-width: 1400px;
-  margin-inline: auto; /* centra el grid dentro de su contenedor */
+  max-width: 100%;
+  margin-inline: auto;
   box-sizing: border-box;
-  grid-auto-flow: row; /* asegura que nuevas items vayan a la siguiente fila */
+  grid-auto-flow: row;
 }
+
 
   .contact-inner {
     text-align: center;
   }
 
-  .contact-actions {
-    grid-template-columns: 1fr;
+ .contact-actions {
+    grid-template-columns: 1fr; /* una sola columna */
+    gap: 0.75rem;
   }
 
   .contact-actions .btn {
-    justify-self: stretch;
+    justify-self: stretch; /* asegura que el botón estire al 100% */
+    width: 100%;
+    padding: 0.85rem 1rem;
   }
 }
 
@@ -565,15 +612,30 @@
     letter-spacing: 0.2em;
   }
 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-auto-rows: clamp(140px, 15vw, 220px);
+  grid-auto-flow: dense;
+  gap: clamp(0.8rem, 2vw, 1.6rem);
+}
+
+@media (max-width: 520px) {
   .gallery-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
     grid-auto-rows: clamp(180px, 45vw, 240px);
   }
 
   .gallery-item.big,
   .gallery-item.tall {
-    grid-row: span 1;
+    grid-row: span 1; /* evita filas gigantes en pantallas pequeñas */
   }
+}
+
+/* aseguramos que la imagen fill funcione */
+.gallery-item { position: relative; } /* ya lo tienes, por si acaso */
+.gallery-photo { width: 100%; height: 100%; object-fit: cover; display:block; }
+
 
   .section {
     padding-block: clamp(3rem, 8vw, 3.5rem);
@@ -682,3 +744,107 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
+/* Servicios: grid y tarjetas */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 28px;
+}
+
+/* tarjetas */
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(31,22,23,0.06);
+  transition: transform .22s ease, box-shadow .22s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  outline: none;
+}
+
+.service-card:focus,
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(31,22,23,0.10);
+}
+
+/* header de tarjeta */
+.service-card-head {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.service-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.service-title {
+  font-size: 1.05rem;
+  margin: 0;
+  line-height: 1.15;
+}
+
+/* descripcion */
+.service-desc {
+  color: var(--muted, #6b6b6b);
+  margin: 0 0 16px 0;
+  flex-grow: 1;
+}
+
+/* CTA */
+.service-cta {
+  margin-top: 8px;
+}
+
+/* Botones a 100% width cuando se necesite */
+.btn.fullwidth,
+.btn.fullwidth:link,
+.btn.fullwidth:visited {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+/* Responsive: tablets y móviles */
+@media (max-width: 1024px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 16px;
+  }
+
+  /* For mobile, primary CTA should be full width and visible */
+  .service-cta .btn {
+    width: 100%;
+  }
+}
+
+/* small helper for optional subtitle under heading */
+.services-sub {
+  color: var(--muted, #6b6b6b);
+  margin-top: 8px;
+  max-width: 60ch;
+}

@@ -1,80 +1,64 @@
 "use client";
 
-
 import "./../fonts.css";
 import Image from "next/image";
 import React, { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Navbar from "../Navbar/Navbar";
 import "./Home.css";
-
-
+import Whatsapp from "../whatsapp/whatsapp";
 const serviceItems = [
-  { key: "planning", icon: "🗓️" },
-  { key: "artDirection", icon: "🎨" },
-  { key: "production", icon: "⚙️" },
-  { key: "coordination", icon: "🤍" },
-  { key: "Destination Weddings", icon: "🤍" },
-  { key: "Wedding Honeymoon", icon: "🤍" },
+  {
+    key: "planning",
+    title: "Planificación completa",
+    description: "Diseño del calendario, presupuesto y coordinación con proveedores para que todo suceda.",
+    icon: "🗓️",
+  },
+  {
+    key: "artDirection",
+    title: "Dirección artística",
+    description: "Concepto visual, paleta, floristería y montaje para una boda con identidad.",
+    icon: "🎨",
+  },
+  {
+    key: "production",
+    title: "Producción & logística",
+    description: "Montaje técnico, coordinación de montaje y supervisión in situ el día D.",
+    icon: "⚙️",
+  },
+  {
+    key: "coordination",
+    title: "Coordinación del día",
+    description: "Gestión del timing y del equipo para que los novios se olviden del resto.",
+    icon: "🤍",
+  },
+  {
+    key: "destination",
+    title: "Destination Weddings",
+    description: "Organización integral para bodas fuera: viajes, alojamientos y trámites.",
+    icon: "✈️",
+  },
+  {
+    key: "honeymoon",
+    title: "Luna de miel",
+    description: "Diseño de experiencias y reservas a medida para una escapada inolvidable.",
+    icon: "🌴",
+  },
 ];
 
 
 const galleryImages = [
-  {
-    src: "/p8.jpeg",
-    span: "tall",
-    key: "p8",
-  },
-  {
-    src: "/p7.jpeg",
-    span: "wide",
-    key: "p7",
-  },
-  {
-    src: "/p6.jpeg",
-    span: "standard",
-    key: "p6",
-  },
-  {
-    src: "/p5.jpeg",
-    span: "tall",
-    key: "p5",
-  },
-  {
-    src: "/p4.jpeg",
-    span: "big",
-    key: "p4",
-  },
-  {
-    src: "/p3.jpeg",
-    span: "standard",
-    key: "p3",
-  },
-  {
-    src: "/p2.jpeg",
-    span: "wide",
-    key: "p2",
-  },
-  {
-    src: "/p1.jpeg",
-    span: "standard",
-    key: "p1",
-  },
-  {
-    src: "/p9.jpeg",
-    span: "standard",
-    key: "p9",
-  },
-  {
-    src: "/p10.jpeg",
-    span: "standard",
-    key: "p10",
-  },
-  {
-    src: "/p11.jpeg",
-    span: "standard",
-    key: "p11",
-  },
+  { src: "/p8.jpeg", span: "tall", key: "p8" },
+  { src: "/p7.jpeg", span: "wide", key: "p7" },
+  { src: "/p6.jpeg", span: "standard", key: "p6" },
+  { src: "/p5.jpeg", span: "tall", key: "p5" },
+  { src: "/p4.jpeg", span: "big", key: "p4" },
+  { src: "/p3.jpeg", span: "standard", key: "p3" },
+  { src: "/p2.jpeg", span: "wide", key: "p2" },
+  { src: "/p1.jpeg", span: "standard", key: "p1" },
+  { src: "/p9.jpeg", span: "standard", key: "p9" },
+  { src: "/p10.jpeg", span: "standard", key: "p10" },
+  { src: "/p11.jpeg", span: "standard", key: "p11" },
 ];
 
 export default function Home() {
@@ -84,16 +68,28 @@ export default function Home() {
     i18n.language?.startsWith("en") ? "en" : "es"
   );
 
-
+  // Controla si el navbar debe mostrarse (solo cuando estamos muy arriba)
+  const [navVisible, setNavVisible] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowUI(true), 1800);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const threshold = 20; // px desde top
+    const onScroll = () => {
+      setNavVisible(window.scrollY <= threshold);
+    };
+    // Inicial
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const changeLanguage = (lng: "es" | "en") => {
     i18n.changeLanguage(lng);
-    setActiveLang(lng); // mantenemos el estado de los botones alineado
+    setActiveLang(lng);
   };
 
   const translatedServices = useMemo(
@@ -119,21 +115,21 @@ export default function Home() {
   return (
     <>
       <main id="home" className="main-hero">
-        
         <div className="lang-switcher">
-            <button
-              onClick={() => changeLanguage("es")}
-              className={activeLang === "es" ? "active" : ""}
-            >
-              ES
-            </button>
-            <button
-              onClick={() => changeLanguage("en")}
-              className={activeLang === "en" ? "active" : ""}
-            >
-              EN
-            </button>
-          </div>
+          <button
+            onClick={() => changeLanguage("es")}
+            className={activeLang === "es" ? "active" : ""}
+          >
+            ES
+          </button>
+          <button
+            onClick={() => changeLanguage("en")}
+            className={activeLang === "en" ? "active" : ""}
+          >
+            EN
+          </button>
+        </div>
+
         <video
           className="background-video"
           src="/main-hero.mp4"
@@ -143,10 +139,15 @@ export default function Home() {
           playsInline
         />
 
-        <div className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}>
+        {/* Navbar: visible SOLO cuando navVisible === true (y cuando showUI true para respetar la animación inicial) */}
+        <div
+          className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"} ${
+            navVisible ? "" : "hidden"
+          }`}
+        >
           <Navbar />
-          
         </div>
+
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
           <div className="brand">
             <h1 className="brand-title">
@@ -170,6 +171,7 @@ export default function Home() {
       </main>
 
       <div className="page-wrapper">
+        {/* ... resto del contenido idéntico ... */}
         <section id="servicios" className="section intro">
           <div className="intro-grid">
             <div>
@@ -194,6 +196,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ... resto de secciones (sin cambios) ... */}
         <section id="nosotros" className="section contact">
           <div className="section-heading align-left">
             <h2>{t("about.title")}</h2>
@@ -221,23 +224,37 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="servicios" className="section services">
+  <div className="section-heading align-left">
+    <h2>{t("services.title")}</h2>
+    <p className="services-sub">{t("services.subtitle") || ""}</p>
+  </div>
 
-        <section className="section services">
-          <div id="servicios" className="section-heading align-left">
-            <h2>{t("services.title")}</h2>
-          </div>
-          <div className="service-grid">
-            {translatedServices.map((service) => (
-              <article key={service.title} className="service-card">
-                <span className="icon" aria-hidden="true">
-                  {service.icon}
-                </span>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
+  <div className="service-grid">
+    {serviceItems.map((service) => (
+      <article key={service.key} className="service-card" tabIndex={0} aria-labelledby={`svc-${service.key}-title`}>
+        <div className="service-card-head">
+          <span className="service-icon" aria-hidden="true">{service.icon}</span>
+          <h3 id={`svc-${service.key}-title`} className="service-title">
+            {t(`services.items.${service.key}.title`, service.title)}
+          </h3>
+        </div>
+
+        <p className="service-desc">
+          {t(`services.items.${service.key}.description`, service.description)}
+        </p>
+
+        {/* CTA interna: puede abrir modal, anclar o navegar a detalle */}
+        <div className="service-cta">
+          <a className="btn primary fullwidth" href={`#contacto`} onClick={() => {/* optional analytics */}}>
+            {t("services.ctaContact") || "Consultanos"}
+          </a>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
 
         <section id="portfolio" className="section gallery">
           <div className="section-heading align-left">
@@ -246,10 +263,7 @@ export default function Home() {
           </div>
           <div className="gallery-grid">
             {translatedGallery.map((image) => (
-              <figure
-                key={image.src}
-                className={`gallery-item ${image.span}`}
-              >
+              <figure key={image.src} className={`gallery-item ${image.span}`}>
                 <Image
                   src={image.src}
                   alt={image.alt}
@@ -264,9 +278,7 @@ export default function Home() {
         </section>
 
         <section className="section manifesto">
-          <blockquote>
-            {t("manifesto.quote")}
-          </blockquote>
+          <blockquote>{t("manifesto.quote")}</blockquote>
         </section>
 
         <section id="contacto" className="section contact">
@@ -278,7 +290,7 @@ export default function Home() {
               <a className="btn primary" href="mailto:hello@theperfectmatch.es">
                 {t("contact.emailCta")}
               </a>
-              <a className="btn ghost" href="https://wa.me/34123456789">
+              <a className="btn ghost" href="https://wa.me/34677049605">
                 {t("contact.phoneCta")}
               </a>
             </div>
@@ -290,6 +302,7 @@ export default function Home() {
           <p>{t("footer.line2")}</p>
         </footer>
       </div>
+      <Whatsapp />
     </>
   );
 }

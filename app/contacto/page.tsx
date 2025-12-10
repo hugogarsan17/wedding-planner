@@ -25,33 +25,92 @@ export default function ContactoPage() {
             <p className="contact-note">Respondemos en menos de 48 horas laborables.</p>
           </div>
 
+          {/* Form configured to send to your email via FormSubmit.co */}
           <form
             className="contact-form"
-            action="mailto:hello@theperfectmatch.es"
-            method="post"
-            encType="text/plain"
+            action="https://formsubmit.co/hello@theperfectmatch.es"
+            method="POST"
+            noValidate
           >
+            {/* Anti-spam honeypot (hidden) */}
+            <input type="text" name="_honey" style={{ display: "none" }} />
+
+            {/* Optional: customise subject / redirect after submission */}
+            <input type="hidden" name="_subject" value="Nueva consulta desde web - The Perfect Match" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="/gracias" />
+            <input type="hidden" name="_captcha" value="false" />
+
             <div className="form-grid">
-              <label>
-                Nombre completo
-                <input type="text" name="nombre" autoComplete="name" required />
+              <label className="form-field">
+                <span className="label-text">Nombre completo</span>
+                <input
+                  type="text"
+                  name="nombre"
+                  autoComplete="name"
+                  required
+                  aria-required="true"
+                  placeholder="Ej. Ana García &amp; Pablo López"
+                />
               </label>
-              <label>
-                Email de contacto
-                <input type="email" name="email" autoComplete="email" required />
+
+              <label className="form-field">
+                <span className="label-text">Email de contacto</span>
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
+                  aria-required="true"
+                  placeholder="ejemplo@dominio.com"
+                />
               </label>
-              <label>
-                Teléfono (opcional)
-                <input type="tel" name="telefono" autoComplete="tel" />
+
+              <label className="form-field">
+                <span className="label-text">Teléfono (opcional)</span>
+                <input
+                  type="tel"
+                  name="telefono"
+                  autoComplete="tel"
+                  placeholder="+34 600 000 000"
+                />
               </label>
-              <label className="full">
-                Mensaje
-                <textarea name="mensaje" rows={5} required></textarea>
+
+              <label className="form-field full">
+                <span className="label-text">Fecha aproximada / temporada</span>
+                <input
+                  type="text"
+                  name="fecha"
+                  placeholder="Ej. Julio 2026, Primavera, 20/08/2026 (opcional)"
+                />
+              </label>
+
+              <label className="form-field full">
+                <span className="label-text">Mensaje</span>
+                <textarea
+                  name="mensaje"
+                  rows={6}
+                  required
+                  aria-required="true"
+                  placeholder="Contadnos el estilo que os gusta, número aproximado de invitados, destino, presupuesto..."
+                ></textarea>
+              </label>
+
+              <label className="form-field full">
+                <span className="label-text">Adjuntar enlace a dossier / fotos (opcional)</span>
+                <input
+                  type="url"
+                  name="portfolioLink"
+                  placeholder="https://(link a Google Drive / Pinterest / album...)"
+                />
               </label>
             </div>
-            <button type="submit" className="btn primary">
-              Enviar consulta
-            </button>
+
+            <div className="form-actions">
+              <button type="submit" className="btn primary btn-submit">
+                Enviar consulta
+              </button>
+            </div>
           </form>
         </section>
       </main>
