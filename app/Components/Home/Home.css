@@ -423,17 +423,9 @@
   background: #211619;
   color: #fff;
   border-radius: 32px;
-  /* Mantengo el padding original pero añado padding-inline y box-sizing */
-  padding: clamp(2rem, 3.5vw, 3.5rem);
-  padding-inline: clamp(1rem, 6vw, 3.5rem);
+  padding: clamp(2.4rem, 4vw, 3.5rem);
   box-shadow: 0 28px 70px rgba(33, 22, 25, 0.45);
-  box-sizing: border-box;       /* evita que el padding cause overflow visual */
-  width: 100%;
-  max-width: 1100px;            /* limita el panel en pantallas grandes */
-  margin-inline: auto;          /* centra el panel dentro del contenedor */
 }
-
-
 
 .contact-inner p {
   color: rgba(255, 255, 255, 0.72);
@@ -592,28 +584,19 @@
 
 
   .contact-inner {
-    padding: 1.25rem;           /* menos padding en móvil */
-    padding-inline: 1rem;       /* evita pegarse a los laterales */
-    border-radius: 20px;        /* algo menos de rounding para smartphone */
-    gap: 1rem;
+    text-align: center;
   }
 
-  .contact-actions {
-    grid-template-columns: 1fr;
+ .contact-actions {
+    grid-template-columns: 1fr; /* una sola columna */
     gap: 0.75rem;
   }
 
   .contact-actions .btn {
-    justify-self: stretch;
+    justify-self: stretch; /* asegura que el botón estire al 100% */
+    width: 100%;
+    padding: 0.85rem 1rem;
   }
-}
-
-.contact-inner img,
-.contact-inner iframe,
-.contact-inner .wide-element {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
 @media (max-width: 520px) {
@@ -731,6 +714,7 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+}
 
 .lang-switcher {
   position: fixed;
