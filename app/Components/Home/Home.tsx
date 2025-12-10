@@ -246,7 +246,7 @@ export default function Home() {
 
         {/* CTA interna: puede abrir modal, anclar o navegar a detalle */}
         <div className="service-cta">
-          <a className="btn primary fullwidth" href={`#contacto`} onClick={() => {/* optional analytics */}}>
+          <a className="btn primary fullwidth" href={`/contacto`} onClick={() => {/* optional analytics */}}>
             {t("services.ctaContact") || "Consultanos"}
           </a>
         </div>
