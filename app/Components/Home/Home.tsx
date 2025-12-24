@@ -72,6 +72,29 @@ export default function Home() {
   const [navVisible, setNavVisible] = useState(true);
 
   useEffect(() => {
+  const cards = document.querySelectorAll(".service-card");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // anima solo una vez
+        }
+      });
+    },
+    {
+      threshold: 0.15, // cuando se ve un 15%
+    }
+  );
+
+  cards.forEach((card) => observer.observe(card));
+
+  return () => observer.disconnect();
+}, []);
+
+
+  useEffect(() => {
     const timer = setTimeout(() => setShowUI(true), 1800);
     return () => clearTimeout(timer);
   }, []);
@@ -114,8 +137,7 @@ export default function Home() {
 
   return (
     <>
-      <main id="home" className="main-hero">
-        <div className="lang-switcher">
+      <div className="lang-switcher">
           <button
             onClick={() => changeLanguage("es")}
             className={activeLang === "es" ? "active" : ""}
@@ -129,6 +151,8 @@ export default function Home() {
             EN
           </button>
         </div>
+      <main id="home" className="main-hero">
+      
 
         <video
           className="background-video"
@@ -285,11 +309,9 @@ export default function Home() {
   <div className="press-logos">
     <img src="/press/lago.png" alt="100 Layer Cake" />
     <img src="/press/wezoree.png" alt="Wezoree" />
-    <img src="/press/alia.png" alt="Alia" />
     <img src="/press/alai.png" alt="Alai" />
-    <img src="/press/mariee.png" alt="La Mariée aux Pieds Nus" />
+    <img src="/press/mariee.svg" alt="La Mariée aux Pieds Nus" />
     <img src="/press/together.png" alt="Together Journal" />
-    <img src="/press/mv.png" alt="MVW" />
   </div>
 </section>
 

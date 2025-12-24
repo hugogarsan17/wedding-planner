@@ -41,7 +41,7 @@
 /* transición suave y estado oculto */
 .navbar-mount {
   position: fixed;
-  top: calc(20px + env(safe-area-inset-top));
+  top: calc(30px + env(safe-area-inset-top));
   left: 50%;
   transform: translateX(var(--fade-offset-x));
   z-index: 10000;
@@ -715,15 +715,69 @@
     gap: 1rem;
   }
 }
+/* PRESS / HABLAN DE NOSOTROS */
+
+.press {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  background: var(--background);
+}
+
+.press-logos {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+  justify-items: center;
+}
+
+.press-logos img {
+  max-width: 140px;
+  width: 100%;
+  height: auto;
+  opacity: 0.65;
+  filter: grayscale(100%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+.press-logos img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Mobile refinement */
+@media (max-width: 640px) {
+  .press-logos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .press-logos img {
+    max-width: 120px;
+  }
+}
 
 .lang-switcher {
   position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 9999;
+  top: calc(env(safe-area-inset-top) + 16px);
+  left: 16px;
+
+  z-index: 10002; /* por encima de TODO */
   display: flex;
   gap: 8px;
+
+  pointer-events: auto;
 }
+
+@media (max-width: 720px) {
+  .lang-switcher {
+    top: calc(env(safe-area-inset-top) + 12px);
+    left: clamp(12px, 4vw, 20px);
+  }
+}
+
+
+
 
 .lang-switcher button {
   background: rgba(255, 255, 255, 0);
@@ -848,3 +902,25 @@
   margin-top: 8px;
   max-width: 60ch;
 }
+/* Estado inicial */
+.service-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+/* Cuando entra en pantalla */
+.service-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Pequeño stagger automático */
+.service-card:nth-child(1) { transition-delay: 0.05s; }
+.service-card:nth-child(2) { transition-delay: 0.12s; }
+.service-card:nth-child(3) { transition-delay: 0.18s; }
+.service-card:nth-child(4) { transition-delay: 0.24s; }
+.service-card:nth-child(5) { transition-delay: 0.30s; }
+.service-card:nth-child(6) { transition-delay: 0.36s; }

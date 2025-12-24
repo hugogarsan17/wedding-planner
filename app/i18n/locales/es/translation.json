@@ -77,6 +77,10 @@
       "p11": { "alt": "Pareja caminando entre montañas", "label": "Elopement en Pirineos" }
     }
   },
+  "press":{
+    "eyebrow": "Hablan de nosotros",
+    "title": "Nuestos colaboradores"
+  },
   "manifesto": {
     "quote": "“Menos guion, más emoción verdadera. Dejamos que la luz y el gesto cuenten la historia.”"
   },
@@ -90,5 +94,54 @@
   "footer": {
     "line1": "© {{year}} Wedding Planners",
     "line2": "Produciendo bodas elegantes en España."
+  },
+  "contactPage": {
+    "eyebrow": "Contacto",
+    "title": "Cuéntanos vuestra historia",
+    "intro": {
+      "description": "Completa el formulario y diseñaremos una propuesta inicial en base a vuestro estilo, destino y presupuesto. Si preferís escribirnos directamente, siempre podéis hacerlo al correo del estudio.",
+      "email": "hello@theperfectmatch.es",
+      "note": "Respondemos en menos de 48 horas laborables."
+    },
+    "form": {
+      "fields": {
+        "name": {
+          "label": "Nombre completo",
+          "placeholder": "Ej. Ana García & Pablo López",
+          "required": "Por favor, indicad vuestro nombre completo"
+        },
+        "email": {
+          "label": "Email de contacto",
+          "placeholder": "ejemplo@dominio.com",
+          "required": "Introduce un email válido"
+        },
+        "phone": {
+          "label": "Teléfono (opcional)",
+          "placeholder": "+34 600 000 000"
+        },
+        "date": {
+          "label": "Fecha aproximada / temporada",
+          "placeholder": "Ej. Julio 2026, Primavera, 20/08/2026 (opcional)"
+        },
+        "message": {
+          "label": "Mensaje",
+          "placeholder": "Contadnos el estilo que os gusta, número aproximado de invitados, destino, presupuesto…",
+          "required": "Cuéntanos un poco más sobre vuestra celebración"
+        },
+        "links": {
+          "label": "Adjuntar enlace a dossier / fotos (opcional)",
+          "placeholder": "https:// (Google Drive, Pinterest, galería...)"
+        }
+      },
+      "submit": "Enviar consulta",
+      "success": {
+        "title": "Gracias por escribirnos",
+        "message": "Hemos recibido vuestro mensaje y os responderemos muy pronto."
+      },
+      "error": {
+        "title": "Algo no ha salido bien",
+        "message": "Revisa los campos del formulario e inténtalo de nuevo."
+      }
+    }
   }
 }

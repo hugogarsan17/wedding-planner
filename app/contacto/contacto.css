@@ -238,3 +238,50 @@
   .form-actions { flex-direction: column; align-items: stretch; }
   .btn-submit, .btn-reset { width: 100%; }
 }
+.lang-switcher {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 16px);
+  left: 16px;
+
+  z-index: 10002; /* por encima de TODO */
+  display: flex;
+  gap: 8px;
+
+  pointer-events: auto;
+}
+
+@media (max-width: 720px) {
+  .lang-switcher {
+    top: calc(env(safe-area-inset-top) + 12px);
+    left: clamp(12px, 4vw, 20px);
+  }
+}
+
+
+
+
+.lang-switcher button {
+  background: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.lang-switcher button.active {
+  background: #000;
+  color: white;
+}
+
+.lang-switcher button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
