@@ -276,6 +276,23 @@ export default function Home() {
             ))}
           </div>
         </section>
+        <section className="section press">
+  <div className="section-heading align-center">
+    <span className="eyebrow">{t("press.eyebrow") || "Prensa"}</span>
+    <h2>{t("press.title") || "Hablan de nosotros"}</h2>
+  </div>
+
+  <div className="press-logos">
+    <img src="/press/lago.png" alt="100 Layer Cake" />
+    <img src="/press/wezoree.png" alt="Wezoree" />
+    <img src="/press/alia.png" alt="Alia" />
+    <img src="/press/alai.png" alt="Alai" />
+    <img src="/press/mariee.png" alt="La Mariée aux Pieds Nus" />
+    <img src="/press/together.png" alt="Together Journal" />
+    <img src="/press/mv.png" alt="MVW" />
+  </div>
+</section>
+
 
         <section className="section manifesto">
           <blockquote>{t("manifesto.quote")}</blockquote>
