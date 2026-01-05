@@ -122,6 +122,27 @@ export default function Home() {
     i18n.changeLanguage(lng);
     setActiveLang(lng);
   };
+
+  useEffect(() => {
+  const steps = document.querySelectorAll(".service-step");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  steps.forEach((step) => observer.observe(step));
+
+  return () => observer.disconnect();
+}, []);
+
   
 
 const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
@@ -211,28 +232,8 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
 
       <div className="page-wrapper">
         {/* ... resto del contenido idéntico ... */}
-        <section id="servicios" className="section intro">
-          <div className="intro-grid">
-            <div>
-              <span className="eyebrow">{t("vision.eyebrow")}</span>
-              <h2>{t("vision.title")}</h2>
-              <p>{t("vision.description")}</p>
-            </div>
-            <div className="intro-points">
-              <div>
-                <span>01</span>
-                <p>{t("vision.points.one")}</p>
-              </div>
-              <div>
-                <span>02</span>
-                <p>{t("vision.points.two")}</p>
-              </div>
-              <div>
-                <span>03</span>
-                <p>{t("vision.points.three")}</p>
-              </div>
-            </div>
-          </div>
+        <section className="section manifesto">
+          <blockquote>{t("manifesto.quote")}</blockquote>
         </section>
 
         {/* ... resto de secciones (sin cambios) ... */}
@@ -263,36 +264,35 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
           </div>
         </section>
 
-        <section id="servicios" className="section services">
+       <section id="servicios" className="section services-story">
   <div className="section-heading align-left">
     <h2>{t("services.title")}</h2>
-    <p className="services-sub">{t("services.subtitle") || ""}</p>
+    <p className="services-sub">{t("services.subtitle")}</p>
   </div>
 
-  <div className="service-grid">
-    {serviceItems.map((service) => (
-      <article key={service.key} className="service-card" tabIndex={0} aria-labelledby={`svc-${service.key}-title`}>
-        <div className="service-card-head">
-          <span className="service-icon" aria-hidden="true">{service.icon}</span>
-          <h3 id={`svc-${service.key}-title`} className="service-title">
+  <ol className="services-steps">
+    {serviceItems.map((service, index) => (
+<li
+  key={service.key}
+  className={`service-step ${index % 2 ? "is-right" : "is-left"}`}
+>
+        <div className="step-index">
+          {String(index + 1).padStart(2, "0")}
+        </div>
+
+        <div className="step-content">
+          <h3 className="step-title">
             {t(`services.items.${service.key}.title`, service.title)}
           </h3>
+          <p className="step-desc">
+            {t(`services.items.${service.key}.description`, service.description)}
+          </p>
         </div>
-
-        <p className="service-desc">
-          {t(`services.items.${service.key}.description`, service.description)}
-        </p>
-
-        {/* CTA interna: puede abrir modal, anclar o navegar a detalle */}
-        <div className="service-cta">
-          <a className="btn primary fullwidth" href={`/contacto`} onClick={() => {/* optional analytics */}}>
-            {t("services.ctaContact") || "Consultanos"}
-          </a>
-        </div>
-      </article>
+      </li>
     ))}
-  </div>
+  </ol>
 </section>
+
 
 
         <section id="portfolio" className="section gallery">
@@ -323,7 +323,6 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
         <section className="section press">
   <div className="section-heading align-center">
     <span className="eyebrow">{t("press.eyebrow") || "Prensa"}</span>
-    <h2>{t("press.title") || "Hablan de nosotros"}</h2>
   </div>
 
   <div className="press-logos">
@@ -358,12 +357,6 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
     </div>
   </div>
 )}
-
-
-
-        <section className="section manifesto">
-          <blockquote>{t("manifesto.quote")}</blockquote>
-        </section>
 
         <section id="contacto" className="section contact">
           <div className="contact-inner">

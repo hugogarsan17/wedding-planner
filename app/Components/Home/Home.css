@@ -68,6 +68,73 @@
   cursor: pointer;
   z-index: 2;
 }
+.service-step {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 48px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.service-step.is-right {
+  grid-template-columns: 1fr 120px;
+}
+
+.service-step.is-right .step-index {
+  order: 2;
+  text-align: right;
+}
+
+.service-step.is-right .step-content {
+  order: 1;
+  text-align: right;
+  margin-left: auto;
+}
+.services-steps {
+  position: relative;
+}
+
+.services-steps::before {
+  content: "";
+  position: absolute;
+  left: 60px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.15),
+    transparent
+  );
+}
+.step-index {
+  font-size: clamp(64px, 7vw, 96px);
+  font-weight: 200;
+  color: rgba(31, 22, 23, 0.08);
+  letter-spacing: -0.05em;
+}
+.service-step:hover .step-index {
+  color: rgba(31, 22, 23, 0.15);
+}
+.service-step {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.service-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+  
+@media (max-width: 768px) {
+  .services-steps::before {
+    display: none;
+  }
+}
+
+
 
 
 .gallery-item {
