@@ -46,6 +46,14 @@ const serviceItems = [
   },
 ];
 
+type GalleryImage = {
+  src: string;
+  alt: string;
+  label?: string;
+  span: string;
+  key: string;
+};
+
 
 const galleryImages = [
   { src: "/p8.jpeg", span: "tall", key: "p8" },
@@ -115,7 +123,7 @@ export default function Home() {
     setActiveLang(lng);
   };
 
-const [activeImage, setActiveImage] = useState(null);
+const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
 
 
   const translatedServices = useMemo(
