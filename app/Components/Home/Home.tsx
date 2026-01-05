@@ -115,6 +115,9 @@ export default function Home() {
     setActiveLang(lng);
   };
 
+const [activeImage, setActiveImage] = useState(null);
+
+
   const translatedServices = useMemo(
     () =>
       serviceItems.map(({ key, icon }) => ({
@@ -287,16 +290,21 @@ export default function Home() {
           </div>
           <div className="gallery-grid">
             {translatedGallery.map((image) => (
-              <figure key={image.src} className={`gallery-item ${image.span}`}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill
-                  sizes="(max-width: 720px) 70vw, (max-width: 1200px) 35vw, 360px"
-                  className="gallery-photo"
-                />
-                {image.label && <figcaption>{image.label}</figcaption>}
-              </figure>
+<figure
+  key={image.src}
+  className={`gallery-item ${image.span}`}
+  onClick={() => setActiveImage(image)}
+>
+  <Image
+    src={image.src}
+    alt={image.alt}
+    fill
+    sizes="(max-width: 720px) 70vw, (max-width: 1200px) 35vw, 360px"
+    className="gallery-photo"
+  />
+  {image.label && <figcaption>{image.label}</figcaption>}
+</figure>
+
             ))}
           </div>
         </section>
@@ -314,6 +322,31 @@ export default function Home() {
     <img src="/press/together.png" alt="Together Journal" />
   </div>
 </section>
+{activeImage && (
+  <div className="lightbox" onClick={() => setActiveImage(null)}>
+    <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+      <button
+        className="lightbox-close"
+        onClick={() => setActiveImage(null)}
+      >
+        ×
+      </button>
+
+      <Image
+        src={activeImage.src}
+        alt={activeImage.alt}
+        fill
+        className="lightbox-image"
+        sizes="100vw"
+      />
+
+      {activeImage.label && (
+        <p className="lightbox-caption">{activeImage.label}</p>
+      )}
+    </div>
+  </div>
+)}
+
 
 
         <section className="section manifesto">

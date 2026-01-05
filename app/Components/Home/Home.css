@@ -29,6 +29,41 @@
   object-fit: cover;
   z-index: -2;
 }
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-content {
+  position: relative;
+  width: 90vw;
+  height: 90vh;
+}
+
+.lightbox-image {
+  object-fit: contain;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  font-size: 40px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.gallery-item {
+  cursor: zoom-in;
+}
+
 
 .main-hero::before {
   content: "";
