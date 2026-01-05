@@ -127,12 +127,49 @@
   opacity: 1;
   transform: translateY(0);
 }
-  
+
+/* =========================
+   SERVICIOS – MOBILE FIX
+   ========================= */
 @media (max-width: 768px) {
-  .services-steps::before {
-    display: none;
+
+  .services-steps {
+    padding-inline: 0;
   }
+
+  .service-step,
+  .service-step.is-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .step-index {
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 4px;
+    opacity: 0.35;
+  }
+
+  .step-content {
+    max-width: 90%;
+  }
+
+  .step-title {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .step-desc {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
 }
+
+
 
 
 
@@ -910,129 +947,164 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* Servicios: grid y tarjetas */
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 28px;
+/* ===============================
+   SERVICIOS – STORYTELLING
+   =============================== */
+
+.services-story {
+  width: 100%;
+  background: transparent;
 }
 
-/* tarjetas */
-.service-card {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 6px 20px rgba(31,22,23,0.06);
-  transition: transform .22s ease, box-shadow .22s ease;
+/* Contenedor principal */
+.services-steps {
+  list-style: none;
+  margin: 0 auto;
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  max-width: 1100px;
+
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  outline: none;
+  gap: clamp(3rem, 6vw, 5rem);
+
+  position: relative;
 }
 
-.service-card:focus,
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(31,22,23,0.10);
+/* Línea vertical (desktop) */
+.services-steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50px;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.12),
+    transparent
+  );
 }
 
-/* header de tarjeta */
-.service-card-head {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 12px;
-}
+/* Cada paso */
+.service-step {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 32px;
+  align-items: flex-start;
+  position: relative;
 
-.service-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 10px;
-  background: linear-gradient(180deg, rgba(0,0,0,0.03), rgba(0,0,0,0.02));
-  font-size: 22px;
-  flex-shrink: 0;
-}
-
-.service-title {
-  font-size: 1.05rem;
-  margin: 0;
-  line-height: 1.15;
-}
-
-/* descripcion */
-.service-desc {
-  color: var(--muted, #6b6b6b);
-  margin: 0 0 16px 0;
-  flex-grow: 1;
-}
-
-/* CTA */
-.service-cta {
-  margin-top: 8px;
-}
-
-/* Botones a 100% width cuando se necesite */
-.btn.fullwidth,
-.btn.fullwidth:link,
-.btn.fullwidth:visited {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  padding: 12px 14px;
-  border-radius: 10px;
-}
-
-/* Responsive: tablets y móviles */
-@media (max-width: 1024px) {
-  .service-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .service-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .service-card {
-    padding: 16px;
-  }
-
-  /* For mobile, primary CTA should be full width and visible */
-  .service-cta .btn {
-    width: 100%;
-  }
-}
-
-/* small helper for optional subtitle under heading */
-.services-sub {
-  color: var(--muted, #6b6b6b);
-  margin-top: 8px;
-  max-width: 60ch;
-}
-/* Estado inicial */
-.service-card {
   opacity: 0;
   transform: translateY(40px);
-  transition:
-    opacity 0.6s ease,
-    transform 0.6s ease;
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-/* Cuando entra en pantalla */
-.service-card.is-visible {
+.service-step.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Pequeño stagger automático */
-.service-card:nth-child(1) { transition-delay: 0.05s; }
-.service-card:nth-child(2) { transition-delay: 0.12s; }
-.service-card:nth-child(3) { transition-delay: 0.18s; }
-.service-card:nth-child(4) { transition-delay: 0.24s; }
-.service-card:nth-child(5) { transition-delay: 0.30s; }
-.service-card:nth-child(6) { transition-delay: 0.36s; }
+/* Alternancia SOLO desktop */
+@media (min-width: 769px) {
+  .service-step:nth-child(even) {
+    grid-template-columns: 1fr 100px;
+    text-align: right;
+  }
+
+  .service-step:nth-child(even) .step-index {
+    order: 2;
+  }
+
+  .service-step:nth-child(even) .step-content {
+    margin-left: auto;
+  }
+}
+
+/* Número */
+.step-index {
+  font-size: clamp(64px, 7vw, 96px);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(31, 22, 23, 0.12);
+  user-select: none;
+}
+
+/* Texto */
+.step-content {
+  max-width: 520px;
+}
+
+.step-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.step-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ===============================
+   MOBILE – CLARO Y ELEGANTE
+   =============================== */
+@media (max-width: 768px) {
+
+  .services-steps {
+    padding: clamp(2.5rem, 8vw, 3.5rem) 0;
+    gap: 48px;
+  }
+
+  .services-steps::before {
+    display: none;
+  }
+
+  .service-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .step-index {
+    font-size: 32px;
+    opacity: 0.35;
+  }
+
+  .step-content {
+    max-width: 90%;
+  }
+
+  .step-title {
+    font-size: 18px;
+  }
+
+  .step-desc {
+    font-size: 15px;
+  }
+}
+/* ===============================
+   FIX NÚMEROS SERVICIOS – MOBILE
+   =============================== */
+@media (max-width: 768px) {
+
+  .service-step {
+    position: relative;
+  }
+
+  .step-index {
+    order: 0;
+    font-size: 28px;
+    opacity: 0.25;
+    margin-bottom: 6px;
+  }
+
+  .step-content {
+    order: 1;
+  }
+
+}
+
