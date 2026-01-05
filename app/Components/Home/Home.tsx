@@ -122,8 +122,10 @@ export default function Home() {
     i18n.changeLanguage(lng);
     setActiveLang(lng);
   };
+  
 
 const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
+
 
 
   const translatedServices = useMemo(
@@ -145,6 +147,8 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
       })),
     [t]
   );
+
+  
 
   return (
     <>

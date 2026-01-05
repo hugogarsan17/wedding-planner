@@ -41,9 +41,11 @@
 
 .lightbox-content {
   position: relative;
-  width: 90vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
 }
+
 
 .lightbox-image {
   object-fit: contain;
@@ -51,14 +53,22 @@
 
 .lightbox-close {
   position: absolute;
-  top: -40px;
-  right: 0;
-  font-size: 40px;
-  background: none;
-  border: none;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
   color: white;
+  font-size: 28px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  z-index: 2;
 }
+
 
 .gallery-item {
   cursor: zoom-in;
