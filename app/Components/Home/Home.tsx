@@ -255,8 +255,8 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
               <Image
                 src="/me.png"
                 alt={t("about.imageAlt")}
-                width={720}
-                height={900}
+                width={700}
+                height={700}
                 className="about-photo"
                 priority={false}
               />

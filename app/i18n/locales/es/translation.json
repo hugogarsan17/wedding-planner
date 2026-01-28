@@ -3,7 +3,7 @@
     "brandTitle1": "the",
     "brandTitle2": "perfect",
     "brandTitle3": "match",
-    "subtitle": "WEDDING PLANNER & DESIGNER",
+    "subtitle": "WEDDING PLANNING & DESIGN",
     "ctaPrimary": "Agenda una llamada",
     "ctaSecondary": "Ver portfolio",
     "scroll": "Desliza para descubrir"
@@ -12,7 +12,8 @@
     "home": "Inicio",
     "services": "Servicios",
     "portfolio": "Portfolio",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "aboutme": "About"
   },
   "vision": {
     "eyebrow": "Visión",
@@ -25,8 +26,8 @@
     }
   },
   "about": {
-    "title": "Nosotros",
-    "body": "Detrás de cada boda hay una historia única. La mía consiste en transformar emociones en experiencias que se recuerden para siempre.\n\n<strong>¿Listos para toda la magia que se acerca?</stronge>",
+    "title": "Hi! I'm Anna",
+    "body": "Creativa por naturaleza, apasionada de todo lo bonito y la persona que hay al timón de <strong>@theperfectmatch.wed</strong>.\n\nMi relación con las bodas empezó hace unos años atrás, antes de dedicarme a organizarlas. Desde entonces, he tenido el privilegio de vivirlas desde diferentes perspectivas, conociendo de cerca la emoción, los nervios y la magia que envuelven cada “sí, quiero”. Toda esa experiencia me enseñó que una boda es mucho más que un evento: es un momento único, irrepetible y lleno de significado. Y… lo tuve claro: Quería aportar mi esencia, mi forma de sentir y transformar todo lo que había aprendido en algo aún más grande.\n\nAsí nació The Perfect Match, un espacio dónde los sueños toman forma para convertirse en momentos imborrables y llenos de creatividad. Y tú, ¿quieres saber más? Quédate por aquí… ¡y descubrámoslo juntos!",
     "imageAlt": "Fotografía del equipo de la empresa sonriendo en la oficina"
   },
   "services": {
@@ -82,7 +83,7 @@
     "title": "Colaboradores"
   },
   "manifesto": {
-    "quote": "“Lo efímero de un día puede convertirse en lo más eterno de una vida.”"
+    "quote": "Lo que pasa, se queda. Lo que importa está bajo control."
   },
   "contact": {
     "eyebrow": "Hablemos",

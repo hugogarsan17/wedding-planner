@@ -234,7 +234,14 @@
   color: #fff;
   max-width: min(640px, 90vw);
   padding: clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+.brand {
+  flex-shrink: 0;
+}
+
 
 .hero-badge {
   display: inline-flex;
@@ -253,7 +260,6 @@
   font-family: "BeautifullyDelicious", cursive;
   font-size: clamp(3.6rem, 12vw, 10rem);
   margin: clamp(1rem, 2vw, 1.6rem) 0 0.6rem;
-  letter-spacing: -0.01em;
   text-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
   white-space: nowrap;
   line-height: 1.02;
@@ -262,8 +268,10 @@
 .hero-center p {
   margin: 0 auto clamp(1.4rem, 2.5vw, 2rem);
   font-family: "Poppins", var(--font-geist-sans), system-ui;
-  font-size: clamp(1rem, 1rem + 0.35vw, 1.35rem);
+  font-size: clamp(0.5rem, 0.5rem + 0.35vw, 1.35rem);
   line-height: 1.6;
+    letter-spacing: 0.16em;
+
   color: rgba(255, 255, 255, 0.82);
 }
 
@@ -273,6 +281,9 @@
   flex-wrap: wrap; /* permitir que los botones salten a la siguiente línea si hace falta */
   justify-content: center;
   align-items: center;
+  margin-top: 3rem;
+    transform: translateY(10.5rem); /* ajusta a gusto */
+  
 }
 
 .hero-actions .btn {
@@ -289,10 +300,8 @@
   align-items: center;
   justify-content: center;
   padding: 0.8rem 1.8rem;
-  border-radius: 999px;
   font-family: "Poppins", var(--font-geist-sans), system-ui;
   font-size: 0.8rem;
-  font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
@@ -302,8 +311,8 @@
 }
 
 .btn.primary {
-  background: linear-gradient(135deg, #f7d9dc, #f0c8d1);
-  color: #2a1d21;
+  background: #a1a1a1;
+  color: #fff;
   box-shadow: 0 18px 40px rgba(242, 201, 209, 0.4);
 }
 
@@ -368,7 +377,6 @@
 
 .section-heading {
   max-width: 540px;
-  margin: 0 auto 2.5rem;
   text-align: center;
 }
 
@@ -381,7 +389,6 @@
   font-size: clamp(2rem, 1.4rem + 2vw, 3rem);
   font-weight: 500;
   line-height: 1.15;
-  margin-bottom: 0.8rem;
 }
 
 .section-heading p {
@@ -530,7 +537,7 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #1f1617;
-  margin-left: 10px;
+  margin: 10px;
 }
 
 .gallery-item:hover .gallery-photo {
@@ -682,12 +689,29 @@
   .hero-center {
     transform: translate(-50%, -48%);
   }
+.hero-center h1 {
+  font-family: "BeautifullyDelicious", cursive;
+  font-size: clamp(4rem, 12vw, 10rem);
+  margin: clamp(1rem, 2vw, 1.6rem) 0 0.6rem;
+  letter-spacing: -0.01em;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+  line-height: 1.02;
+}
+.hero-center p {
+  margin: 0 auto clamp(1.4rem, 2.5vw, 2rem);
+  font-family: "Poppins", var(--font-geist-sans), system-ui;
+  font-size: clamp(0.5rem, 0.5rem + 0.35vw, 1.35rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+}
 
   .hero-actions {
     width: 100%;
     max-width: 340px;
     margin-inline: auto;
-    gap: 0.55rem;
+    gap: 1rem;
+    margin-top: 3rem;
   }
 
   .hero-actions .btn {
@@ -804,6 +828,7 @@
   gap: 3rem;
 }
 
+
 .about-content.left-image {
   flex-direction: row-reverse; /* si quisieras texto izquierda, cambia a 'row' */
 }
@@ -812,28 +837,56 @@
   flex: 1 1 400px;
   display: flex;
   justify-content: center;
+  filter: grayscale(40%);
 }
+#nosotros{
+  background-image: url("/cover.png");
+}
+
+#servicios{
+  background-image: url("/sticker.jpg");
+    background-repeat: no-repeat;  /* 🔥 CLAVE */
+      background-position: left bottom;   /* 🔥 CLAVE */
+      margin-bottom: -100px;
+
+}
+
+#nosotros h2{
+    font-family: "BeautifullyDelicious", cursive;
+  font-size: clamp(3rem, 12vw, 7rem);
+  white-space: nowrap;
+  line-height: 1.02;
+  margin-left: 50px;
+  color: #4a4a4a;
+  font-weight: 600;
+}
+
+
 
 .about-image img {
   width: 100%;
-  max-width: 420px;
-  border-radius: 20px;
+  max-width: 450px;
+  border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  margin-top: -100px;
 }
 
 .about-text {
-  margin-left: 50px;
+  margin-left: 100px;
   flex: 1 1 480px;
   max-width: 700px;
+  font-family: "Poppins", var(--font-geist-sans), system-ui;
   line-height: 1.7;
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #4a4a4a; /* gris suave, elegante */
+  text-align: justify;
+  
 }
 .about-text strong {
-  color: #dcae96; /* tono cálido tipo rosa empolvado o dorado suave */
+  color: #4a4a4a; /* tono cálido tipo rosa empolvado o dorado suave */
   font-weight: 600;
 }
+
 .about-text em {
   color: #b38b7d;
   font-style: italic;
@@ -848,15 +901,23 @@
 
   .about-text {
     margin-left: 0px;
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .about-image {
     order: -1; /* pone la imagen arriba en móvil */
   }
 
-  .about-image img {
-    max-width: 100%;
+  #nosotros h2{
+    margin-bottom: 100px;
+    font-weight: 600;
+        font-size: 4rem;
+
+  }
+
+  .about-photo img{
+  max-width: 400px;
+  filter: grayscale(1);
   }
 
   .service-grid {
