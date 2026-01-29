@@ -237,32 +237,7 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
         </section>
 
         {/* ... resto de secciones (sin cambios) ... */}
-        <section id="nosotros" className="section contact">
-          <div className="section-heading align-left">
-            <h2>{t("about.title")}</h2>
-          </div>
-
-          <div className="about-content">
-            <div className="about-text">
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: t("about.body").replace(/\n/g, "<br />"),
-                }}
-              />
-            </div>
-
-            <div className="about-image">
-              <Image
-                src="/me.png"
-                alt={t("about.imageAlt")}
-                width={700}
-                height={700}
-                className="about-photo"
-                priority={false}
-              />
-            </div>
-          </div>
-        </section>
+ 
 
        <section id="servicios" className="section services-story">
   <div className="section-heading align-left">
