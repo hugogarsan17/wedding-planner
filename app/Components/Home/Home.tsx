@@ -76,8 +76,6 @@ export default function Home() {
     i18n.language?.startsWith("en") ? "en" : "es"
   );
 
-  // Controla si el navbar debe mostrarse (solo cuando estamos muy arriba)
-  const [navVisible, setNavVisible] = useState(true);
 
   useEffect(() => {
   const cards = document.querySelectorAll(".service-card");
@@ -107,16 +105,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const threshold = 20; // px desde top
-    const onScroll = () => {
-      setNavVisible(window.scrollY <= threshold);
-    };
-    // Inicial
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const changeLanguage = (lng: "es" | "en") => {
     i18n.changeLanguage(lng);
@@ -198,6 +186,17 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
           muted
           playsInline
         />
+<<<<<<< HEAD
+=======
+
+        {/* Navbar: visible cuando showUI true para respetar la animación inicial */}
+        <div
+          className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"}`}
+        >
+          <Navbar />
+        </div>
+
+>>>>>>> 94b55e708c035bb7e7c2e39faa872ab1eee3ec2d
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
           <div className="brand">
             <h1 className="brand-title">

@@ -111,11 +111,11 @@
 .step-index {
   font-size: clamp(64px, 7vw, 96px);
   font-weight: 200;
-  color: rgba(31, 22, 23, 0.08);
+  color: rgba(31, 22, 23, 0.28);
   letter-spacing: -0.05em;
 }
 .service-step:hover .step-index {
-  color: rgba(31, 22, 23, 0.15);
+  color: rgba(0, 0, 0, 0.15);
 }
 .service-step {
   opacity: 0;
@@ -151,6 +151,7 @@
     line-height: 1;
     margin-bottom: 4px;
     opacity: 0.35;
+    color: rgba(31, 22, 23, 0.45);
   }
 
   .step-content {
@@ -1188,3 +1189,10 @@
 
 }
 
+/* ===============================
+   STEP INDEX – COLOR DEFINITIVO
+   =============================== */
+
+.step-index {
+  color: rgb(0, 0, 0) !important;
+}
