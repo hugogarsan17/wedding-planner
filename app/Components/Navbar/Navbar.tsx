@@ -109,12 +109,13 @@ export default function Navbar() {
   };
 
   return (
-    <header
-      ref={navRef}
-      className={`nav ${isOpen ? "is-open" : ""} ${entered ? "is-enter" : ""} ${
-        atTop ? "is-top" : "is-scrolled"
-      }`}
-    >
+   <header
+  ref={navRef}
+  className={`nav ${entered ? "is-enter" : ""} ${
+    atTop ? "" : "is-hidden"
+  }`}
+>
+
       <button
         type="button"
         className={`nav-toggle ${isOpen ? "is-active" : ""}`}
@@ -138,7 +139,13 @@ export default function Navbar() {
         // accessibilidad: aria-hidden en desktop no tiene sentido; en móvil el menú cerrado estará hidden por CSS
         aria-hidden={false}
       >
-        <Image src="/logo.jpeg" className="logo-nav" alt="Logo" width={72} height={72} />
+<Image
+  src="/logo.jpeg"
+  alt="Logo"
+  width={48}
+  height={48}
+  className="logo-nav"
+/>
         <div className="nav-content">
           {/* Links para escritorio: inline; para móvil se convierten en dropdown */}
           <div className={`nav-links ${isOpen ? "is-open" : ""}`} role="menu">

@@ -188,19 +188,38 @@
 }
 
 /* transición suave y estado oculto */
+/* ===============================
+   NAVBAR MOUNT – FIX REAL
+================================ */
+/* ===============================
+   NAVBAR MOUNT – FINAL FIX
+================================ */
 .navbar-mount {
   position: fixed;
   top: calc(30px + env(safe-area-inset-top));
-  left: 50%;
-  transform: translateX(var(--fade-offset-x));
+  left: 0;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
   z-index: 10000;
-  transition: transform 0.28s ease, opacity 0.28s ease, visibility 0.28s;
+  transition: opacity 0.28s ease, transform 0.28s ease;
   will-change: transform, opacity;
+
   opacity: 1;
   visibility: visible;
-  pointer-events: auto;
-  max-width: calc(100% - 32px);
+  pointer-events: none;
 }
+
+
+.navbar-mount.hidden {
+  opacity: 0;
+  transform: translateY(-14px);
+  visibility: hidden;
+  pointer-events: none;
+}
+
 
 /* Mobile override */
 @media (max-width: 720px) {

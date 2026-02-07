@@ -198,16 +198,6 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
           muted
           playsInline
         />
-
-        {/* Navbar: visible SOLO cuando navVisible === true (y cuando showUI true para respetar la animación inicial) */}
-        <div
-          className={`navbar-mount ${showUI ? "fade-in-top" : "is-hidden"} ${
-            navVisible ? "" : "hidden"
-          }`}
-        >
-          <Navbar />
-        </div>
-
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
           <div className="brand">
             <h1 className="brand-title">

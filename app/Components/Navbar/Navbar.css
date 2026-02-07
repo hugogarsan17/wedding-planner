@@ -1,213 +1,233 @@
-/* Contenedor del navbar: capa superior, sin bloquear clics fuera */
+/* ===============================
+   NAVBAR WRAPPER
+================================ */
 .nav {
   position: fixed;
-  top: calc(env(safe-area-inset-top) + 0px);
+  top: env(safe-area-inset-top);
   left: 0;
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 8px 12px;
   z-index: 9999;
-  pointer-events: none; /* no bloquea el hero */
-  font-family: "Poppins", var(--font-geist-sans), system-ui;
+  pointer-events: none;
+  font-family: "Poppins", system-ui;
+
   opacity: 0;
   transform: translateY(-12px);
-  will-change: opacity, transform;
 }
 
-/* Cuando el componente entra (se añade con requestAnimationFrame) */
 .nav.is-enter {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 320ms ease, transform 320ms ease;
+  transition: opacity .3s ease, transform .3s ease;
 }
 
-/* Aplica a todos los destinos con id, o a tus secciones */
-[id] { scroll-margin-top: 84px; }  /* ajusta 84px a la altura visual de tu píldora */
-
-/* focus visible */
-.nav-toggle:focus-visible,
-.nav-inner a:focus-visible {
-  outline: 2px solid rgba(255,255,255,.9);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(255,255,255,.15);
+/* Evita que el navbar tape anchors */
+[id] {
+  scroll-margin-top: 84px;
 }
 
-/* Hacemos que nav-inner y nav-toggle reciban eventos aunque el wrapper .nav no */
-.nav-inner,
-.nav-toggle { pointer-events: auto; }
-
-/* Píldora principal */
+/* ===============================
+   NAV INNER (PÍLDORA)
+================================ */
 .nav-inner {
-  display: inline-flex;
+  pointer-events: auto;
+  display: flex;
   align-items: center;
-  gap: clamp(12px, 2.5vw, 36px);
-  padding: 10px;
+  gap: 24px;
+  padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(24,21,27,.82);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  max-width: 92vw;
+  position: relative;
 
-  transition: opacity .25s ease, transform .25s ease, visibility .25s;
-  position: relative; /* para el dropdown absoluto */
+  width: fit-content;   /* 🔑 automático */
+  max-width: 100%;      /* seguridad */
+  margin-inline: auto;
+
+  background: rgba(18,18,22,.55);
+  backdrop-filter: blur(16px);
 }
 
-/* Logo */
-.logo-nav{
-  width: 50px;
-  border-radius: 100%;
+
+
+/* ===============================
+   LOGO
+================================ */
+.logo-nav {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
   flex-shrink: 0;
+  display: block;
+  position: static;
 }
 
-/* Contenedor de contenido interno para controlar layout */
-.nav-content {
+
+/* ===============================
+   LINKS (DESKTOP)
+================================ */
+.nav-links {
   display: flex;
   align-items: center;
   gap: 16px;
-}
-
-/* LINKS - estilo base (desktop) */
-.nav-links {
-  display: flex;
-  gap: clamp(12px, 2.5vw, 20px);
-  align-items: center;
   white-space: nowrap;
-  font-family: "Poppins", var(--font-geist-sans), system-ui;
-
 }
 
-/* Enlace individual */
 .nav-links a {
   color: #fff;
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 8px;
-  transition: background .12s ease, transform .08s ease;
-}
-.nav-links a:hover,
-.nav-links a:focus {
-  background: rgba(255,255,255,0.06);
+  transition: background .15s ease;
 }
 
-/* Botón hamburguesa */
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  background: rgba(255,255,255,.08);
+}
+
+/* ===============================
+   TOGGLE (HAMBURGUESA)
+================================ */
 .nav-toggle {
-  position: absolute;
-  right: calc(env(safe-area-inset-right) + 12px);
-  top: calc(env(safe-area-inset-top) + 8px);
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
+  pointer-events: auto;
   width: 44px;
   height: 44px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,.25);
-  background: rgba(24,21,27,.75);
+  background: rgba(24,21,27,.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  z-index: 10000;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
 }
 
-/* Líneas del icono */
 .nav-toggle-line {
-  width: 22px; height: 2px; border-radius: 999px; background:#fff;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  border-radius: 999px;
   transition: transform .25s ease, opacity .2s ease;
 }
-.nav-toggle.is-active { gap: 0; }
-.nav-toggle.is-active .nav-toggle-line:nth-of-type(2) { opacity: 0; }
-.nav-toggle.is-active .nav-toggle-line:nth-of-type(1) { transform: translateY(6px) rotate(45deg); }
-.nav-toggle.is-active .nav-toggle-line:nth-of-type(3) { transform: translateY(-6px) rotate(-45deg); }
 
-/* Texto oculto accesible */
-.nav .sr-only {
-  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;
+.nav-toggle.is-active .nav-toggle-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-toggle.is-active .nav-toggle-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.is-active .nav-toggle-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
-/* ===== RESPONSIVE: móvil ===== */
+/* Texto accesible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+/* ===============================
+   MOBILE
+================================ */
 @media (max-width: 720px) {
-  .nav { justify-content: flex-start; }
 
-  .nav-toggle { display: flex; margin-right: 20px; }
-
-  /* Ocultar logo en móvil si lo prefieres */
-  .logo-nav { display: none; }
-
-  /* La píldora principal ocupa full-width visualmente */
-  .nav-inner {
-    padding-left: calc(env(safe-area-inset-left) + 12px);
-    padding-right: calc(env(safe-area-inset-right) + 12px);
-    width: 100%;
-    max-width: none;
-    border-radius: 12px; /* menos redondeo en móvil */
-    padding-top: 12px;
-    padding-bottom: 12px;
-    visibility: hidden;
+  .nav {
+    justify-content: flex-start;
   }
 
-  /* Estilo del dropdown (por defecto cerrado) */
+  .nav-inner {
+    width: 100%;
+    max-width: none;
+    border-radius: 14px;
+    padding: 12px 16px;
+    justify-content: space-between;
+  }
+
+  .logo-nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  /* Dropdown */
   .nav-links {
     position: absolute;
-
-    right: 12px;
-    top: calc(100% + 8px); /* aparece justo debajo de la píldora */
-    display: flex;
+    top: calc(100% + 8px);
+    right: 0;
     flex-direction: column;
-    gap: 8px;
+    width: 200px;
     padding: 8px;
-    border-radius: 12px;
+    gap: 6px;
+
     background: rgba(24,21,27,.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    border-radius: 14px;
     box-shadow: 0 16px 40px rgba(0,0,0,.35);
-    transform-origin: top center;
 
-    /* Hidden state */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-6px) scale(.995);
-    transition: opacity .18s ease, transform .18s ease, visibility .18s;
-    z-index: 10001; /* encima del hero */
-    pointer-events: none; /* bloquea clics cuando está cerrado */
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
   }
 
-  /* Cuando el nav-inner tiene la clase is-open mostramos el dropdown */
-  .nav-inner.is-open .nav-links,
-  .nav-links.is-open {
+  .nav-inner.is-open .nav-links {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
     pointer-events: auto;
-    width: 200px;
-    top: 50px;
   }
 
-  /* Enlaces del dropdown más grandes y en columna */
-  .nav-inner .nav-links a {
-    display: block;
+  .nav-links a {
     width: 100%;
     padding: 12px 14px;
-    text-align: left;
+    font-size: 1rem;
     border-radius: 10px;
-    font-size: 1.05rem;
-    background: transparent;
   }
-
-  /* Como la píldora tiene padding-right grande en escritorio, en móvil reducimos */
-  .nav-inner { padding-right: 56px; }
 }
 
-/* Respeto a usuarios con reducción de movimiento */
+/* ===============================
+   REDUCED MOTION
+================================ */
 @media (prefers-reduced-motion: reduce) {
-  .nav,
-  .nav.is-enter,
-  .nav-inner,
-  .nav-inner.is-open,
-  .nav-toggle-line {
+  * {
     transition: none !important;
     transform: none !important;
   }
 }
+.nav.is-hidden {
+  opacity: 0;
+  transform: translateY(-16px);
+  pointer-events: none;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* 🔑 centro real */
+  position: relative;
+}
 
+/* Logo fijado a la izquierda */
+.logo-nav {
+  position: absolute;
+  left: 18px;
+}
+
+/* Links perfectamente centrados */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
