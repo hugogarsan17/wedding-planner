@@ -8,7 +8,7 @@
 .contact-page {
   min-height: 100vh;
   background:
-    linear-gradient(rgba(0,0,0,0.28), rgba(0,0,0,0.28)),
+    linear-gradient(rgba(255, 249, 249, 0.28), rgba(0,0,0,0.28)),
     url("/images/contact-bg.jpg") center / cover no-repeat;
   display: flex;
   flex-direction: column;
@@ -152,4 +152,17 @@
   .form-grid .full {
     grid-column: 1 / -1;
   }
+}
+
+
+.lang-switcher {
+  position: fixed;
+  top: calc(env(safe-area-inset-top) + 16px);
+  left: 16px;
+
+  z-index: 10002; /* por encima de TODO */
+  display: flex;
+  gap: 8px;
+
+  pointer-events: auto;
 }

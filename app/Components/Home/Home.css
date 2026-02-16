@@ -170,15 +170,9 @@
 
 }
 
-
-
-
-
-
 .gallery-item {
   cursor: zoom-in;
 }
-
 
 .main-hero::before {
   content: "";
@@ -1195,4 +1189,9 @@
 
 .step-index {
   color: rgb(0, 0, 0) !important;
+}
+
+.lightbox-image {
+  object-fit: contain;
+  pointer-events: none; /* 🔥 esto arregla el cierre */
 }
