@@ -38,12 +38,7 @@
   gap: 24px;
   padding: 10px 18px;
   border-radius: 999px;
-  position: relative;
-
-  width: fit-content;   /* 🔑 automático */
   max-width: 100%;      /* seguridad */
-  margin-inline: auto;
-
   background: rgba(18,18,22,.55);
   backdrop-filter: blur(16px);
 }
@@ -57,10 +52,8 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
+    flex-shrink: 0;
   display: block;
-  position: static;
 }
 
 
@@ -219,11 +212,6 @@
   position: relative;
 }
 
-/* Logo fijado a la izquierda */
-.logo-nav {
-  position: absolute;
-  left: 18px;
-}
 
 /* Links perfectamente centrados */
 .nav-links {
