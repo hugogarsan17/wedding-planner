@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React, { useState } from "react";
 import "./whatsapp.css";
 
@@ -50,11 +51,7 @@ const defaultMessage =
         aria-label="Abrir chat de WhatsApp"
       >
         <span className="whatsapp-icon">
-          {/* Logo oficial desde /public */}
-          <img
-            src="/logo-wass.png" // o .svg, como lo tengas
-            alt="WhatsApp"
-          />
+          <Image src="/logo-wass.png" alt="WhatsApp" width={24} height={24} />
         </span>
       </button>
     </div>

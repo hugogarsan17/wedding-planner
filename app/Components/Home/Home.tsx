@@ -2,182 +2,106 @@
 
 import "./../fonts.css";
 import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Navbar from "../Navbar/Navbar";
 import "./Home.css";
+import Footer from "../Footer/Footer";
 import Whatsapp from "../whatsapp/whatsapp";
+import { weddings, type Wedding } from "@/data/weddings";
+
 const serviceItems = [
-  {
-    key: "planning",
-    title: "Planificación completa",
-    description: "Diseño del calendario, presupuesto y coordinación con proveedores para que todo suceda.",
-    icon: "🗓️",
-  },
-  {
-    key: "artDirection",
-    title: "Dirección artística",
-    description: "Concepto visual, paleta, floristería y montaje para una boda con identidad.",
-    icon: "🎨",
-  },
-  {
-    key: "production",
-    title: "Producción & logística",
-    description: "Montaje técnico, coordinación de montaje y supervisión in situ el día D.",
-    icon: "⚙️",
-  },
-  {
-    key: "coordination",
-    title: "Coordinación del día",
-    description: "Gestión del timing y del equipo para que los novios se olviden del resto.",
-    icon: "🤍",
-  },
-  {
-    key: "destination",
-    title: "Destination Weddings",
-    description: "Organización integral para bodas fuera: viajes, alojamientos y trámites.",
-    icon: "✈️",
-  },
-  {
-    key: "honeymoon",
-    title: "Luna de miel",
-    description: "Diseño de experiencias y reservas a medida para una escapada inolvidable.",
-    icon: "🌴",
-  },
+  { key: "planning" },
+  { key: "artDirection" },
+  { key: "production" },
+  { key: "coordination" },
+  { key: "destination" },
+  { key: "honeymoon" },
 ];
 
-type GalleryImage = {
-  src: string;
-  alt: string;
-  label?: string;
-  span: string;
-  key: string;
-};
-
-
-const galleryImages = [
-  { src: "/p8.jpeg", span: "tall", key: "p8" },
-  { src: "/p7.jpeg", span: "wide", key: "p7" },
-  { src: "/p6.jpeg", span: "standard", key: "p6" },
-  { src: "/p5.jpeg", span: "tall", key: "p5" },
-  { src: "/p4.jpeg", span: "big", key: "p4" },
-  { src: "/p3.jpeg", span: "standard", key: "p3" },
-  { src: "/p2.jpeg", span: "wide", key: "p2" },
-  { src: "/p1.jpeg", span: "standard", key: "p1" },
-  { src: "/p9.jpeg", span: "standard", key: "p9" },
-  { src: "/p10.jpeg", span: "standard", key: "p10" },
-  { src: "/p11.jpeg", span: "standard", key: "p11" },
+const pressLogos = [
+  { src: "/press/lago.png", alt: "100 Layer Cake" },
+  { src: "/press/wezoree.png", alt: "Wezoree" },
+  { src: "/press/alai.png", alt: "Alai" },
+  { src: "/press/mariee.svg", alt: "La Mariee aux Pieds Nus" },
+  { src: "/press/together.png", alt: "Together Journal" },
 ];
 
 export default function Home() {
   const [showUI, setShowUI] = useState(false);
+  const [activeCollection, setActiveCollection] = useState<Wedding | null>(null);
   const { t, i18n } = useTranslation();
-  const [activeLang, setActiveLang] = useState<"es" | "en">(() =>
-    i18n.language?.startsWith("en") ? "en" : "es"
-  );
-
+  const activeLang: "es" | "en" = i18n.language?.startsWith("en") ? "en" : "es";
 
   useEffect(() => {
-  const cards = document.querySelectorAll(".service-card");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target); // anima solo una vez
-        }
-      });
-    },
-    {
-      threshold: 0.15, // cuando se ve un 15%
-    }
-  );
-
-  cards.forEach((card) => observer.observe(card));
-
-  return () => observer.disconnect();
-}, []);
-
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowUI(true), 1800);
+    const timer = setTimeout(() => setShowUI(true), 1200);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const steps = document.querySelectorAll(".service-step");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    steps.forEach((step) => observer.observe(step));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!activeCollection) {
+      return undefined;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveCollection(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeCollection]);
 
   const changeLanguage = (lng: "es" | "en") => {
     i18n.changeLanguage(lng);
-    setActiveLang(lng);
   };
-
-  useEffect(() => {
-  const steps = document.querySelectorAll(".service-step");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  steps.forEach((step) => observer.observe(step));
-
-  return () => observer.disconnect();
-}, []);
-
-  
-
-const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
-
-
-
-  const translatedServices = useMemo(
-    () =>
-      serviceItems.map(({ key, icon }) => ({
-        title: t(`services.items.${key}.title`),
-        description: t(`services.items.${key}.description`),
-        icon,
-      })),
-    [t]
-  );
-
-  const translatedGallery = useMemo(
-    () =>
-      galleryImages.map((image) => ({
-        ...image,
-        alt: t(`portfolio.images.${image.key}.alt`),
-        label: t(`portfolio.images.${image.key}.label`),
-      })),
-    [t]
-  );
-
-  
 
   return (
     <>
       <div className="lang-switcher">
-          <button
-            onClick={() => changeLanguage("es")}
-            className={activeLang === "es" ? "active" : ""}
-          >
-            ES
-          </button>
-          <button
-            onClick={() => changeLanguage("en")}
-            className={activeLang === "en" ? "active" : ""}
-          >
-            EN
-          </button>
-        </div>
-      <main id="home" className="main-hero">
-      
+        <button
+          type="button"
+          onClick={() => changeLanguage("es")}
+          className={activeLang === "es" ? "active" : ""}
+          aria-pressed={activeLang === "es"}
+        >
+          ES
+        </button>
+        <button
+          type="button"
+          onClick={() => changeLanguage("en")}
+          className={activeLang === "en" ? "active" : ""}
+          aria-pressed={activeLang === "en"}
+        >
+          EN
+        </button>
+      </div>
 
+      <main id="home" className="main-hero">
         <video
           className="background-video"
           src="/main-hero.mp4"
@@ -186,6 +110,7 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
           muted
           playsInline
         />
+
         <div className={`hero-center ${showUI ? "fade-in" : "is-hidden"}`}>
           <div className="brand">
             <h1 className="brand-title">
@@ -197,7 +122,7 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
           </div>
 
           <div className="hero-actions">
-            <a className="btn primary" href="#contacto">
+            <a className="btn primary" href="/contacto">
               {t("hero.ctaPrimary")}
             </a>
             <a className="btn ghost" href="#portfolio">
@@ -205,111 +130,93 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
             </a>
           </div>
         </div>
+
         <span className="scroll-indicator">{t("hero.scroll")}</span>
       </main>
 
       <div className="page-wrapper">
-        {/* ... resto del contenido idéntico ... */}
         <section className="section manifesto">
           <blockquote>{t("manifesto.quote")}</blockquote>
         </section>
 
-        {/* ... resto de secciones (sin cambios) ... */}
- 
+        <section id="servicios" className="section services-story">
+          <div className="section-heading align-left">
+            <h2>{t("services.title")}</h2>
+            <p className="services-sub">{t("services.subtitle")}</p>
+          </div>
 
-       <section id="servicios" className="section services-story">
-  <div className="section-heading align-left">
-    <h2>{t("services.title")}</h2>
-    <p className="services-sub">{t("services.subtitle")}</p>
-  </div>
+          <ol className="services-steps">
+            {serviceItems.map((service, index) => (
+              <li key={service.key} className="service-step">
+                <div className="step-index">{String(index + 1).padStart(2, "0")}</div>
 
-  <ol className="services-steps">
-    {serviceItems.map((service, index) => (
-<li
-  key={service.key}
-  className={`service-step ${index % 2 ? "is-right" : "is-left"}`}
->
-        <div className="step-index">
-          {String(index + 1).padStart(2, "0")}
-        </div>
-
-        <div className="step-content">
-          <h3 className="step-title">
-            {t(`services.items.${service.key}.title`, service.title)}
-          </h3>
-          <p className="step-desc">
-            {t(`services.items.${service.key}.description`, service.description)}
-          </p>
-        </div>
-      </li>
-    ))}
-  </ol>
-</section>
-
-
+                <div className="step-content">
+                  <h3 className="step-title">{t(`services.items.${service.key}.title`)}</h3>
+                  <p className="step-desc">{t(`services.items.${service.key}.description`)}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
 
         <section id="portfolio" className="section gallery">
           <div className="section-heading align-left">
             <span className="eyebrow">{t("portfolio.eyebrow")}</span>
             <h2>{t("portfolio.title")}</h2>
+            <p>{t("portfolio.subtitle")}</p>
           </div>
-          <div className="gallery-grid">
-            {translatedGallery.map((image) => (
-<figure
-  key={image.src}
-  className={`gallery-item ${image.span}`}
-  onClick={() => setActiveImage(image)}
->
-  <Image
-    src={image.src}
-    alt={image.alt}
-    fill
-    sizes="(max-width: 720px) 70vw, (max-width: 1200px) 35vw, 360px"
-    className="gallery-photo"
-  />
-  {image.label && <figcaption>{image.label}</figcaption>}
-</figure>
 
+          <div className="gallery-grid gallery-collections-grid">
+            {weddings.map((wedding) => (
+              <button
+                key={wedding.slug}
+                type="button"
+                className="gallery-collection"
+                onClick={() => setActiveCollection(wedding)}
+                aria-label={t("portfolio.openCollection", {
+                  title: wedding.title,
+                })}
+              >
+                <div className="gallery-collection-media">
+                  <Image
+                    src={wedding.cover}
+                    alt={`${wedding.title} wedding in ${wedding.location}`}
+                    fill
+                    sizes="(max-width: 720px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="gallery-photo"
+                  />
+                </div>
+
+                <div className="collection-caption">
+                  <p className="collection-location">{wedding.location}</p>
+                  <h3>{wedding.title}</h3>
+                  <span>{wedding.year}</span>
+                </div>
+              </button>
             ))}
           </div>
         </section>
+
         <section className="section press">
-  <div className="section-heading align-center">
-    <span className="eyebrow">{t("press.eyebrow") || "Prensa"}</span>
-  </div>
+          <div className="section-heading align-center">
+            <span className="eyebrow">{t("press.eyebrow")}</span>
+            <h2>{t("press.title")}</h2>
+          </div>
 
-  <div className="press-logos">
-    <img src="/press/lago.png" alt="100 Layer Cake" />
-    <img src="/press/wezoree.png" alt="Wezoree" />
-    <img src="/press/alai.png" alt="Alai" />
-    <img src="/press/mariee.svg" alt="La Mariée aux Pieds Nus" />
-    <img src="/press/together.png" alt="Together Journal" />
-  </div>
-</section>
-{activeImage && (
-  <div className="lightbox" onClick={() => setActiveImage(null)}>
-    <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-      <button
-        className="lightbox-close"
-        onClick={() => setActiveImage(null)}
-      >
-        ×
-      </button>
-
-      <Image
-        src={activeImage.src}
-        alt={activeImage.alt}
-        fill
-        className="lightbox-image"
-        sizes="100vw"
-      />
-
-      {activeImage.label && (
-        <p className="lightbox-caption">{activeImage.label}</p>
-      )}
-    </div>
-  </div>
-)}
+          <div className="press-logos">
+            {pressLogos.map((logo) => (
+              <div key={logo.alt} className="press-logo">
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={140}
+                  height={80}
+                  className="press-logo-image"
+                />
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section id="contacto" className="section contact">
           <div className="contact-inner">
@@ -317,21 +224,71 @@ const [activeImage, setActiveImage] = useState<GalleryImage | null>(null);
             <h2>{t("contact.title")}</h2>
             <p>{t("contact.description")}</p>
             <div className="contact-actions">
-              <a className="btn primary" href="mailto:hello@theperfectmatch.es">
-                {t("contact.emailCta")}
+              <a className="btn primary" href="/contacto">
+                {t("contact.primaryCta")}
               </a>
-              <a className="btn ghost" href="https://wa.me/34677049605">
+              <a
+                className="btn ghost"
+                href="https://wa.me/34677049605"
+                target="_blank"
+                rel="noreferrer"
+              >
                 {t("contact.phoneCta")}
               </a>
             </div>
           </div>
         </section>
 
-        <footer className="footer">
-          <p>{t("footer.line1", { year: new Date().getFullYear() })}</p>
-          <p>{t("footer.line2")}</p>
-        </footer>
+        <Footer />
       </div>
+
+      {activeCollection && (
+        <div
+          className="lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label={activeCollection.title}
+          onClick={() => setActiveCollection(null)}
+        >
+          <div className="lightbox-shell" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              className="lightbox-close"
+              onClick={() => setActiveCollection(null)}
+              aria-label={t("portfolio.closeCollection")}
+            >
+              ×
+            </button>
+
+            <div className="lightbox-header">
+              <p className="lightbox-location">
+                {activeCollection.location} · {activeCollection.year}
+              </p>
+              <h3>{activeCollection.title}</h3>
+              <p className="lightbox-description">
+                {activeCollection.description[activeLang]}
+              </p>
+            </div>
+
+            <div className="lightbox-grid">
+              {activeCollection.images.map((image, index) => (
+                <figure key={`${activeCollection.slug}-${image}`} className="lightbox-card">
+                  <div className="lightbox-image-frame">
+                    <Image
+                      src={image}
+                      alt={`${activeCollection.title} gallery image ${index + 1}`}
+                      fill
+                      className="lightbox-image"
+                      sizes="(max-width: 720px) 100vw, 33vw"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
       <Whatsapp />
     </>
   );

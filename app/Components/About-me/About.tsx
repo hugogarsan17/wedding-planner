@@ -2,72 +2,12 @@
 
 import "./../fonts.css";
 import Image from "next/image";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import Footer from "../Footer/Footer";
 import Navbar from "../../Components/Navbar/Navbar";
 import "./About.css";
 import Whatsapp from "../whatsapp/whatsapp";
-const serviceItems = [
-  {
-    key: "planning",
-    title: "Planificación completa",
-    description: "Diseño del calendario, presupuesto y coordinación con proveedores para que todo suceda.",
-    icon: "🗓️",
-  },
-  {
-    key: "artDirection",
-    title: "Dirección artística",
-    description: "Concepto visual, paleta, floristería y montaje para una boda con identidad.",
-    icon: "🎨",
-  },
-  {
-    key: "production",
-    title: "Producción & logística",
-    description: "Montaje técnico, coordinación de montaje y supervisión in situ el día D.",
-    icon: "⚙️",
-  },
-  {
-    key: "coordination",
-    title: "Coordinación del día",
-    description: "Gestión del timing y del equipo para que los novios se olviden del resto.",
-    icon: "🤍",
-  },
-  {
-    key: "destination",
-    title: "Destination Weddings",
-    description: "Organización integral para bodas fuera: viajes, alojamientos y trámites.",
-    icon: "✈️",
-  },
-  {
-    key: "honeymoon",
-    title: "Luna de miel",
-    description: "Diseño de experiencias y reservas a medida para una escapada inolvidable.",
-    icon: "🌴",
-  },
-];
-
-type GalleryImage = {
-  src: string;
-  alt: string;
-  label?: string;
-  span: string;
-  key: string;
-};
-
-
-const galleryImages = [
-  { src: "/p8.jpeg", span: "tall", key: "p8" },
-  { src: "/p7.jpeg", span: "wide", key: "p7" },
-  { src: "/p6.jpeg", span: "standard", key: "p6" },
-  { src: "/p5.jpeg", span: "tall", key: "p5" },
-  { src: "/p4.jpeg", span: "big", key: "p4" },
-  { src: "/p3.jpeg", span: "standard", key: "p3" },
-  { src: "/p2.jpeg", span: "wide", key: "p2" },
-  { src: "/p1.jpeg", span: "standard", key: "p1" },
-  { src: "/p9.jpeg", span: "standard", key: "p9" },
-  { src: "/p10.jpeg", span: "standard", key: "p10" },
-  { src: "/p11.jpeg", span: "standard", key: "p11" },
-];
 
 export default function About() {
   const [showUI, setShowUI] = useState(false);
@@ -171,7 +111,8 @@ export default function About() {
             </div>
           </div>
         </section>
-        </div>
+        <Footer />
+      </div>
       <Whatsapp />
     </>
   );

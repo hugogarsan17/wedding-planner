@@ -9,9 +9,9 @@ type LinkItem = { href: string; label: string };
 
 const baseLinks = [
   { href: "/", key: "nav.home" },
-    { href: "/about", key: "nav.aboutme" },
-  { href: "#servicios", key: "nav.services" },
-  { href: "#portfolio", key: "nav.portfolio" },
+  { href: "/about", key: "nav.aboutme" },
+  { href: "/#servicios", key: "nav.services" },
+  { href: "/#portfolio", key: "nav.portfolio" },
   { href: "/contacto", key: "nav.contact" },
 ];
 

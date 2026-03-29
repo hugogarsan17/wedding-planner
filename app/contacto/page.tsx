@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import Footer from "../Components/Footer/Footer";
 import Navbar from "../Components/Navbar/Navbar";
 import "../Components/styles/buttons.css";
 import "./contacto.css";
@@ -220,6 +221,7 @@ const isFormValid =
             </form>
           </section>
         </main>
+        <Footer />
       </div>
     </>
   );

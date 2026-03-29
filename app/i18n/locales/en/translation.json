@@ -3,8 +3,8 @@
     "brandTitle1": "the",
     "brandTitle2": "perfect",
     "brandTitle3": "match",
-    "subtitle": "WEDDING PLANNING & DESIGN",
-    "ctaPrimary": "Book a call",
+    "subtitle": "Wedding Planning & Design",
+    "ctaPrimary": "Enquiry form",
     "ctaSecondary": "View portfolio",
     "scroll": "Scroll to explore"
   },
@@ -21,49 +21,52 @@
     "description": "We hand-pick locations, design atmospheres and coordinate every gesture so that beauty flows effortlessly.",
     "points": {
       "one": "A limited number of 12 weddings per year.",
-      "two": "Multidisciplinary creative team on-site.",
-      "three": "Complete transparency in budget and timelines."
+      "two": "A multidisciplinary creative team on site.",
+      "three": "Complete transparency in budgets and timelines."
     }
   },
   "about": {
-    "title": "Hi! It's Anna, ",
-    "body": "Behind every wedding there is a unique story. Mine is about transforming emotions into experiences meant to be remembered forever. \n\n <strong>Are you ready for all the magic that’s about to unfold?</strong>",
-    "imageAlt": "Photo of the team smiling together in the studio"
+    "title": "Hi, I'm Anna",
+    "body": "I am the founder of <strong>@theperfectmatch.wed</strong> and I approach weddings as deeply personal stories that deserve clarity, beauty and calm execution.\n\nThe Perfect Match was born to turn ideas, emotions and references into celebrations that feel effortless for the couple and unforgettable for everyone around them.",
+    "imageAlt": "Photo of the founder smiling in the studio"
   },
   "services": {
     "title": "Services",
-    "subtitle": "",
+    "subtitle": "Planning, design and coordination for couples who want a thoughtful process and an impeccably executed wedding day.",
     "ctaContact": "Contact us",
     "items": {
       "planning": {
-        "title": "Wedding Planning",
-        "description": "Designing timelines, budgets and coordinating vendors so everything happens smoothly."
+        "title": "Full planning",
+        "description": "Timeline, budget, guidance and vendor coordination from the first conversation to the final detail."
       },
       "artDirection": {
-        "title": "Art Direction",
-        "description": "Visual concept, palette, florals and styling to create a coherent, memorable look."
+        "title": "Art direction",
+        "description": "Visual concept, palette, florals, furniture and styling to create a wedding with a clear point of view."
       },
       "production": {
-        "title": "Production & Logistics",
-        "description": "Technical setup, on-site supervision and vendor coordination for a flawless day."
+        "title": "Production and logistics",
+        "description": "Run sheets, setup, technical supervision and team management so everything happens seamlessly."
       },
       "coordination": {
-        "title": "Day Coordination",
-        "description": "Timing, team management and on-the-day problem solving so you only enjoy the moment."
+        "title": "Wedding day coordination",
+        "description": "We take care of the timing, suppliers and every small issue so you can stay fully present."
       },
       "destination": {
-        "title": "Destination Weddings",
-        "description": "Full organisation for weddings abroad: travel, accommodation and local logistics."
+        "title": "Destination weddings",
+        "description": "Full support for celebrations away from home, with a polished experience for both you and your guests."
       },
       "honeymoon": {
         "title": "Honeymoon",
-        "description": "Tailored experiences and bookings to turn your trip into an unforgettable extension of the celebration."
+        "description": "Tailored travel design as a natural extension of the celebration, with pacing and bookings curated for you."
       }
     }
   },
   "portfolio": {
     "eyebrow": "Portfolio",
-    "title": "A mosaic of real stories",
+    "title": "Real stories, refined productions",
+    "subtitle": "A selection of recent celebrations that reflects the atmosphere, rhythm and sensibility we pursue in every wedding.",
+    "openCollection": "Open {{title}} story",
+    "closeCollection": "Close gallery",
     "images": {
       "p1": { "alt": "Couple walking among mountains", "label": "Elopement in the Pyrenees" },
       "p2": { "alt": "Guests dancing under warm lights", "label": "" },
@@ -79,28 +82,29 @@
     }
   },
   "press": {
-    "eyebrow": "As seen on",
-    "title": "Our college"
+    "eyebrow": "As seen in",
+    "title": "Publications and features"
   },
   "manifesto": {
-    "quote": "“What is fleeting in a single day can live on forever in a lifetime.”"
+    "quote": "What is lived in a single day can stay with you for a lifetime."
   },
   "contact": {
-    "eyebrow": "Let’s talk",
+    "eyebrow": "Let's talk",
     "title": "Book a private video call",
-    "description": "Tell us how you imagine your day and we’ll prepare an initial guide with personalised ideas and directions.",
+    "description": "Tell us how you imagine your celebration and we will prepare a thoughtful first direction with ideas, feeling and the best next step.",
+    "primaryCta": "Go to form",
     "emailCta": "hello@theperfectmatch.es",
-    "phoneCta": "+34 677 04 96 05"
+    "phoneCta": "WhatsApp"
   },
   "footer": {
-    "line1": "© {{year}} Wedding Planners",
-    "line2": "Producing elegant weddings in Spain."
+    "line1": "© {{year}} The Perfect Match",
+    "line2": "Elegant weddings across Spain and Europe."
   },
   "contactPage": {
     "eyebrow": "Contact",
     "title": "Tell us your story",
     "intro": {
-      "description": "Fill in the form and we’ll prepare an initial proposal based on your style, destination and budget. If you prefer, you can also reach out directly via our studio email.",
+      "description": "Fill in the form and we will prepare an initial proposal based on your style, destination and budget. If you prefer, you can also reach out directly via our studio email.",
       "email": "hello@theperfectmatch.es",
       "note": "We reply within 48 business hours."
     },
@@ -108,7 +112,7 @@
       "fields": {
         "name": {
           "label": "Full name",
-          "placeholder": "E.g. Anna García & Pablo López",
+          "placeholder": "E.g. Anna Garcia and Pablo Lopez",
           "required": "Please enter your full name"
         },
         "email": {
@@ -121,28 +125,34 @@
           "placeholder": "+34 600 000 000"
         },
         "date": {
-          "label": "Approximate date / season",
-          "placeholder": "E.g. July 2026, Spring, 20/08/2026 (optional)"
+          "label": "Approximate date or season",
+          "placeholder": "E.g. July 2026, Spring, 20/08/2026"
         },
         "message": {
           "label": "Message",
-          "placeholder": "Tell us about your vision, destination, guest count and approximate budget…",
+          "placeholder": "Tell us about your style, guest count, destination, approximate budget and any important inspiration.",
           "required": "Please tell us a bit more about your celebration"
         },
         "links": {
-          "label": "Link to inspiration / dossier (optional)",
+          "label": "Link to inspiration or dossier (optional)",
           "placeholder": "https:// (Google Drive, Pinterest, gallery...)"
         }
       },
       "submit": "Send enquiry",
       "success": {
         "title": "Thank you for reaching out",
-        "message": "We’ve received your message and will get back to you shortly."
+        "message": "We have received your message and will get back to you shortly."
       },
       "error": {
         "title": "Something went wrong",
         "message": "Please check the form fields and try again."
       }
     }
-
-  }}
+  },
+  "thankYou": {
+    "eyebrow": "Message received",
+    "title": "Thank you for getting in touch",
+    "description": "We have received your enquiry and will reply with care within 48 business hours.",
+    "cta": "Back to home"
+  }
+}

@@ -1,0 +1,13 @@
+.site-footer {
+  padding: 2.4rem 1.5rem 3rem;
+  text-align: center;
+  font-family: "Poppins", var(--font-geist-sans), system-ui;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(31, 22, 23, 0.44);
+}
+
+.site-footer p {
+  margin: 0.35rem 0;
+}
