@@ -8,7 +8,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 8px 12px;
+  padding: 12px;
   z-index: 9999;
   pointer-events: none;
   font-family: "Poppins", system-ui;
@@ -23,27 +23,30 @@
   transition: opacity .3s ease, transform .3s ease;
 }
 
-/* Evita que el navbar tape anchors */
-[id] {
-  scroll-margin-top: 84px;
+.nav.is-hidden {
+  opacity: 0;
+  transform: translateY(-16px);
+  pointer-events: none;
 }
 
 /* ===============================
-   NAV INNER (PÍLDORA)
+   NAV INNER (DESKTOP FIRST)
 ================================ */
 .nav-inner {
   pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 10px 18px;
+  justify-content: center; /* ✅ centrado en desktop */
+  gap: 32px;
+  padding: 10px 22px;
   border-radius: 999px;
-  max-width: 100%;      /* seguridad */
+
+  width: auto;           /* 🔥 clave */
+  max-width: none;       /* 🔥 clave */
+
   background: rgba(18,18,22,.55);
   backdrop-filter: blur(16px);
 }
-
-
 
 /* ===============================
    LOGO
@@ -52,19 +55,15 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-    flex-shrink: 0;
-  display: block;
 }
 
-
 /* ===============================
-   LINKS (DESKTOP)
+   LINKS DESKTOP
 ================================ */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
-  white-space: nowrap;
+  gap: 20px;
 }
 
 .nav-links a {
@@ -75,57 +74,15 @@
   transition: background .15s ease;
 }
 
-.nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:hover {
   background: rgba(255,255,255,.08);
 }
 
 /* ===============================
-   TOGGLE (HAMBURGUESA)
+   TOGGLE (HIDDEN DESKTOP)
 ================================ */
 .nav-toggle {
   display: none;
-  pointer-events: auto;
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.25);
-  background: rgba(24,21,27,.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-}
-
-.nav-toggle-line {
-  width: 22px;
-  height: 2px;
-  background: #fff;
-  border-radius: 999px;
-  transition: transform .25s ease, opacity .2s ease;
-}
-
-.nav-toggle.is-active .nav-toggle-line:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-.nav-toggle.is-active .nav-toggle-line:nth-child(2) {
-  opacity: 0;
-}
-.nav-toggle.is-active .nav-toggle-line:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Texto accesible */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
 }
 
 /* ===============================
@@ -134,45 +91,68 @@
 @media (max-width: 720px) {
 
   .nav {
-    justify-content: flex-start;
+    justify-content: center;
+    padding: 8px;
   }
 
   .nav-inner {
     width: 100%;
-    max-width: none;
-    border-radius: 14px;
+    justify-content: space-between; /* ✅ mobile layout */
+    border-radius: 16px;
     padding: 12px 16px;
-    justify-content: space-between;
   }
 
   .logo-nav {
-    display: none;
+    width: 40px;
+    height: 40px;
   }
 
+  /* Mostrar toggle */
   .nav-toggle {
     display: flex;
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(24,21,27,.8);
+    backdrop-filter: blur(12px);
+
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
   }
 
-  /* Dropdown */
+  .nav-toggle-line {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 999px;
+  }
+
+  /* 🔥 IMPORTANTE: ocultar links desktop */
   .nav-links {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
+    left: 0;
     right: 0;
+
     flex-direction: column;
-    width: 200px;
-    padding: 8px;
-    gap: 6px;
+    width: 100%;
+    padding: 12px;
+    gap: 8px;
 
     background: rgba(24,21,27,.95);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-radius: 14px;
+
+    border-radius: 16px;
     box-shadow: 0 16px 40px rgba(0,0,0,.35);
 
     opacity: 0;
     visibility: hidden;
     transform: translateY(-6px);
     pointer-events: none;
+
     transition: opacity .2s ease, transform .2s ease;
   }
 
@@ -185,37 +165,15 @@
 
   .nav-links a {
     width: 100%;
-    padding: 12px 14px;
+    padding: 14px 16px;
     font-size: 1rem;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 }
 
 /* ===============================
-   REDUCED MOTION
+   ANCHOR OFFSET
 ================================ */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    transform: none !important;
-  }
-}
-.nav.is-hidden {
-  opacity: 0;
-  transform: translateY(-16px);
-  pointer-events: none;
-}
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* 🔑 centro real */
-  position: relative;
-}
-
-
-/* Links perfectamente centrados */
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+[id] {
+  scroll-margin-top: 84px;
 }
