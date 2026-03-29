@@ -51,6 +51,9 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1rem;
+    color: rgba(0,0,0,0.5);
+
+  
 }
 
 .contact-intro p {
