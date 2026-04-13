@@ -18,11 +18,12 @@
 }
 
 .nav-inner {
-  width: min(980px, 100%);
+  width: auto;
+  max-width: calc(100% - 24px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+  justify-content: center;
+  gap: 28px;
   padding: 10px 14px;
   border-radius: 999px;
   background: rgba(19, 15, 18, 0.55);
@@ -42,7 +43,7 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .nav-links a {
@@ -99,9 +100,12 @@
   }
 
   .nav-inner {
+    width: 100%;
     border-radius: 16px;
     padding: 10px 12px;
     position: relative;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .nav-logo {
