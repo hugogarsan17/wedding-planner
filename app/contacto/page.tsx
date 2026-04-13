@@ -60,9 +60,7 @@ const isFormValid =
       </div>
 
       <div className="contact-page">
-        <div className="contact-nav">
-          <Navbar />
-        </div>
+        <Navbar />
 
         <main className="contact-main">
           <section className="contact-section">
