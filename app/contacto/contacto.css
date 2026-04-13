@@ -152,14 +152,3 @@
 }
 
 
-.lang-switcher {
-  position: fixed;
-  top: calc(env(safe-area-inset-top) + 16px);
-  left: 16px;
-
-  z-index: 10002; /* por encima de TODO */
-  display: flex;
-  gap: 8px;
-
-  pointer-events: auto;
-}

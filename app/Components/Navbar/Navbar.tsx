@@ -111,7 +111,7 @@ export default function Navbar() {
 
   return (
     <header ref={navRef} className={`nav ${mounted ? "is-mounted" : ""}`}>
-      <div className="nav-inner">
+      <div className={`nav-inner ${isOpen ? "menu-open" : ""}`}>
         <Link className="nav-logo" href="/" aria-label="Ir al inicio">
           <Image src="/logo.jpeg" alt="Logo" width={44} height={44} className="logo-nav" />
         </Link>
