@@ -1,57 +1,67 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { whatsappLink } from "@/lib/site";
 import "./whatsapp.css";
 
 export default function Whatsapp() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
-  // PON AQUÍ TU NÚMERO EN FORMATO INTERNACIONAL, SIN ESPACIOS
-  const phone = "34677049605"; // ejemplo: 34 + número de España
-const defaultMessage = 
-"¡Hola!  Estamos comenzando a organizar nuestra boda y nos gustaría recibir información sobre vuestros servicios de wedding planner. \n\nNos encanta vuestro estilo y quisiéramos saber disponibilidad, tipos de servicio y cómo trabajáis. También podemos compartir detalles como fecha aproximada, destino y número de invitados. \n\n¡Muchas gracias!";
-
-
-  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(
-    defaultMessage
-  )}`;
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   return (
     <div className="whatsapp-widget">
-      {/* Pop-up */}
       {open && (
-        <div className="whatsapp-popup">
+        <div
+          id="whatsapp-popup"
+          className="whatsapp-popup"
+          role="region"
+          aria-label={t("whatsapp.title")}
+        >
           <div className="whatsapp-popup-header">
-            <span>¿Hablamos por WhatsApp?</span>
+            <span>{t("whatsapp.title")}</span>
             <button
+              type="button"
               className="whatsapp-popup-close"
               onClick={() => setOpen(false)}
-              aria-label="Cerrar"
+              aria-label={t("whatsapp.close")}
             >
               ×
             </button>
           </div>
           <div className="whatsapp-popup-body">
-            <p>
-              Resuelve tus dudas, pide cita o solicita información de forma
-              rápida.
-            </p>
-            <a href={waLink} target="_blank" rel="noopener noreferrer">
-              Abrir chat
+            <p>{t("whatsapp.body")}</p>
+            <a
+              href={whatsappLink(t("whatsapp.message"))}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("whatsapp.cta")}
             </a>
           </div>
         </div>
       )}
 
-      {/* Botón flotante */}
       <button
+        type="button"
         className="whatsapp-fab"
-        onClick={() => setOpen(!open)}
-        aria-label="Abrir chat de WhatsApp"
+        onClick={() => setOpen((value) => !value)}
+        aria-label={t("whatsapp.open")}
+        aria-expanded={open}
+        aria-controls="whatsapp-popup"
       >
         <span className="whatsapp-icon">
-          <Image src="/logo-wass.png" alt="WhatsApp" width={24} height={24} />
+          <Image src="/logo-wass.png" alt="" width={24} height={24} />
         </span>
       </button>
     </div>
