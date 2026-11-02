@@ -102,7 +102,14 @@ export default function Navbar() {
       const sectionElement = document.getElementById(sectionId);
 
       if (sectionElement) {
-        sectionElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        const reduceMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches;
+        sectionElement.scrollIntoView({
+          behavior: reduceMotion ? "auto" : "smooth",
+          block: "start",
+        });
+        window.history.replaceState(null, "", normalizedHash);
       }
     }
 
@@ -112,8 +119,8 @@ export default function Navbar() {
   return (
     <header ref={navRef} className={`nav ${mounted ? "is-mounted" : ""}`}>
       <div className={`nav-inner ${isOpen ? "menu-open" : ""}`}>
-        <Link className="nav-logo" href="/" aria-label="Ir al inicio">
-          <Image src="/logo.jpeg" alt="Logo" width={44} height={44} className="logo-nav" />
+        <Link className="nav-logo" href="/" aria-label={t("nav.goHome")}>
+          <Image src="/logo.jpeg" alt="" width={44} height={44} className="logo-nav" />
         </Link>
 
         <button
@@ -121,7 +128,7 @@ export default function Navbar() {
           className={`nav-toggle ${isOpen ? "is-active" : ""}`}
           aria-expanded={isOpen}
           aria-controls="primary-navigation"
-          aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={isOpen ? t("nav.closeMenu") : t("nav.openMenu")}
           onClick={() => setIsOpen((open) => !open)}
         >
           <span className="nav-toggle-line" aria-hidden="true" />
@@ -132,11 +139,15 @@ export default function Navbar() {
         <nav
           id="primary-navigation"
           className={`nav-links ${isOpen ? "is-open" : ""}`}
-          aria-label="Navegación principal"
+          aria-label={t("nav.mainNav")}
           onClick={handleNavClick}
         >
           {links.map((link) => (
-            <Link key={link.href} href={link.href}>
+            <Link
+              key={link.href}
+              href={link.href}
+              aria-current={pathname === link.href ? "page" : undefined}
+            >
               {link.label}
             </Link>
           ))}

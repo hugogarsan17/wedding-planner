@@ -1,4 +1,11 @@
 {
+  "a11y": {
+    "skip": "Saltar al contenido",
+    "newTab": "(se abre en una pestaña nueva)"
+  },
+  "lang": {
+    "label": "Idioma"
+  },
   "hero": {
     "brandTitle1": "the",
     "brandTitle2": "perfect",
@@ -6,153 +13,138 @@
     "subtitle": "Wedding Planning & Design",
     "ctaPrimary": "Ir al formulario",
     "ctaSecondary": "Ver portfolio",
-    "scroll": "Desliza para descubrir"
+    "scroll": "Desliza para descubrir",
+    "pauseVideo": "Pausar vídeo",
+    "playVideo": "Reproducir vídeo"
   },
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
     "portfolio": "Portfolio",
     "contact": "Contacto",
-    "aboutme": "Sobre mi"
-  },
-  "vision": {
-    "eyebrow": "Vision",
-    "title": "Bodas minimalistas con sensibilidad editorial",
-    "description": "Seleccionamos localizaciones, diseñamos atmósferas y coordinamos cada gesto para que la belleza fluya sin esfuerzo.",
-    "points": {
-      "one": "Producciones limitadas a 12 bodas al año.",
-      "two": "Equipo creativo multidisciplinar y presencial.",
-      "three": "Transparencia absoluta en presupuestos y tiempos."
-    }
+    "aboutme": "Sobre mí",
+    "goHome": "Ir al inicio",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mainNav": "Navegación principal"
   },
   "about": {
     "title": "Hola, soy Anna",
-    "body": "Creativa por naturaleza, apasionada de todo lo bonito y la persona que hay al timón de <strong>@theperfectmatch.wed</strong>.\n\nMi relacion con las bodas empezo hace unos anos, antes de dedicarme a organizarlas. Desde entonces he tenido el privilegio de vivirlas desde diferentes perspectivas, conociendo de cerca la emocion, los nervios y la magia que envuelven cada si, quiero. Toda esa experiencia me enseno que una boda es mucho mas que un evento: es un momento unico, irrepetible y lleno de significado.\n\nAsi nacio The Perfect Match, un espacio donde los suenos toman forma para convertirse en momentos imborrables, elegantes y muy personales.",
-    "imageAlt": "Fotografia del equipo de la empresa sonriendo en la oficina"
+    "body": [
+      "Creativa por naturaleza, apasionada de todo lo bonito y la persona que hay al timón de <ig>@theperfectmatch.wed</ig>.",
+      "Mi relación con las bodas empezó hace unos años, antes de dedicarme a organizarlas. Desde entonces he tenido el privilegio de vivirlas desde diferentes perspectivas, conociendo de cerca la emoción, los nervios y la magia que envuelven cada «sí, quiero». Toda esa experiencia me enseñó que una boda es mucho más que un evento: es un momento único, irrepetible y lleno de significado.",
+      "Así nació The Perfect Match, un espacio donde los sueños toman forma para convertirse en momentos imborrables, elegantes y muy personales."
+    ],
+    "imageAlt": "Anna, fundadora de The Perfect Match, sonriendo con una americana rosa junto a unas flores"
   },
   "services": {
     "title": "Servicios",
-    "subtitle": "Planificacion, diseno y coordinacion para parejas que quieren disfrutar del proceso con calma, criterio y una ejecucion impecable.",
-    "ctaContact": "Consúltanos",
+    "subtitle": "Planificación, diseño y coordinación para parejas que quieren disfrutar del proceso con calma, criterio y una ejecución impecable.",
     "items": {
       "planning": {
-        "title": "Planificacion completa",
-        "description": "Calendario, presupuesto, asesoria y coordinacion de proveedores desde la primera idea hasta el ultimo detalle."
+        "title": "Planificación completa",
+        "description": "Calendario, presupuesto, asesoría y coordinación de proveedores desde la primera idea hasta el último detalle."
       },
       "artDirection": {
-        "title": "Direccion artistica",
-        "description": "Concepto visual, paleta, flor, mobiliario y estilismo para construir una boda coherente y con identidad."
+        "title": "Dirección artística",
+        "description": "Concepto visual, paleta, flores, mobiliario y estilismo para construir una boda coherente y con identidad."
       },
       "production": {
-        "title": "Produccion y logistica",
-        "description": "Cronogramas, montaje, supervision tecnica y gestion del equipo para que todo suceda sin fricciones."
+        "title": "Producción y logística",
+        "description": "Cronogramas, montaje, supervisión técnica y gestión del equipo para que todo suceda sin fricciones."
       },
       "coordination": {
-        "title": "Coordinacion del dia",
-        "description": "Nos ocupamos del timing, los proveedores y cualquier imprevisto para que vosotros solo vivais el momento."
+        "title": "Coordinación del día",
+        "description": "Nos ocupamos del timing, los proveedores y cualquier imprevisto para que vosotros solo viváis el momento."
       },
       "destination": {
         "title": "Destination weddings",
-        "description": "Acompañamiento integral para bodas fuera de vuestra ciudad o pais, con una experiencia cuidada para todos."
+        "description": "Acompañamiento integral para bodas fuera de vuestra ciudad o país, con una experiencia cuidada para todos."
       },
       "honeymoon": {
         "title": "Luna de miel",
-        "description": "Disenamos viajes a medida como una extension natural de la celebracion, con reservas y ritmo pensados para vosotros."
+        "description": "Diseñamos viajes a medida como una extensión natural de la celebración, con reservas y ritmo pensados para vosotros."
       }
     }
   },
   "portfolio": {
     "eyebrow": "Portfolio",
     "title": "Historias reales, producciones con alma",
-    "subtitle": "Una seleccion de celebraciones recientes para mostrar el tipo de atmosfera, ritmo y sensibilidad que buscamos en cada boda.",
-    "openCollection": "Abrir la historia de {{title}}",
-    "closeCollection": "Cerrar galeria",
-    "images": {
-      "p1": { "alt": "Pareja caminando entre montañas", "label": "Elopement en Pirineos" },
-      "p2": { "alt": "Invitados bailando bajo luces calidas", "label": "" },
-      "p3": { "alt": "Mesa de banquete minimalista", "label": "" },
-      "p4": { "alt": "Novia con ramo en escalera historica", "label": "" },
-      "p5": { "alt": "Brindis de recien casados", "label": "Celebracion en La Rioja" },
-      "p6": { "alt": "Detalle floral con velas sobre mesa", "label": "" },
-      "p7": { "alt": "Boda intima con mesa decorada en exterior", "label": "" },
-      "p8": { "alt": "Pareja abrazada frente al mar al atardecer", "label": "Menorca, golden hour" },
-      "p9": { "alt": "Pareja caminando entre montañas", "label": "Elopement en Pirineos" },
-      "p10": { "alt": "Pareja caminando entre montañas", "label": "Elopement en Pirineos" },
-      "p11": { "alt": "Pareja caminando entre montañas", "label": "Elopement en Pirineos" }
-    }
+    "subtitle": "Una selección de celebraciones recientes que muestran la atmósfera, el ritmo y la sensibilidad que buscamos en cada boda.",
+    "closeCollection": "Cerrar galería",
+    "imageAlt": "Boda de {{title}}, foto {{n}} de {{total}}"
   },
   "press": {
     "eyebrow": "Hablan de nosotros",
     "title": "Publicaciones y medios"
   },
   "manifesto": {
-    "quote": "Lo que se vive en un solo dia puede quedarse para siempre en la memoria."
+    "quote": "Lo que se vive en un solo día puede quedarse para siempre en la memoria."
   },
   "contact": {
     "eyebrow": "Hablemos",
-    "title": "Agenda una videollamada privada",
-    "description": "Cuéntanos como imagináis vuestro gran dia y prepararemos una primera orientacion con ideas, sensaciones y siguiente paso recomendado.",
+    "title": "Agendemos una videollamada privada",
+    "description": "Contadnos cómo imagináis vuestro gran día y os prepararemos una primera orientación con ideas, sensaciones y el siguiente paso recomendado.",
     "primaryCta": "Ir al formulario",
-    "emailCta": "hello@theperfectmatch.es",
     "phoneCta": "WhatsApp"
+  },
+  "whatsapp": {
+    "title": "¿Hablamos por WhatsApp?",
+    "body": "Escribidnos para resolver dudas, pedir cita o recibir información sobre nuestros servicios.",
+    "cta": "Abrir chat",
+    "open": "Abrir chat de WhatsApp",
+    "close": "Cerrar",
+    "message": "¡Hola! Estamos empezando a organizar nuestra boda y nos gustaría recibir información sobre vuestros servicios de wedding planner.\n\nNos encanta vuestro estilo y queríamos saber disponibilidad, tipos de servicio y cómo trabajáis. También podemos compartir detalles como fecha aproximada, destino y número de invitados.\n\n¡Muchas gracias!"
   },
   "footer": {
     "line1": "© {{year}} The Perfect Match",
-    "line2": "Bodas elegantes y cuidadas en España y Europa."
+    "line2": "Bodas elegantes y cuidadas en España y Europa.",
+    "instagram": "@theperfectmatch.wed en Instagram"
   },
   "contactPage": {
     "eyebrow": "Contacto",
-    "title": "Cuéntanos vuestra historia",
+    "title": "Contadnos vuestra historia",
     "intro": {
-      "description": "Completa el formulario y diseñaremos una propuesta inicial en base a vuestro estilo, destino y presupuesto. Si preferís escribirnos directamente, también podéis hacerlo al correo del estudio.",
-      "email": "hello@theperfectmatch.es",
+      "description": "Completad el formulario y diseñaremos una propuesta inicial según vuestro estilo, destino y presupuesto. Si preferís escribirnos directamente, también podéis hacerlo al correo del estudio:",
       "note": "Respondemos en menos de 48 horas laborables."
     },
     "form": {
       "fields": {
         "name": {
           "label": "Nombre completo",
-          "placeholder": "Ej. Ana Garcia y Pablo Lopez",
-          "required": "Por favor, indicad vuestro nombre completo"
+          "placeholder": "Ej. Ana García y Pablo López",
+          "required": "Indicad vuestro nombre completo."
         },
         "email": {
           "label": "Email de contacto",
           "placeholder": "ejemplo@dominio.com",
-          "required": "Introduce un email valido"
+          "required": "Introducid un email válido, por ejemplo nombre@dominio.com."
         },
         "phone": {
-          "label": "Telefono (opcional)",
+          "label": "Teléfono (opcional)",
           "placeholder": "+34 600 000 000"
         },
         "date": {
           "label": "Fecha aproximada o temporada",
-          "placeholder": "Ej. Julio 2026, Primavera, 20/08/2026"
+          "placeholder": "Ej. julio 2026, primavera, 20/08/2026"
         },
         "message": {
           "label": "Mensaje",
-          "placeholder": "Contadnos estilo, numero de invitados, destino, presupuesto aproximado y cualquier referencia importante.",
-          "required": "Cuéntanos un poco mas sobre vuestra celebracion"
+          "placeholder": "Contadnos el estilo, el número de invitados, el destino, el presupuesto aproximado y cualquier referencia importante.",
+          "required": "Contadnos un poco sobre vuestra celebración."
         },
         "links": {
-          "label": "Adjuntar enlace a dossier o fotos (opcional)",
-          "placeholder": "https:// (Google Drive, Pinterest, galeria...)"
+          "label": "Enlace a dossier o fotos (opcional)",
+          "placeholder": "https:// (Google Drive, Pinterest, galería…)"
         }
       },
-      "submit": "Enviar consulta",
-      "success": {
-        "title": "Gracias por escribirnos",
-        "message": "Hemos recibido vuestro mensaje y os responderemos muy pronto."
-      },
-      "error": {
-        "title": "Algo no ha salido bien",
-        "message": "Revisa los campos del formulario e inténtalo de nuevo."
-      }
+      "submit": "Enviar consulta"
     }
   },
   "thankYou": {
     "eyebrow": "Mensaje recibido",
     "title": "Gracias por escribirnos",
-    "description": "Hemos recibido vuestro mensaje y prepararemos una respuesta cuidada en menos de 48 horas laborables.",
+    "description": "Hemos recibido vuestro mensaje y os responderemos en menos de 48 horas laborables.",
     "cta": "Volver al inicio"
   }
 }
